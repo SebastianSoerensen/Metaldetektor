@@ -25,7 +25,7 @@ void timer1_init_8kHz(void)
     OCR1A  = (F_CPU / (8UL * FS_HZ)) - 1; // 249 for 8 kHz
 
     TIMSK1 = (1 << OCIE1A); // enable ISR
-    TCCR1B |= (1 << CS11); // prescaler = 8 → start
+    TCCR1B |= (1 << CS11); // prescaler = 8
 }
 
 static uint8_t coil_div = 0; // coil divide flag to get 2 kHz
@@ -79,4 +79,5 @@ ISR(ADC_vect)
     adc_cur_buf = buf;
     adc_cur_idx = i;
 }
+
 
