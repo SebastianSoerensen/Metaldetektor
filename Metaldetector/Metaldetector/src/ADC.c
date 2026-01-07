@@ -1,13 +1,14 @@
 #include <avr/io.h>
 #include <avr/interrupt.h>
 #include "config.h"
+#include "DFT.h"
 
 // Two N-sample buffers, double buffer
 volatile uint16_t adc_buf[2][ADC_BLOCK_N];
-volatile uint8_t  adc_buf_full[2] = {0, 0};
+volatile uint8_t adc_buf_full[2] = {0, 0};
 
-static volatile uint8_t  adc_cur_buf  = 0;    // 0 or 1
-static volatile uint16_t adc_cur_idx  = 0;    // 0 - N-1
+static volatile uint8_t adc_cur_buf = 0;    // 0 or 1
+static volatile uint16_t adc_cur_idx = 0;    // 0 - N-1
 
 volatile uint8_t sampling_enabled = 1;
 
@@ -22,10 +23,10 @@ void timer1_init_8kHz(void)
 
     TCCR1A = 0;
     TCCR1B = (1 << WGM12); // CTC 
-    OCR1A  = (F_CPU / (8UL * FS_HZ)) - 1; // 249 for 8 kHz
+    OCR1A = (F_CPU / (8UL * FS_HZ)) - 1; // 249 for 8 kHz
 
     TIMSK1 = (1 << OCIE1A); // enable ISR
-    TCCR1B |= (1 << CS11); // prescaler = 8
+    TCCR1B |= (1 << CS11); // prescaler = 8, start
 }
 
 static uint8_t coil_div = 0; // coil divide flag to get 2 kHz
@@ -35,13 +36,11 @@ ISR(TIMER1_COMPA_vect)
     if (!sampling_enabled) 
     return;
 
-    // Tracks every 4th tick
+    // Tracks every 2th tick, gives 4000 toggles / 2 = 2000kHz (2 toggles per period)
     coil_div++;
-    if (coil_div == 4) {
+    if (coil_div == 2) {
         coil_div = 0;
     }
-
-    // 2 kHz coil (toggle every 4th 8 kHz tick) 
     if (coil_div == 0) {
         COIL_PORT ^= (1 << COIL_PIN);
     }
@@ -52,17 +51,22 @@ ISR(TIMER1_COMPA_vect)
 }
 void adc_init(void)
 {
-    ADMUX  = (1 << REFS0); // AVcc, ADC0
-    ADCSRA = (1 << ADEN) | (1 << ADIE) | (1 << ADPS2) | (1 << ADPS0); // presc 32, 500 kHz         
+    ADMUX = (1 << REFS0); // AVcc, ADC0
+    ADCSRA = (1 << ADEN) | (1 << ADIE) | (1 << ADPS2) | (1 << ADPS1); // presc 64, 250 kHz (Skal muligvis justeres til 125 hvis sampling er upræcis)
     // ADATE = 0, we trigger manually from timer ISR
+
+    DIDR0 |= (1<<ADC0D); // digital ADC pin disable (lessens noise)
 }
 
 ISR(ADC_vect)
 {
     uint16_t s = ADC; // read sample
+    int16_t sample = (int16_t)s - 512;
 
-    uint8_t  buf = adc_cur_buf; // current buffer
-    uint16_t i   = adc_cur_idx;
+    uint8_t buf = adc_cur_buf; // current buffer
+    uint16_t i = adc_cur_idx;
+
+    DFT_accum(sample,i);
 
     adc_buf[buf][i] = s;
     i++;
@@ -79,5 +83,4 @@ ISR(ADC_vect)
     adc_cur_buf = buf;
     adc_cur_idx = i;
 }
-
 
