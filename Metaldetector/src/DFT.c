@@ -18,5 +18,5 @@ z_struct DFT_accum(const int16_t sample, uint16_t n){
         case 2: z.re -= sample; break;
         case 3: z.im += sample; break;
     }
-    return z;
 }
+

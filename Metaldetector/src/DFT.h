@@ -9,6 +9,9 @@ typedef struct {
 
 } z_struct;
 
+volatile z_struct dft_latched[2];
+volatile uint8_t  dft_ready[2] = {0, 0};
+
 z_struct DFT_accum(const int16_t sample, uint16_t n);
 
 void DFT_reset(void);

@@ -66,21 +66,29 @@ ISR(ADC_vect)
     uint8_t buf = adc_cur_buf; // current buffer
     uint16_t i = adc_cur_idx;
 
-    DFT_accum(sample,i);
+    // Start of a new ADC_BLOCK_N-sample block
+    if (i == 0) {
+        DFT_reset();
+    }
+
+    DFT_accum(sample, i);
 
     adc_buf[buf][i] = s;
     i++;
 
     if (i >= ADC_BLOCK_N) {
-        // current buffer full
+        // latch the finished block DFT result here
+        dft_latched[buf] = DFT_get();
+        dft_ready[buf] = 1;
+
         adc_buf_full[buf] = 1; // signal to main
 
-        // switch to other buffer (xor)
-        buf ^= 1; // 0-1, 1-0
+        buf ^= 1; // swap buffer
         i = 0;
     }
 
     adc_cur_buf = buf;
     adc_cur_idx = i;
 }
+
 

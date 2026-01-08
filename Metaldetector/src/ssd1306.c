@@ -386,7 +386,7 @@ void startscrollright(uint8_t start, uint8_t stop){
 }
 /** startscrollleft
 * Activate a right handed scroll for rows start through stop
-*Hint, the display is 16 rows tall. To scroll the whole display, run:
+* Hint, the display is 16 rows tall. To scroll the whole display, run:
 * scrollleft(0x00, 0x0F) */
 void startscrollleft(uint8_t start, uint8_t stop){
 	ssd1306_command(SSD1306_LEFT_HORIZONTAL_SCROLL);
