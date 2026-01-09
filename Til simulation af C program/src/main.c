@@ -28,9 +28,12 @@ results_t calc_results(uint8_t b) {
     // Normalize by block size
     res.re = z.re / ADC_BLOCK_N;
     res.im = z.im / ADC_BLOCK_N;
-    
+
+    // True magnitude with sqrt
+    res.amp = DSP_true_magnitude(res.re,res.im);
+
     // Fast magnitude (no sqrt)
-    res.amp = DSP_true_magnitude(res.re, res.im);
+//    res.amp = DSP_fast_magnitude(res.re, res.im);
     
     // Fast phase in degrees
     res.phase_deg = DSP_true_atan2_deg(res.im, res.re);
