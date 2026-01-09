@@ -36,7 +36,7 @@ results_t calc_results(uint8_t b) {
 //    res.amp = DSP_fast_magnitude(res.re, res.im);
     
     // Fast phase in degrees
-    res.phase_deg = DSP_fast_atan2_deg(res.im, res.re);
+    res.phase_deg = DSP_true_atan2_deg(res.im, res.re);
     
     return res;
 }
