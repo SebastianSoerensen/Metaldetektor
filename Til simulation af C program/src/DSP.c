@@ -1,6 +1,7 @@
 #include "config.h"
 #include <avr/io.h>
 #include <avr/pgmspace.h>
+#include <math.h>
 #include "DSP.h"
 
 // LUT for Hanning window saved in FLASH
@@ -27,9 +28,16 @@ int16_t DSP_IIR_filter(int16_t x, int16_t y_prev) {
     int32_t temp = (int32_t)(32768 - a) * y_prev + (int32_t)a * x;
     return (int16_t)(temp >> 15);
 }
+// TRUE magnitude
+int32_t DSP_true_magnitude(int32_t re, int32_t im){
+    int64_t acc = (int64_t)re * re +(int64_t)im * im;
+    return (int32_t)sqrt((double)acc);
+}
+
 
 // Fast magnitude approximation: max(|re|,|im|) + 0.4*min(|re|,|im|)
 // Error < 4%, much faster than sqrt on AVR
+
 int32_t DSP_fast_magnitude(int32_t re, int32_t im) {
     if (re < 0) re = -re;
     if (im < 0) im = -im;
