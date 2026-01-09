@@ -134,8 +134,8 @@ int main(void)
             sampling_enabled = 0;
             
             sendStrXY("IDLE", 0, 0);
-            sendStrXY("RUN: (H)Start", 2, 0);
-            sendStrXY("PWR: (V)Recal", 3, 0);
+            sendStrXY("RUN: Start", 2, 0);
+            sendStrXY("PWR: Recal", 3, 0);
             break;
 
         case STATE_RUNNING:
