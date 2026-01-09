@@ -5,7 +5,7 @@
 #include <stdbool.h>
 
 // Enable this to bypass real ADC and inject test signals
-#define TEST_MODE_ENABLED 1
+#define TEST_MODE_ENABLED 0
 
 // Test signal types
 typedef enum {

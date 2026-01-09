@@ -61,6 +61,7 @@ int main(void)
     timer1_init_8kHz();
     adc_init();
     buttons_init();
+    I2C_Init();
     sei();
 
     InitializeDisplay();
@@ -133,8 +134,8 @@ int main(void)
             sampling_enabled = 0;
             
             sendStrXY("IDLE", 0, 0);
-            sendStrXY("RUN: Start", 0, 2);
-            sendStrXY("PWR: Recal", 0, 3);
+            sendStrXY("RUN: (H)Start", 2, 0);
+            sendStrXY("PWR: (V)Recal", 3, 0);
             break;
 
         case STATE_RUNNING:
@@ -151,17 +152,17 @@ int main(void)
             // Display amplitude
             sendStrXY("AMP:", 0, 0);
             snprintf(str_buf, sizeof(str_buf), "%ld   ", delta_amp);
-            sendStrXY(str_buf, 40, 0);
+            sendStrXY(str_buf, 40, 6);
             
             // Display phase
-            sendStrXY("PHS:", 0, 1);
+            sendStrXY("PHS:", 1, 0);
             snprintf(str_buf, sizeof(str_buf), "%d deg   ", delta_phase);
-            sendStrXY(str_buf, 40, 1);
+            sendStrXY(str_buf, 40, 6);
             
 #if TEST_MODE_ENABLED
             // Show which test signal is active
-            sendStrXY("SIM:", 0, 2);
-            sendStrXY(test_get_signal_name(), 40, 2);
+            sendStrXY("SIM:", 2, 0);
+            sendStrXY((char*)test_get_signal_name(), 40, 6);
 #endif
             
             // TODO: Add threshold detection and metal classification
