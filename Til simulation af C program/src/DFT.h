@@ -22,4 +22,6 @@ void DFT_reset(void);
 // Get current accumulator value
 z_struct DFT_get(void);
 
+
+
 #endif

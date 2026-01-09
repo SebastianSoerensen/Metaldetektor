@@ -116,19 +116,29 @@ int main(void)
 
         switch (state)
         {
-        case STATE_CALIBRATING:
-            sampling_enabled = 1;
-            sendStrXY("Calibrating...", 0, 0);
-            
-            // Wait for first valid result
-            if (res.amp > 0 && !system_calibrated) {
-                baseline_amp = res.amp;
-                baseline_phase = res.phase_deg;
-                system_calibrated = true;
-                clear_display();
-                state = STATE_IDLE;
-            }
-            break;
+case STATE_CALIBRATING:
+    sampling_enabled = 1;
+
+#if TEST_MODE_ENABLED
+    // I test-mode: ingen baseline-kalibrering
+    baseline_amp = 0;
+    baseline_phase = 0;
+    system_calibrated = true;
+    clear_display();
+    state = STATE_IDLE;
+#else
+    sendStrXY("Calibrating...", 0, 0);
+    
+    // Wait for first valid result
+    if (res.amp > 0 && !system_calibrated) {
+        baseline_amp = res.amp;
+        baseline_phase = res.phase_deg;
+        system_calibrated = true;
+        clear_display();
+        state = STATE_IDLE;
+    }
+#endif
+    break;
 
         case STATE_IDLE:
             sampling_enabled = 0;

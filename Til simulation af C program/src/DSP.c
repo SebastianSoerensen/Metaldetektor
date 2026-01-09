@@ -32,9 +32,11 @@ int16_t DSP_IIR_filter(int16_t x, int16_t y_prev) {
 }
 
 // TRUE magnitude
-int32_t DSP_true_magnitude(int32_t re, int32_t im){
-    int64_t acc = (int64_t)re * re +(int64_t)im * im;
-    return (int32_t)sqrt((double)acc);
+int32_t DSP_true_magnitude(int32_t re, int32_t im)
+{
+    int64_t acc = (int64_t)re * re + (int64_t)im * im;
+    double mag = sqrt((double)acc);
+    return (int32_t)(mag + 0.5);   // afrunding
 }
 
 // Fast magnitude approximation: max(|re|,|im|) + 0.4*min(|re|,|im|)
@@ -104,8 +106,8 @@ int16_t DSP_fast_atan2_deg(int32_t im, int32_t re) {
 }
 */
 // TRUE atan2
-int16_t DSP_true_atan2_deg(int32_t im, int32_t re){
-    double phase = atan2((double(im),(double)re));
+int32_t DSP_true_atan2_deg(int32_t im, int32_t re){
+    double phase = atan2((double)im,(double)re);
     return (int16_t)(phase*RAD2DEG); // RAD2DEG is 180/pi approximated to 57.29577951308232, defined in top of this document to save CPU power by pre-calculating the division. 
 }
 

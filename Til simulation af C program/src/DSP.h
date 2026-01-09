@@ -13,4 +13,7 @@ int32_t DSP_fast_magnitude(int32_t re, int32_t im);
 // Returns phase in degrees (-180 to +180)
 int16_t DSP_fast_atan2_deg(int32_t im, int32_t re);
 
+int32_t DSP_true_atan2_deg(int32_t re, int32_t im);
+int32_t DSP_true_magnitude(int32_t re, int32_t im);
+
 #endif
