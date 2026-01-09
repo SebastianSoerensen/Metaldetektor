@@ -1,7 +1,10 @@
 #include "config.h"
+#include <math.h>
 #include <avr/io.h>
 #include <avr/pgmspace.h>
 #include "DSP.h"
+
+#define RAD2DEG 57.29577951308232
 
 // LUT for Hanning window saved in FLASH
 static const int32_t hanning[ADC_BLOCK_N + 1] PROGMEM = {
@@ -26,6 +29,12 @@ int16_t DSP_IIR_filter(int16_t x, int16_t y_prev) {
     const int16_t a = 9830; // 0.3 in Q15
     int32_t temp = (int32_t)(32768 - a) * y_prev + (int32_t)a * x;
     return (int16_t)(temp >> 15);
+}
+
+// TRUE magnitude
+int32_t DSP_true_magnitude(int32_t re, int32_t im){
+    int64_t acc = (int64_t)re * re +(int64_t)im * im;
+    return (int32_t)sqrt((double)acc);
 }
 
 // Fast magnitude approximation: max(|re|,|im|) + 0.4*min(|re|,|im|)
@@ -94,9 +103,14 @@ int16_t DSP_fast_atan2_deg(int32_t im, int32_t re) {
     return angle;
 }
 */
+// TRUE atan2
+int16_t DSP_true_atan2_deg(int32_t im, int32_t re){
+    double phase = atan2((double(im),(double)re));
+    return (int16_t)(phase*RAD2DEG); // RAD2DEG is 180/pi approximated to 57.29577951308232, defined in top of this document to save CPU power by pre-calculating the division. 
+}
 
-#include <math.h>
 
+// Fast atan2 approximation
 int16_t DSP_fast_atan2_deg(int32_t im, int32_t re) {
     if (re == 0 && im == 0) return 0;
     
