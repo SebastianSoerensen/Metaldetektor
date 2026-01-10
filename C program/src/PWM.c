@@ -5,11 +5,11 @@
 #define LOW_THRESHOLD 50
 
 // OC2B = PH6 (Arduino Mega pin 9)
-// OC2A bruges som TOP (frekvens)
+// OC2A as TOP (frequency)
 
 void buzzer_init(void)
 {
-    // Sæt OC2B (PH6) som output
+    // PH6 (pin 9) as output
     DDRH |= (1 << PH6);
 
     // Timer2: Fast PWM, TOP = OCR2A
@@ -17,17 +17,17 @@ void buzzer_init(void)
     TCCR2A = (1 << WGM21) | (1 << WGM20);
     TCCR2B = (1 << WGM22);
 
-    // Ikke-inverterende PWM på OC2B (clear on compare match)
+    // Non-inverting PWM OC2B (clear on compare match)
     TCCR2A |= (1 << COM2B1);
 
-    // Stop timer indtil vi vil have lyd
+    // Stop timer until sound is wanted
     TCCR2B &= ~((1 << CS22) | (1 << CS21) | (1 << CS20));
 
-    // Start med lyd slukket
+    // Initially mute the buzzer
     OCR2B = 0;
 }
 
-// Sæt tonefrekvens (Hz)
+// Tone frequency (Hz)
 // f_out = F_CPU / (prescaler * (1 + OCR2A))
 void buzzer_set_frequency(uint16_t freq)
 {
@@ -40,15 +40,15 @@ void buzzer_set_frequency(uint16_t freq)
     OCR2A = (uint8_t)top;
 }
 
-// Sæt volumen via duty-cycle (0..255)
+// Set volume by adjusting the duty cycle (0-255) 
 void buzzer_set_volume(uint8_t vol)
 {
-    OCR2B = vol;   // 0 = lydløs, 255 = max
+    OCR2B = vol;   // 0 = mute, 255 = max
 }
 
 void buzzer_on(void)
 {
-    // Start timer med prescaler = 64
+    // Start timer with prescale = 64
     TCCR2B = (TCCR2B & ~((1 << CS22) | (1 << CS21) | (1 << CS20))) | (1 << CS22);
 }
 
@@ -62,15 +62,14 @@ void buzzer_off(void)
 // Amplitude -> volumen, Fase -> tone
 void update_buzzer(uint16_t amp, int16_t phase)
 {
-    if (amp < LOW_THRESHOLD)
+    if (amp < LOW_THRESHOLD) // To stop the buzzer from making sound below the threshold
     {
         buzzer_off();
         return;
     }
 
     buzzer_on();
-
-    // -------- Tone fra fase --------
+    // We represent different phases with different frequencies (tones) for the buzzer. 
     if (phase > 30)               // Non-iron
         buzzer_set_frequency(1200);
     else if (phase < -30)         // Iron
@@ -78,9 +77,8 @@ void update_buzzer(uint16_t amp, int16_t phase)
     else
         buzzer_set_frequency(700);
 
-    // -------- Volumen fra amplitude --------
-    // Skaler amplitude til 0..255 (tilpas AMP_MAX til dit system)
-    const uint16_t AMP_MAX = 1000;   // justér efter dine målinger
+    // Volume of the buzzer to be adjusted by the amplitude of DFT
+    const uint16_t AMP_MAX = 1000;   // This is the highest amplitude we want to represent with audio 
     if (amp > AMP_MAX) amp = AMP_MAX;
 
     uint8_t volume = (uint32_t)amp * 255 / AMP_MAX;
