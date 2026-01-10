@@ -113,11 +113,6 @@ int32_t DSP_true_atan2_deg(int32_t im, int32_t re){
     return (int16_t)(phase*RAD2DEG); // RAD2DEG is 180/pi approximated to 57.29577951308232, defined in top of this document to save CPU power by pre-calculating the division. 
 }
 
-// True atan2
-int16_t DSP_true_atan2_deg(int32_t im, int32_t re){
-    double phase = atan2((double(im),(double)re));
-    return (int16_t)(phase*RAD2DEG); // RAD2DEG is 180/pi approximated to 57.29577951308232, defined in top of this document to save CPU power by pre-calculating the division. 
-}
 
 
 // Fast atan2
