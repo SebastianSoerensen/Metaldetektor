@@ -11,7 +11,7 @@
 #include "test_mode.h"
 #include "ssd1306.h"
 #include "I2C.h"
-
+#include "PWM.h"
 // Result structure
 typedef struct {
     int32_t amp;
@@ -65,6 +65,7 @@ int main(void)
     adc_init();
     buttons_init();
     I2C_Init();
+    buzzer_init();
     sei();
 
     InitializeDisplay();
@@ -153,7 +154,9 @@ case STATE_CALIBRATING:
 
         case STATE_RUNNING:
             sampling_enabled = 1;
-            
+                        // Compute deltas from baseline
+            int32_t delta_amp = res.amp - baseline_amp;
+            int16_t delta_phase = res.phase_deg - baseline_phase;
             #if TEST_MODE_ENABLED
                 // Vis rå test-resultater direkte
                 sendStrXY("AMP:", 0, 0);
@@ -163,6 +166,10 @@ case STATE_CALIBRATING:
                 sendStrXY("PHS:", 1, 0);
                 snprintf(str_buf, sizeof(str_buf), "%d deg   ", res.phase_deg);
                 sendStrXY(str_buf, 40, 6);
+                            /* 
+            For audio output from buzzer
+            */
+            update_buzzer((uint16_t)abs(delta_amp),delta_phase);
             #else
                 // Din normale drift (baseline-delta)
                 int32_t delta_amp = res.amp - baseline_amp;
@@ -178,6 +185,10 @@ case STATE_CALIBRATING:
                 sendStrXY("PHS:", 1, 0);
                 snprintf(str_buf, sizeof(str_buf), "%d deg   ", delta_phase);
                 sendStrXY(str_buf, 40, 6);
+                            /* 
+            For audio output from buzzer
+            */
+            update_buzzer((uint16_t)abs(delta_amp),delta_phase);
             #endif
                 break;
 
