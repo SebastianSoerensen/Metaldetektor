@@ -3,6 +3,7 @@
 #include <stdbool.h>
 #include <stdio.h>
 #include <util/delay.h>
+#include <stdlib.h>
 #include "config.h"
 #include "ADC.h"
 #include "DSP.h"
@@ -11,6 +12,7 @@
 #include "test_mode.h"
 #include "ssd1306.h"
 #include "I2C.h"
+#include "PWM.h"
 
 // Result structure
 typedef struct {
@@ -62,6 +64,7 @@ int main(void)
     adc_init();
     buttons_init();
     I2C_Init();
+    buzzer_init();
     sei();
 
     InitializeDisplay();
@@ -159,6 +162,11 @@ int main(void)
             snprintf(str_buf, sizeof(str_buf), "%d deg   ", delta_phase);
             sendStrXY(str_buf, 40, 6);
             
+            /* 
+            For audio output from buzzer
+            */
+            update_buzzer((uint16_t)abs(delta_amp),delta_phase);
+
 #if TEST_MODE_ENABLED
             // Show which test signal is active
             sendStrXY("SIM:", 2, 0);
