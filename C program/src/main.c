@@ -12,7 +12,7 @@
 #include "test_mode.h"
 #include "ssd1306.h"
 #include "I2C.h"
-#include "PWM.h"
+#include "Buzzer.h"
 
 // Result structure
 typedef struct {

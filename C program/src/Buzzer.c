@@ -2,7 +2,7 @@
 #include <stdint.h>
 
 #define F_CPU 16000000UL
-#define LOW_THRESHOLD 50
+#define LOW_THRESHOLD 50 // No sound for amplitudes below this threshold
 
 // OC2B = PH6 (Arduino Mega pin 9)
 // OC2A as TOP (frequency)

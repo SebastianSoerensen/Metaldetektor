@@ -1,4 +1,4 @@
-#ifndef PWM_H_
+#ifndef Buzzer_H
 #define PWM_H_
 
 #include <stdint.h>
