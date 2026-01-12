@@ -2,7 +2,8 @@
 #include <avr/io.h>
 #include <avr/pgmspace.h>
 #include "DSP.h"
-
+#include <math.h>
+#define RAD2DEG 57.295780 // 180/pi
 // LUT for Hanning window saved in FLASH
 static const int32_t hanning[ADC_BLOCK_N + 1] PROGMEM = {
        0,    655,   3277,   7211,  11305,  15784,  20471,  25380,
@@ -28,8 +29,12 @@ int16_t DSP_IIR_filter(int16_t x, int16_t y_prev) {
     return (int16_t)(temp >> 15);
 }
 
-// Fast magnitude approximation: max(|re|,|im|) + 0.4*min(|re|,|im|)
-// Error < 4%, much faster than sqrt on AVR
+int32_t DSP_fast_magnitude(int32_t re,int32_t im){
+    int64_t acc = (int64_t)re * re +(int64_t)im * im;
+    return (int32_t)sqrt((double)acc);
+}
+
+/*
 int32_t DSP_fast_magnitude(int32_t re, int32_t im) {
     if (re < 0) re = -re;
     if (im < 0) im = -im;
@@ -47,7 +52,7 @@ int32_t DSP_fast_magnitude(int32_t re, int32_t im) {
     // Using shift: min*3/8 = (min >> 2) + (min >> 3)
     return max_val + (min_val >> 2) + (min_val >> 3);
 }
-
+*/
 /*
 // Fast atan2 approximation returning degrees (-180 to +180)
 // Uses CORDIC-style polynomial approximation
@@ -95,14 +100,12 @@ int16_t DSP_fast_atan2_deg(int32_t im, int32_t re) {
 }
 */
 
-#include <math.h>
-
 int16_t DSP_fast_atan2_deg(int32_t im, int32_t re) {
     if (re == 0 && im == 0) return 0;
     
     // atan2 returns radians, convert to degrees
     double radians = atan2((double)im, (double)re);
-    double degrees = radians * (180.0 / M_PI);
+    double degrees = radians * RAD2DEG; // RAD2DEG is 180/pi. Precalculated and defined in top to save CPU powers.
     
     return (int16_t)degrees;
 }
