@@ -18,16 +18,23 @@
 \begin{document}
 	\maketitle
 	\newpage
-\section{Møde dag 1}
+\section*{Møde dag 1}
 	\begin{itemize}
 		\item Bilal starter på energiberegninger, samt opstart på beregninger vedrørende spolerne.
-		\item Sebastian og Oliver foretager målinger på Arduino, for bedre at kunne estimere strømforbruget. Derefter starter de op på C-programmering. 
+		\item Sebastian og Oliver foretager målinger på Arduino, for bedre at kunne estimere strømforbruget til energiberegningerne. Derefter starter de op på C-programmering. 
 	\end{itemize}
-\section{Møde dag 2}
+\section*{Møde dag 2}
 	\begin{itemize}
-		\item Sebastian og Oliver fortsætter med C-programmering
+		\item Sebastian og Oliver fortsætter med C-programmering, herunder moduler til DFT, DSP og tilstandsmaskine, samt generel struktur på programmet.
 		\item Bilal fortsætter med at arbejde på spolen, og får startet på at lave en prototype til Power amplifieren. 
 	\end{itemize}
-\section{Møde dag 6}
+\section*{Møde dag 4}
+	\begin{itemize}
+		\item Bilal fortsætter med simulation af Power Amplifier, samt 3D tegning af spolen.
+		\item Sebastian og Oliver fortsætter med C-programmering, herunder moduler til PWM, OLED-display, ADC. Efterfølgende påbegyndes modul til buzzer (til lydindikation af fase/amplitude), samt opsætning af sleep-funktion i Arduino for strømbesparelse. Desuden laves der et python-script til simulering af data som ligges i flashhukommelse på Atmega2560'eren, og det kontrolleres om DFT-algoritmen samt display og DSP virker som ønsket, ved sammenligning mellem Atmega2560 output og resultatet fra Python-scriptet. 
+	\end{itemize}
+\section*{Møde dag 6}
 		Planen for idag er at vi skal have testet C koden for sig, samt testet Power Amplifier for sig. Hvis begge ting virker enkeltvis, sættes de sammen og testes. Efterfølgende skal vi vikle spolerne, samt have opdateret C-koden til at kunne skelne imellem metaller. 
+\section*{Møde dag 7}
+		Idag har vi fælles foretaget målinger på spolen, samt viklet buck-spolen tilstrækkeligt ud, så vi får udlignet det uønskede felt. Samt fælles kontrol af Power Amplifier. Alt er testet OK, således at der imorgen kan påbegyndes filtrering og forstærkning af spolens output, så vi snarest muligt kan sætte de analoge og digitale dele sammen, og teste det samlede system. 
 \end{document}
