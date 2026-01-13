@@ -13,12 +13,13 @@
 #include "ssd1306.h"
 #include "I2C.h"
 #include "Buzzer.h"
-
+#include "sleep.h"
 #define AVG_SIZE 10
+
 int32_t amp_history[AVG_SIZE] = {0};
 int16_t phase_history[AVG_SIZE] = {0};
 uint8_t avg_index = 0;
-int N = 10;
+int N = AVG_SIZE;
 
 // Result structure
 typedef struct {
@@ -184,7 +185,7 @@ case STATE_RUNNING:
     sendStrXY(str_buf, 1, 6);
     
     update_buzzer((uint16_t)abs(delta_amp_avg), delta_phase_avg);
-
+    
 #if TEST_MODE_ENABLED
     sendStrXY("SIM:", 2, 0);
     sendStrXY((char*)test_get_signal_name(), 2, 6);
