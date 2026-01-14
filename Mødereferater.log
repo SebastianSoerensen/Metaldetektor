@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.8.20)  13 JAN 2026 16:48
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.8.20)  14 JAN 2026 13:14
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -843,8 +843,16 @@ viklet buck-spolen tilstr^^Zkke-
  []
 
 
+Overfull \hbox (32.0829pt too wide) in paragraph at lines 42--43
+[]\OT1/cmr/m/n/10 Sebastian og Oliver laver et modul i C ko-den til sleep-funkt
+ion for str^^\mbesparelse.
+ []
 
-[2] (Mødereferater.aux)
+
+
+[2]
+
+[3] (Mødereferater.aux)
  ***********
 LaTeX2e <2025-06-01> patch level 1
 L3 programming layer <2025-07-20>
@@ -864,9 +872,9 @@ ts/cm/cmbx12.pfb><C:/Users/Sebas/AppData/Local/Programs/MiKTeX/fonts/type1/publ
 ic/amsfonts/cm/cmr10.pfb><C:/Users/Sebas/AppData/Local/Programs/MiKTeX/fonts/ty
 pe1/public/amsfonts/cm/cmr12.pfb><C:/Users/Sebas/AppData/Local/Programs/MiKTeX/
 fonts/type1/public/amsfonts/cm/cmr17.pfb>
-Output written on Mødereferater.pdf (2 pages, 59468 bytes).
+Output written on Mødereferater.pdf (3 pages, 60365 bytes).
 PDF statistics:
- 37 PDF objects out of 1000 (max. 8388607)
+ 40 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 
