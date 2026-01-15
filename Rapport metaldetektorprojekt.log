@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.8.20)  15 JAN 2026 13:33
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.8.20)  15 JAN 2026 16:07
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -842,7 +842,7 @@ LaTeX Warning: No \author given.
 \openout4 = `"Rapport metaldetektorprojekt.toc"'.
 
 
-Overfull \hbox (69.13582pt too wide) in paragraph at lines 58--59
+Overfull \hbox (68.65115pt too wide) in paragraph at lines 58--59
 [] 
  []
 
@@ -858,13 +858,13 @@ L3 programming layer <2025-07-20>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 44035 strings out of 468134
- 1223608 string characters out of 5430740
- 1997426 words of memory out of 5000000
- 72187 multiletter control sequences out of 15000+600000
+ 44030 strings out of 468134
+ 1223363 string characters out of 5430740
+ 1995936 words of memory out of 5000000
+ 72182 multiletter control sequences out of 15000+600000
  634350 words of font info for 66 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 99i,9n,105p,745b,903s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 99i,9n,105p,745b,888s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/Sebas/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/
 cmbsy10.pfb><C:/Users/Sebas/AppData/Local/Programs/MiKTeX/fonts/type1/public/am
 sfonts/cm/cmbx10.pfb><C:/Users/Sebas/AppData/Local/Programs/MiKTeX/fonts/type1/
@@ -877,7 +877,7 @@ AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/User
 s/Sebas/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><
 C:/Users/Sebas/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cms
 y10.pfb>
-Output written on "Rapport metaldetektorprojekt.pdf" (3 pages, 120045 bytes).
+Output written on "Rapport metaldetektorprojekt.pdf" (3 pages, 114786 bytes).
 PDF statistics:
  65 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
