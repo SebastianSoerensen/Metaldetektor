@@ -62,13 +62,13 @@
 	\draw (0,-2) node[ground]{} to [short,-*]++(0,0) to [vsourcesin,l_=$2\text{kHz}$]++(0,2)
 	to [C=$1\mu\text{F}$]++(2,0) to [short,-*]++(0,0) coordinate(N1);
 	\draw (N1) to [R=$100\text{k}\Omega$]++(0,-2) to [short,-*]++(0,0);
-	\draw (N1) to [R=$100\text{k}\Omega$]++(0,2) to [short,-*]++(0,2) coordinate(N2) to [vsource,l=$5\text{V}$]++(0,2) --++(-4,0) --++(0,-8) --++(6.8,0); % Linje til ground her
+	\draw (N1) to [R=$100\text{k}\Omega$]++(0,2) to [short,-*]++(0,2) coordinate(N2) to [vsource,l=$5\text{V}$]++(0,2) --++(-4,0) --++(0,-8) --++(10.8,0) coordinate(N5); % Linje til ground her
 	\draw (6,3.5) node[op amp,yscale=-1] (opamp){};
 	\draw (opamp.+) to (N2);
 	\draw (opamp.-) to [short,-*]++(0,-1) coordinate(N3) to [R=$14\text{k}\Omega$]++(0,-2) to [C=$1\mu\text{F}$]++(0,-2) to [short,-*]++(0,0);
 	\draw (N3) to [R=$90\text{k}\Omega$] ++(3,0) to [short,-*]++(0,1.5) coordinate(Vo);
 	\draw (Vo) to (opamp.out);
-	\draw (Vo) --++(1,0) to [open=$V_{out}$] ++(0,0.5);
+	\draw (Vo) --++(1,0) to [open,v^=$V_{out}$](N5);
 \end{circuitikz}
 
 \end{document}
