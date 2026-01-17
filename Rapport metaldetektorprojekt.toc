@@ -1,13 +1,14 @@
-\contentsline {section}{\numberline {1}Introduktion}{2}{}%
-\contentsline {section}{\numberline {2}Analyse}{2}{}%
-\contentsline {section}{\numberline {3}Design}{2}{}%
-\contentsline {subsection}{\numberline {3.1}Analogt design}{2}{}%
-\contentsline {subsubsection}{\numberline {3.1.1}Energiberegninger}{2}{}%
-\contentsline {subsubsection}{\numberline {3.1.2}Spoler og strømforstærkning}{2}{}%
-\contentsline {subsubsection}{\numberline {3.1.3}Filtrering og forstærkning af spolesignal}{4}{}%
-\contentsline {subsection}{\numberline {3.2}Digitalt design}{4}{}%
-\contentsline {subsubsection}{\numberline {3.2.1}Brugerinteraktion}{4}{}%
-\contentsline {subsubsection}{\numberline {3.2.2}DFT algoritme og sampling}{4}{}%
-\contentsline {subsubsection}{\numberline {3.2.3}Tilstandsmaskine}{4}{}%
-\contentsline {subsubsection}{\numberline {3.2.4}Digital signal behandling}{4}{}%
-\contentsline {section}{\numberline {4}Implementering og test}{4}{}%
+\contentsline {section}{\numberline {1}Introduktion}{2}{section.1}%
+\contentsline {section}{\numberline {2}Analyse}{2}{section.2}%
+\contentsline {section}{\numberline {3}Design}{2}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Analogt design}{2}{subsection.3.1}%
+\contentsline {subsubsection}{\numberline {3.1.1}Energiberegninger}{2}{subsubsection.3.1.1}%
+\contentsline {subsubsection}{\numberline {3.1.2}Spoler og strømforstærkning}{2}{subsubsection.3.1.2}%
+\contentsline {subsubsection}{\numberline {3.1.3}Filtrering og forstærkning af spolesignal}{2}{subsubsection.3.1.3}%
+\contentsline {subsection}{\numberline {3.2}Digitalt design}{2}{subsection.3.2}%
+\contentsline {subsubsection}{\numberline {3.2.1}Moduldiagram og introduktion}{2}{subsubsection.3.2.1}%
+\contentsline {subsubsection}{\numberline {3.2.2}Brugerinteraktion}{5}{subsubsection.3.2.2}%
+\contentsline {subsubsection}{\numberline {3.2.3}DFT algoritme og sampling}{5}{subsubsection.3.2.3}%
+\contentsline {subsubsection}{\numberline {3.2.4}Tilstandsmaskine}{5}{subsubsection.3.2.4}%
+\contentsline {subsubsection}{\numberline {3.2.5}Digital signal behandling}{5}{subsubsection.3.2.5}%
+\contentsline {section}{\numberline {4}Implementering og test}{5}{section.4}%

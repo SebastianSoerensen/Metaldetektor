@@ -13,6 +13,57 @@
 \usepackage{wrapfig}
 \usepackage{pdfpages}
 \usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{chngcntr}
+\usetikzlibrary{positioning,arrows.meta,shapes.geometric}
+\renewcommand{\tableautorefname}{Tabel}
+\renewcommand{\sectionautorefname}{Afsnit}
+\renewcommand{\subsectionautorefname}{Afsnit}
+\renewcommand{\figureautorefname}{Figur}
+\renewcommand{\figurename}{Figur}
+\renewcommand{\contentsname}{Indholdsfortegnelse}
+\counterwithout{figure}{section}
+		\tikzstyle{startstop} = [
+rectangle,
+rounded corners,
+minimum width=3cm,
+minimum height=1cm,
+text centered,
+draw=black
+]
+
+\tikzstyle{process} = [
+rectangle,
+minimum width=3cm,
+minimum height=1cm,
+text centered,
+draw=black
+]
+
+\tikzstyle{decision} = [
+diamond,
+minimum width=3cm,
+minimum height=1cm,
+text centered,
+draw=black,
+aspect=2
+]
+
+\tikzstyle{io} = [
+trapezium,
+trapezium left angle=70,
+trapezium right angle=110,
+minimum width=3cm,
+minimum height=1cm,
+text centered,
+draw=black
+]
+
+\tikzstyle{arrow} = [
+thick,
+->,
+>=Stealth
+]
 \title{Metaldetektor projekt \\Gruppe 1 \\s233986, s233988, s171678}
 
 \begin{document}
@@ -31,7 +82,7 @@
 	\hfill
 	\begin{minipage}{0.3\textwidth}
 		\centering
-		\includegraphics[width=\linewidth,height=4cm,keepaspectratio,trim=1cm 1cm 1cm 1cm,clip]{Oliver billede.png}\\
+		\includegraphics[width=\linewidth,height=4cm,keepaspectratio,trim=1cm 1cm 1cm 1cm,clip]{Seb billede.png}\\
 		\textbf{Oliver Holm, s233988}
 	\end{minipage}
 	\hfill
@@ -49,6 +100,49 @@
 	\tableofcontents
 	\newpage
 \section{Introduktion}
+	\begin{figure}[H]
+		\begin{tikzpicture}[
+			block/.style={
+				draw,
+				rectangle,
+				minimum width=2.6cm,
+				minimum height=1.2cm,
+				align=center
+			},
+			io/.style={
+				draw,
+				ellipse,
+				minimum width=2.4cm,
+				minimum height=1.2cm,
+				align=center
+			},
+			arrow/.style={
+				->,
+				thick,
+				>=Latex
+			}
+			]
+			
+			% Nodes
+			\node[block] (arduino) {Arduino};
+			\node[block, left=1.2cm of arduino] (buzzer) {Buzzer};
+			\node[block,below=1.2cm of buzzer] (display) {Display};
+			\node[block, right=1.2cm of arduino] (pa) {Power Amplifier};
+			\node[block, below=1.2cm of arduino] (amp) {Amplifier};
+			\node[io,below=1.2cm of pa] (coils) {Spoler};
+			
+			% Arrows
+			\draw[arrow] (arduino) -- (pa);
+			\draw[arrow] (pa) -- (coils);
+			\draw[arrow] (coils) -- (amp.east);
+			\draw[arrow] (amp.north) -- (arduino.south);
+			\draw[arrow] (arduino.south west) -- (display.north east);
+			\draw[arrow] (arduino.west) -- (buzzer.east);
+			
+		\end{tikzpicture}
+		\caption{Overordnet moduldiagram af systemet}
+		\label{fig:ModuleDiagram}
+	\end{figure}
 \section{Analyse}
 \section{Design}
 	\subsection{Analogt design}
@@ -107,7 +201,7 @@
 					\draw (VR) --++(2,0) to node[ocirc]{}++(0,0) coordinate(V-);
 					\draw (V+) to [open,v=$V_{filtered}$] (V-);
 				\end{circuitikz}
-				\caption{Kredsløb til at filtrere støj væk ($\approx\frac{Fs}{2}=4\text{kHz}$) inden signalet bliver forstærket.}
+				\caption{Kredsløb til at filtrere støj væk ($\approx\frac{Fs}{2}=4\text{kHz}$) inden signalet bliver forstærket (som vist i \autoref{fig:OPAMP})}
 				\label{fig:RXfilter}
 			\end{figure}
 				\begin{figure}[htbp]
@@ -128,10 +222,34 @@
 						\draw (Vout+) to [open,v=$V_{out}$](Vout-);
 						%	\draw (Vo) --++(1,0) to [open,v^=$V_{out}$](N5);
 					\end{circuitikz}
-					\label{OPAMP}
 					\caption{Kredsløb til at forstærke den filtrerede spænding fra RX-spolen op, inden det læses ind i MCU ADC'en.}
+					\label{fig:OPAMP}
 				\end{figure}
 	\subsection{Digitalt design}
+		\subsubsection{Moduldiagram og introduktion}
+			\begin{figure}[H]
+				\begin{tikzpicture}
+					%Nodes
+					\node[startstop,align=center] (coil) {Coil\\2kHz};
+					\node[startstop,align=center,right=1.2cm of coil] (adc) {ADC\\8kHz};
+					\node[startstop,right=1.2cm of adc] (dft) {DFT};
+					\node[startstop,below=1.2cm of dft] (dsp) {DSP};
+					\node[startstop,below=1.2cm of coil] (timer1) {Timer1};
+					\node[startstop,below=1.2cm of dsp] (main) {Main loop};
+					\node[startstop,right=1.2cm of main] (oled) {OLED};
+					\node[startstop,align=center,left=1.2cm of main] (buttons) {Buttons\\INT0/1};
+					%Arrows
+					\draw[arrow] (coil.east) -- (adc.west);
+					\draw[arrow] (adc.east) -- (dft.west);
+					\draw[arrow] (dft.south) -- (dsp.north);
+					\draw[arrow] (timer1.north) -- (coil.south);
+					\draw[arrow] (dsp.south) -- (main.north);
+					\draw[arrow] (buttons.east) -- (main.west);
+					\draw[arrow] (main.east) -- (oled.west);
+				\end{tikzpicture}
+				\caption{Overordnet moduldiagram af systemet}
+				\label{fig:DigitalModulDiagram}
+			\end{figure}
 		\subsubsection{Brugerinteraktion}
 		\subsubsection{DFT algoritme og sampling}
 		\begin{figure}[H]
