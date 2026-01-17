@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.8.20)  17 JAN 2026 13:06
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.8.20)  17 JAN 2026 14:12
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1018,27 +1018,31 @@ Overfull \hbox (64.29013pt too wide) in paragraph at lines 189--190
  [][] 
  []
 
+
+
+[2]
 \absvshift=\dimen335
 \absvshift=\dimen336
 
+
+[3]
 Overfull \hbox (100.46262pt too wide) in paragraph at lines 249--250
 [][] 
  []
 
-<DFT plot.png, id=102, 295.85532pt x 296.60812pt>
+
+
+[4]
+<DFT plot.png, id=123, 295.85532pt x 296.60812pt>
 File: DFT plot.png Graphic file (type png)
 <use DFT plot.png>
 Package pdftex.def Info: DFT plot.png  used on input line 257.
 (pdftex.def)             Requested size: 172.5pt x 172.94252pt.
 
 
-[2]
+[5 <./DFT plot.png>]
 
-[3]
-
-[4]
-
-[5 <./DFT plot.png>] (Rapport metaldetektorprojekt.aux)
+[6] (Rapport metaldetektorprojekt.aux)
  ***********
 LaTeX2e <2025-06-01> patch level 1
 L3 programming layer <2025-07-20>
@@ -1048,13 +1052,13 @@ changed.
 (rerunfilecheck)             Checksum: AC4033FA4C23A5D85AFB87A94EDC4E1A;2247.
  ) 
 Here is how much of TeX's memory you used:
- 51708 strings out of 468134
- 1353864 string characters out of 5430740
- 2168014 words of memory out of 5000000
+ 51709 strings out of 468134
+ 1353870 string characters out of 5430740
+ 2150734 words of memory out of 5000000
  79738 multiletter control sequences out of 15000+600000
  631852 words of font info for 57 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 99i,11n,105p,745b,1002s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 99i,11n,105p,745b,998s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/Sebas/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/
 cmbsy10.pfb><C:/Users/Sebas/AppData/Local/Programs/MiKTeX/fonts/type1/public/am
 sfonts/cm/cmbx10.pfb><C:/Users/Sebas/AppData/Local/Programs/MiKTeX/fonts/type1/
@@ -1067,9 +1071,9 @@ AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/User
 s/Sebas/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><
 C:/Users/Sebas/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cms
 y10.pfb>
-Output written on "Rapport metaldetektorprojekt.pdf" (6 pages, 1457290 bytes).
+Output written on "Rapport metaldetektorprojekt.pdf" (7 pages, 1458243 bytes).
 PDF statistics:
- 181 PDF objects out of 1000 (max. 8388607)
- 27 named destinations out of 1000 (max. 500000)
+ 187 PDF objects out of 1000 (max. 8388607)
+ 28 named destinations out of 1000 (max. 500000)
  158 words of extra memory for PDF output out of 10000 (max. 10000000)
 
