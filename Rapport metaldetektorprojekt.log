@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.8.20)  16 JAN 2026 08:08
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.8.20)  17 JAN 2026 10:16
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -829,57 +829,92 @@ Package: lscape 2020/05/28 v3.02 Landscape Pages (DPC)
 )
 Package pdflscape Info: Auto-detected driver: pdftex on input line 81.
 ))
+<Seb billede.png, id=4, 218.31563pt x 295.1025pt>
+File: Seb billede.png Graphic file (type png)
+<use Seb billede.png>
+Package pdftex.def Info: Seb billede.png  used on input line 28.
+(pdftex.def)             Requested size: 77.12132pt x 113.80988pt.
 
-LaTeX Warning: No \author given.
 
+LaTeX Warning: File `Oliver billede.png' not found on input line 34.
+
+
+! Package pdftex.def Error: File `Oliver billede.png' not found: using draft se
+tting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.34 ...=1cm 1cm 1cm 1cm,clip]{Oliver billede.png}
+                                                  \\
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+<Bilal billede.png, id=7, 1084.05pt x 722.7pt>
+File: Bilal billede.png Graphic file (type png)
+<use Bilal billede.png>
+Package pdftex.def Info: Bilal billede.png  used on input line 40.
+(pdftex.def)             Requested size: 103.48843pt x 67.08115pt.
 
 
 [1
 
-{C:/Users/Sebas/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}]
-(Rapport metaldetektorprojekt.toc)
+{C:/Users/Sebas/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map} <./Seb billed
+e.png> <./Bilal billede.png>] (Rapport metaldetektorprojekt.toc)
 \tf@toc=\write4
 \openout4 = `"Rapport metaldetektorprojekt.toc"'.
 
 
-Overfull \hbox (68.65115pt too wide) in paragraph at lines 58--59
-[] 
+
+[1]
+Overfull \hbox (64.29013pt too wide) in paragraph at lines 95--96
+ [][] 
  []
 
 \absvshift=\dimen331
+\absvshift=\dimen332
+<DFT plot.png, id=25, 295.85532pt x 296.60812pt>
+File: DFT plot.png Graphic file (type png)
+<use DFT plot.png>
+Package pdftex.def Info: DFT plot.png  used on input line 139.
+(pdftex.def)             Requested size: 172.5pt x 172.94252pt.
 
 
 [2]
 
-[3] (Rapport metaldetektorprojekt.aux)
+[3]
+
+[4 <./DFT plot.png>] (Rapport metaldetektorprojekt.aux)
  ***********
 LaTeX2e <2025-06-01> patch level 1
 L3 programming layer <2025-07-20>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 44031 strings out of 468134
- 1223388 string characters out of 5430740
- 1995997 words of memory out of 5000000
- 72183 multiletter control sequences out of 15000+600000
- 634350 words of font info for 66 fonts, out of 8000000 for 9000
+ 44363 strings out of 468134
+ 1233346 string characters out of 5430740
+ 2023212 words of memory out of 5000000
+ 72522 multiletter control sequences out of 15000+600000
+ 632020 words of font info for 58 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 99i,9n,105p,745b,888s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 99i,11n,105p,745b,996s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/Sebas/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/
 cmbsy10.pfb><C:/Users/Sebas/AppData/Local/Programs/MiKTeX/fonts/type1/public/am
 sfonts/cm/cmbx10.pfb><C:/Users/Sebas/AppData/Local/Programs/MiKTeX/fonts/type1/
 public/amsfonts/cm/cmbx12.pfb><C:/Users/Sebas/AppData/Local/Programs/MiKTeX/fon
 ts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/Sebas/AppData/Local/Programs/M
-iKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/Sebas/AppData/Local/Pr
-ograms/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/Sebas/AppData/
-Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/Sebas/
-AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/User
+iKTeX/fonts/type1/public/amsfonts/cm/cmmi5.pfb><C:/Users/Sebas/AppData/Local/Pr
+ograms/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/Sebas/AppData/
+Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/Sebas/
+AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/User
 s/Sebas/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><
 C:/Users/Sebas/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cms
-y10.pfb>
-Output written on "Rapport metaldetektorprojekt.pdf" (3 pages, 114860 bytes).
+y10.pfb><C:/Users/Sebas/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfon
+ts/cm/cmtt10.pfb>
+Output written on "Rapport metaldetektorprojekt.pdf" (5 pages, 1453259 bytes).
 PDF statistics:
- 65 PDF objects out of 1000 (max. 8388607)
+ 87 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 13 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 40 words of extra memory for PDF output out of 10000 (max. 10000000)
 
