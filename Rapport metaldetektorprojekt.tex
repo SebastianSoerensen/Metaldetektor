@@ -22,6 +22,7 @@
 \renewcommand{\figureautorefname}{Figur}
 \renewcommand{\figurename}{Figur}
 \renewcommand{\contentsname}{Indholdsfortegnelse}
+\renewcommand{\equationautorefname}{Ligning}
 \counterwithout{figure}{section}
 		\tikzstyle{startstop} = [
 rectangle,
@@ -147,7 +148,41 @@ thick,
 \section{Design}
 	\subsection{Analogt design}
 		\subsubsection{Energiberegninger}
-		\subsubsection{Spoler og strømforstærkning}
+			Vi undersøgte os frem til at batteriet har en kapacitet på $550$mAh. Da batteriet aflades fra 9V til 6V, har vi lavet udregningen:
+				$$E_{tot}=V\cdot I\cdot3600 \iff E_{tot}=\frac{9V+6V}{2}\cdot0.55\text{A}\cdot3600\text{s}=14850\text{J}$$
+			Ved måling af strømforbruget finder vi at OLED-display og Arduinoen forbuger $\approx76.2\text{mA}$. Dette giver os $$E_{MCU}=5\text{V}\cdot76.2\cdot10^{-3}\text{A}\cdot3600\text{s}=1371.6\text{J}$$Vi reserverer $15\%$ af batteriet som buffer, for at være sikker på at overholde kravene. Resten af energien kan bruges til TX-spolen.
+			$$E_{TX}=E_{tot}\cdot(1-0.15)-E_{MCU}=11250.9J$$
+		\subsubsection{Spoleberegninger}
+			\begin{center}
+				\textbf{TX-spole}
+			\end{center}
+			Ved resonans kan spændingen gennem spolen approksimeres ved grundtonen i fourierrækken  $$a_n\approx2\left(\frac{A}{n\pi}\right)\sin\left(\frac{n\pi}{2}\right)=2\left(\frac{9\text{V}}{\pi}\right)\sin\left(\frac{\pi}{2}\right)=5.73\text{V}$$
+			Hvorved RMS-spændingen kan bestemmes $$V_{RMS}=\frac{a_n}{\sqrt{2}}=4.05\text{V}$$
+			Derved kan vi nu beregne strømmen vi kan sende igennem spolen
+			$$I_{TX}=\frac{E_{TX}}{t\cdot V_{RMS}}=\frac{11250.9\text{J}}{3600\text{s}\cdot4.05\text{V}}=0.4628\text{A}$$
+			Radiussen på TX-spolen vælges til $r_{TX}=10cm$, med $D_{TX}=\text{Ø}0.4\text{mm}$. Derved kan antallet af viklinger beregnes ved
+			$$R_{TX}=\frac{V_{RMS}}{I_{TX}}=8.754\Omega$$
+			$$N_{TX}=\frac{R_{TX}\cdot\left(\frac{D_{TX}}{2}\right)^2} {2\cdot r_{TX}\cdot\rho_{cu}}=\frac{8.754\Omega\cdot\left(\frac{0.4\text{mm}}{2}\right)^2}{2\cdot10\text{cm}\cdot1.77\cdot10^{-8}\Omega\cdot m}=98.9$$ hvilket afrundes til $N_{TX}=99$.\newline
+			Selvinduktansen i spolen findes ved
+			$$L=\frac{0.394\cdot r^2\cdot N^2} {9\cdot r+10A}=\frac{0.394\cdot10^2\cdot99^2} {9\cdot10+10}=3.855\text{mH}$$
+			For at kunne lave Arduino'ens firkantsignal til en sinuskurve anvendes et resonanskredsløb, som har resonansfrekvens på $2\text{kHz}$. Størrelsen af kondensatoren findes ved at løse ligningen
+			\begin{equation}
+			\label{eq:Cresonance}
+			 f=\frac{1}{2\pi\sqrt{LC}} \iff 2\text{kHz}=\frac{1}{2\pi\sqrt{3.855\text{mH}\cdot C}} \implies C=1.642\mu\text{F}
+			 \end{equation}
+			Magnetfeltet fra TX-spolen beregnes, da bucking-spolen skal udligne B-feltet fra TX-spolen, for på den måde at tilsikre at vi kun måler på magnetfeltet fra metallet i detektoren. 
+			$$|B|=\frac{\mu_0I_{TX} N_{TX}}{2r_{TX}}=\frac{4\pi\cdot10^{-7}\frac{\text{H}}{\text{m}}\cdot0.4628\text{A}\cdot99}{2\cdot10\text{cm}}=287.6\mu\text{T}$$
+			\begin{center}
+				\textbf{Bucking-spole}
+			\end{center}
+			Derved kan Bucking-spolen beregnes. Vi vælger en radius på $r_{Buck}=5\text{cm}$, og antallet af viklinger beregnes ved
+			$$|B|=\frac{\mu_0\cdot I_{TX}\cdot N_{Buck}}{2\cdot r_{Buck}} \iff 287.6\mu\text{T}=\frac{4\pi\cdot10^{-7}\cdot0.4628\text{A}\cdot N_{Buck}} {2\cdot5\text{cm}}\implies N_{Buck}=49.458$$ hvilket afrundes til $N_{Buck}=50$.
+			\begin{center}
+				\textbf{RX-spole}
+			\end{center}
+			For at opnå en god følsomhed på sensoren, er vi opmærksomme på at induktansen i RX-spolen skal være minimum $L_{RX}=10\text{mH}$. Derved beregnes antallet af viklinger ved
+			$$10\cdot10^3=\frac{0.394\cdot r_{RX}^2\cdot N_{RX}^2} {9r_{RX}+10A_{RX}}=\frac{0.394\cdot5^2\cdot N_{RX}^2} {9\cdot5+10}\implies N_{RX}=236$$
+			\subsubsection{Power Amplifier}
 			\begin{figure}[H]
 				\centering
 				\begin{circuitikz}[american,scale=0.8]
@@ -161,37 +196,46 @@ thick,
 					\draw (8,3) node[npn,anchor=B,label={[align=left]right:{$Q_5$\\BC337-25}}] (Q7){};
 					% Q4
 					\draw (8,8) node[pnp,anchor=B,label={[align=left]right:{$Q_4$\\BC327-40}}] (Q4){};
-					\draw	(0,0) node[ground]{} 
+					\draw	(0,0) node[ground]{} to [short,-*]++(0,0) 
 					to[sV, l={\shortstack{2\,kHz\\0--5\,V}}] (0,3)
-					to [R=$10\text{k}\Omega$] ++(2,0)
-					to [R=$10\text{k}\Omega$] ++(0,-3) to [short,-*]++(0,0);
+					to [R={\shortstack{$10\text{k}\Omega$\\$R_3$}}] ++(2,0)
+					to [R={\shortstack{$10\text{k}\Omega$\\$R_2$}}] ++(0,-3) to [short,-*]++(0,0);
 					\draw (Q5.B) to [short,-*] (2,3);
 					\draw (Q5.E) to [short,-*] ++(0,-2);
 					\draw (Q5.C) to [short,-*] ++(0,1.5)
 					to [short,-*] ++(1.95,0) -- (Q3.B) -- (Q6.B);
-					\draw (Q5.C) -- ++(0,4) to [R=$10\text{k}\Omega$] ++(0,2.25) to [short,-*]++(0,0);
-					\draw (Q3.C) to [short,-*] ++(0,0)  to [R=$10\text{k}\Omega$] ++(0,2.25) to 		[short,-*]++(0,0);
+					\draw (Q5.C) -- ++(0,4) to [R={\shortstack{$10\text{k}\Omega$\\$R_1$}}] ++(0,2.25) to [short,-*]++(0,0);
+					\draw (Q3.C) to [short,-*] ++(0,0)  to [R={\shortstack{$10\text{k}\Omega$\\$R_5$}}] ++(0,2.25) to 		[short,-*]++(0,0);
 					\draw (Q4.E) to [short,-*]++(0,1.25);
 					\draw (Q3.E) to [short,-*] ++(0,-0.8) to [short,-*]++(2,0);
 					\draw (Q6.E) --++(0,1);
 					\draw (Q7.C) to (Q4.C);
 					\draw (Q6.C) to [short,-*]++(0,-0.05) to (Q7.B);
-					\draw (Q6.C) --++(0,0) to [R=$10\text{k}\Omega$]++(0,-3) to [short,-*]++(0,0);
+					\draw (Q6.C) --++(0,0) to [R={\shortstack{$10\text{k}\Omega$\\$R_6$}}]++(0,-3) to [short,-*]++(0,0);
 					\draw (Q4.B) --++(-1,0);
 					\draw (Q7.E) to [short,-*]++(0,-2);
 					\draw (11,0) to[D,l={\shortstack{$D_1$\\1N4148}}](11,3) to ++(0,2.25) 	coordinate(S1);
 					\draw (S1) to [short,-*]++(0,0);
 					\draw (S1) --++(-2.2,0);
 					\draw (S1)  to [D,l={\shortstack{$D_2$\\1N4148}}]++(0,2) --++(0,3) to ++(-10,0) 	to 		[vsource=$9\text{V}$]++(0,-2) coordinate(9V-);
-					\draw (S1) to [C=$1642\text{nF}$] ++(3,0) to [L=$3.855\text{mH}$]++(0,-2) 	to 		[R=$8.75\Omega$]++(0,-1.75) to ++(0,-1.5) to ++(-14,0);
+					\draw (S1) to [C={\shortstack{$1642\text{nF}$\\$C_1$}}] ++(3,0) to [L={\shortstack{$3.855\text{mH}$\\$L_1$}}]++(0,-2) 	to 		[R={\shortstack{$8.75\Omega$\\$R_7$}}]++(0,-1.75) to ++(0,-1.5) to ++(-14,0);
 					\draw (11,0) to [short,-*]++(0,0);
 					\node[ground] at (9V-){};
 				\end{circuitikz}
 				\caption{Power amplifier kredsløb til at øge strømmen gennem TX-spolen.}
 				\label{fig:PA}
 			\end{figure}
+			Ovenfor ses vores design af effektforstærkeren, som bruges til at forstærke signalet fra Arduino'en til at kunne drive TX-spolen. Kredsløbet virker ved:
+			\begin{itemize}
+				\item Firkantsignalet sendes ind i forstærkeren gennem en modstand som beskytter Arduino'en og styrer strømmen ind i transistoren $Q_1$. 
+				\item Transistor-konfigurationen fungerer som en forstærker som via. en styrestrøm kontrollerer en større strøm fra batteriforsyningen (9V batteriet), som driver TX-spolen.
+				\item TX-spolen ($L_1$) genererer et magnetfelt ved resonansfrekvensen
+				\item Kondensatoren ($C_1$) er beregnet (\autoref{eq:Cresonance}) således at der opstår resonans ved detektionsfrekvensen på $2\text{kHz}$
+				\item Modstanden $R_7$ repræsenterer den ohmske modstand i TX-spolen.
+				\item Dioderne $D_1$ og $D_2$ beskytter kredsløbet fra den induserede spænding i spolen.
+			\end{itemize}
 		\subsubsection{Filtrering og forstærkning af spolesignal}
-			\begin{figure}[htbp]
+			\begin{figure}[H]
 				\centering
 				\begin{circuitikz}[american]
 					\draw (0,0) node[ground]{} to [sV,l=$V_{RX coil}$] ++ (0,2) to [L=$11.75\text{mH}$] 	++(2,0) to [R=$41.9\Omega$]++(2,0)
@@ -216,7 +260,7 @@ thick,
 						\draw (6,3.5) node[op amp,yscale=-1,label=south:MC6002] (opamp){};
 						\draw (opamp.+) to (N2);
 						\draw (opamp.-) to [short,-*]++(0,-1) coordinate(N3) to 		[R=$14\text{k}\Omega$]++(0,-2) to [C=$1\mu\text{F}$]++(0,-2) to [short,-*]++(0,0);
-						\draw (N3) to [R=$90\text{k}\Omega$] ++(3,0) to [short,-*]++(0,1.5) 		coordinate(Vo);
+						\draw (N3) to [potentiometer,l_=$0-200\text{k}\Omega$] ++(3,0) to [short,-*]++(0,1.5) 		coordinate(Vo);
 						\draw (Vo) to (opamp.out);
 						\draw (Vo) --++(1.25,0) to node[ocirc]{}++(0,0) coordinate(Vout+);
 						\draw (Vout+) to [open,v=$V_{out}$](Vout-);
@@ -262,4 +306,9 @@ thick,
 		\subsubsection{Digital signal behandling}
 
 \section{Implementering og test}
+\section{Konklusion}
+\section{Ansvarsområder (hvem har lavet hvad)}
+\section{Appendix}
+	\subsection{Gantt kort}
+	\subsection{Mødereferater}
 \end{document}
