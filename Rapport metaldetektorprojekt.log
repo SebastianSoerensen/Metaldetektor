@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.8.20)  18 JAN 2026 15:36
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.8.20)  18 JAN 2026 15:45
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -987,11 +987,12 @@ File: Seb billede.png Graphic file (type png)
 <use Seb billede.png>
 Package pdftex.def Info: Seb billede.png  used on input line 80.
 (pdftex.def)             Requested size: 77.12132pt x 113.80988pt.
-File: Seb billede.png Graphic file (type png)
-<use Seb billede.png>
-Package pdftex.def Info: Seb billede.png  used on input line 86.
-(pdftex.def)             Requested size: 77.12132pt x 113.80988pt.
-<Bilal billede.png, id=94, 1084.05pt x 722.7pt>
+<Oli billede.jpg, id=93, 1246.6575pt x 2216.28pt>
+File: Oli billede.jpg Graphic file (type jpg)
+<use Oli billede.jpg>
+Package pdftex.def Info: Oli billede.jpg  used on input line 86.
+(pdftex.def)             Requested size: 62.70436pt x 113.80708pt.
+<Bilal billede.png, id=95, 1084.05pt x 722.7pt>
 File: Bilal billede.png Graphic file (type png)
 <use Bilal billede.png>
 Package pdftex.def Info: Bilal billede.png  used on input line 92.
@@ -1001,7 +1002,8 @@ Package pdftex.def Info: Bilal billede.png  used on input line 92.
 [1
 
 {C:/Users/Sebas/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map} <./Seb billed
-e.png> <./Bilal billede.png>] (Rapport metaldetektorprojekt.toc)
+e.png> <./Oli billede.jpg> <./Bilal billede.png>]
+(Rapport metaldetektorprojekt.toc)
 \tf@toc=\write5
 \openout5 = `"Rapport metaldetektorprojekt.toc"'.
 
@@ -1035,7 +1037,7 @@ Overfull \hbox (64.29013pt too wide) in paragraph at lines 224--225
 
 
 [4]
-<DFT plot1.png, id=161, 893.58844pt x 368.87813pt>
+<DFT plot1.png, id=162, 893.58844pt x 368.87813pt>
 File: DFT plot1.png Graphic file (type png)
 <use DFT plot1.png>
 Package pdftex.def Info: DFT plot1.png  used on input line 258.
@@ -1052,7 +1054,7 @@ Overfull \hbox (100.46262pt too wide) in paragraph at lines 307--308
 
 
 [6 <./DFT plot1.png>]
-<DFT plot.png, id=177, 295.85532pt x 296.60812pt>
+<DFT plot.png, id=178, 295.85532pt x 296.60812pt>
 File: DFT plot.png Graphic file (type png)
 <use DFT plot.png>
 Package pdftex.def Info: DFT plot.png  used on input line 315.
@@ -1073,10 +1075,10 @@ changed.
 (rerunfilecheck)             Checksum: 1245411C4C82A4B34B79720EFE2A420E;3119.
  ) 
 Here is how much of TeX's memory you used:
- 51777 strings out of 468134
- 1355279 string characters out of 5430740
- 2121844 words of memory out of 5000000
- 79793 multiletter control sequences out of 15000+600000
+ 51805 strings out of 468134
+ 1356070 string characters out of 5430740
+ 2122363 words of memory out of 5000000
+ 79821 multiletter control sequences out of 15000+600000
  632187 words of font info for 58 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  99i,12n,105p,745b,1129s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -1096,10 +1098,10 @@ s/cm/cmr5.pfb><C:/Users/Sebas/AppData/Local/Programs/MiKTeX/fonts/type1/public/
 amsfonts/cm/cmr7.pfb><C:/Users/Sebas/AppData/Local/Programs/MiKTeX/fonts/type1/
 public/amsfonts/cm/cmsy10.pfb><C:/Users/Sebas/AppData/Local/Programs/MiKTeX/fon
 ts/type1/public/amsfonts/cm/cmsy7.pfb>
-Output written on "Rapport metaldetektorprojekt.pdf" (10 pages, 1559376 bytes).
+Output written on "Rapport metaldetektorprojekt.pdf" (10 pages, 1901044 bytes).
 
 PDF statistics:
- 263 PDF objects out of 1000 (max. 8388607)
+ 264 PDF objects out of 1000 (max. 8388607)
  40 named destinations out of 1000 (max. 500000)
- 219 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 224 words of extra memory for PDF output out of 10000 (max. 10000000)
 
