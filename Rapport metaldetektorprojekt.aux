@@ -14,25 +14,28 @@
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.3}Power Amplifier}{4}{subsubsection.3.1.3}\protected@file@percent }
 \@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Power amplifier kredsløb til at øge strømmen gennem TX-spolen.}}{4}{figure.2}\protected@file@percent }
 \newlabel{fig:PA}{{2}{4}{Power amplifier kredsløb til at øge strømmen gennem TX-spolen}{figure.2}{}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.4}Filtrering og forstærkning af spolesignal}{5}{subsubsection.3.1.4}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Kredsløb til at filtrere støj væk ($\approx \frac  {Fs}{2}=4\text  {kHz}$) inden signalet bliver forstærket (som vist i \autoref {fig:OPAMP})}}{5}{figure.3}\protected@file@percent }
-\newlabel{fig:RXfilter}{{3}{5}{Kredsløb til at filtrere støj væk ($\approx \frac {Fs}{2}=4\text {kHz}$) inden signalet bliver forstærket (som vist i \autoref {fig:OPAMP})}{figure.3}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Kredsløb til at forstærke den filtrerede spænding fra RX-spolen op, inden det læses ind i MCU ADC'en.}}{5}{figure.4}\protected@file@percent }
-\newlabel{fig:OPAMP}{{4}{5}{Kredsløb til at forstærke den filtrerede spænding fra RX-spolen op, inden det læses ind i MCU ADC'en}{figure.4}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Digitalt design}{6}{subsection.3.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.1}Moduldiagram og introduktion}{6}{subsubsection.3.2.1}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Overordnet moduldiagram af systemet}}{6}{figure.5}\protected@file@percent }
-\newlabel{fig:DigitalModulDiagram}{{5}{6}{Overordnet moduldiagram af systemet}{figure.5}{}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.2}Brugerinteraktion}{6}{subsubsection.3.2.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.3}DFT algoritme og sampling}{6}{subsubsection.3.2.3}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Grafisk illustration over princippet bag DFT-algoritmen. Ved at vælge $F_d=\frac  {F_s}{4}$, undgår vi at lave komplicerede komplekse beregninger.}}{6}{figure.6}\protected@file@percent }
-\newlabel{fig:dft-plot}{{6}{6}{Grafisk illustration over princippet bag DFT-algoritmen. Ved at vælge $F_d=\frac {F_s}{4}$, undgår vi at lave komplicerede komplekse beregninger}{figure.6}{}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.4}Tilstandsmaskine}{7}{subsubsection.3.2.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.5}Digital signal behandling}{7}{subsubsection.3.2.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {4}Implementering og test}{7}{section.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {5}Konklusion}{7}{section.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {6}Ansvarsområder (hvem har lavet hvad)}{7}{section.6}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {7}Appendix}{7}{section.7}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.1}Gantt kort}{7}{subsection.7.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.2}Mødereferater}{7}{subsection.7.2}\protected@file@percent }
-\gdef \@abspage@last{8}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.4}Filtrering af spolesignal}{5}{subsubsection.3.1.4}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Kredsløb til at filtrere støj væk ($\approx \frac  {Fs}{2}=4\text  {kHz}$) inden signalet bliver forstærket (som vist i \autoref {fig:OPAMP}). Modstanden på $50\text  {k}\Omega $ repræsenterer indgangsimpedansen i operationsforstærkerkredsløbet.}}{5}{figure.3}\protected@file@percent }
+\newlabel{fig:RXfilter}{{3}{5}{Kredsløb til at filtrere støj væk ($\approx \frac {Fs}{2}=4\text {kHz}$) inden signalet bliver forstærket (som vist i \autoref {fig:OPAMP}). Modstanden på $50\text {k}\Omega $ repræsenterer indgangsimpedansen i operationsforstærkerkredsløbet}{figure.3}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces RX-filterets fase- og magnitude respons, med markering af 4.2kHz}}{6}{figure.4}\protected@file@percent }
+\newlabel{fig:dft-plot1}{{4}{6}{RX-filterets fase- og magnitude respons, med markering af 4.2kHz}{figure.4}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.5}Forstærkning af spolesignalet}{6}{subsubsection.3.1.5}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Kredsløb til at forstærke den filtrerede spænding fra RX-spolen op, inden det læses ind i MCU ADC'en.}}{6}{figure.5}\protected@file@percent }
+\newlabel{fig:OPAMP}{{5}{6}{Kredsløb til at forstærke den filtrerede spænding fra RX-spolen op, inden det læses ind i MCU ADC'en}{figure.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Digitalt design}{7}{subsection.3.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.1}Moduldiagram og introduktion}{7}{subsubsection.3.2.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Overordnet moduldiagram af systemet}}{7}{figure.6}\protected@file@percent }
+\newlabel{fig:DigitalModulDiagram}{{6}{7}{Overordnet moduldiagram af systemet}{figure.6}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.2}Brugerinteraktion}{8}{subsubsection.3.2.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.3}DFT algoritme og sampling}{8}{subsubsection.3.2.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Grafisk illustration over princippet bag DFT-algoritmen. Ved at vælge $F_d=\frac  {F_s}{4}$, undgår vi at lave komplicerede komplekse beregninger.}}{8}{figure.7}\protected@file@percent }
+\newlabel{fig:dft-plot}{{7}{8}{Grafisk illustration over princippet bag DFT-algoritmen. Ved at vælge $F_d=\frac {F_s}{4}$, undgår vi at lave komplicerede komplekse beregninger}{figure.7}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.4}Tilstandsmaskine}{8}{subsubsection.3.2.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.5}Digital signal behandling}{8}{subsubsection.3.2.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4}Implementering og test}{8}{section.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5}Ansvarsområder (hvem har lavet hvad)}{8}{section.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {6}Konklusion}{9}{section.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {7}Appendix}{9}{section.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.1}Gantt kort}{9}{subsection.7.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.2}Mødereferater}{9}{subsection.7.2}\protected@file@percent }
+\gdef \@abspage@last{10}

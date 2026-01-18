@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.8.20)  18 JAN 2026 11:32
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.8.20)  18 JAN 2026 15:36
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -982,7 +982,7 @@ Package hyperref Info: Link coloring OFF on input line 70.
 \@outlinefile=\write4
 \openout4 = `"Rapport metaldetektorprojekt.out"'.
 
-<Seb billede.png, id=86, 218.31563pt x 295.1025pt>
+<Seb billede.png, id=90, 218.31563pt x 295.1025pt>
 File: Seb billede.png Graphic file (type png)
 <use Seb billede.png>
 Package pdftex.def Info: Seb billede.png  used on input line 80.
@@ -991,7 +991,7 @@ File: Seb billede.png Graphic file (type png)
 <use Seb billede.png>
 Package pdftex.def Info: Seb billede.png  used on input line 86.
 (pdftex.def)             Requested size: 77.12132pt x 113.80988pt.
-<Bilal billede.png, id=90, 1084.05pt x 722.7pt>
+<Bilal billede.png, id=94, 1084.05pt x 722.7pt>
 File: Bilal billede.png Graphic file (type png)
 <use Bilal billede.png>
 Package pdftex.def Info: Bilal billede.png  used on input line 92.
@@ -1032,39 +1032,50 @@ Overfull \hbox (64.29013pt too wide) in paragraph at lines 224--225
 
 [3]
 \absvshift=\dimen335
-\absvshift=\dimen336
 
 
 [4]
-Overfull \hbox (100.46262pt too wide) in paragraph at lines 293--294
+<DFT plot1.png, id=161, 893.58844pt x 368.87813pt>
+File: DFT plot1.png Graphic file (type png)
+<use DFT plot1.png>
+Package pdftex.def Info: DFT plot1.png  used on input line 258.
+(pdftex.def)             Requested size: 345.0pt x 142.42096pt.
+
+
+[5]
+\absvshift=\dimen336
+
+Overfull \hbox (100.46262pt too wide) in paragraph at lines 307--308
 [][] 
  []
 
 
 
-[5]
-<DFT plot.png, id=163, 295.85532pt x 296.60812pt>
+[6 <./DFT plot1.png>]
+<DFT plot.png, id=177, 295.85532pt x 296.60812pt>
 File: DFT plot.png Graphic file (type png)
 <use DFT plot.png>
-Package pdftex.def Info: DFT plot.png  used on input line 301.
+Package pdftex.def Info: DFT plot.png  used on input line 315.
 (pdftex.def)             Requested size: 172.5pt x 172.94252pt.
 
 
-[6 <./DFT plot.png>]
+[7]
 
-[7] (Rapport metaldetektorprojekt.aux)
+[8 <./DFT plot.png>]
+
+[9] (Rapport metaldetektorprojekt.aux)
  ***********
 LaTeX2e <2025-06-01> patch level 1
 L3 programming layer <2025-07-20>
  ***********
 Package rerunfilecheck Info: File `"Rapport metaldetektorprojekt".out' has not 
 changed.
-(rerunfilecheck)             Checksum: BF15DC5E101BBF898CD03C32218A0DB0;2986.
+(rerunfilecheck)             Checksum: 1245411C4C82A4B34B79720EFE2A420E;3119.
  ) 
 Here is how much of TeX's memory you used:
- 51773 strings out of 468134
- 1355482 string characters out of 5430740
- 2156111 words of memory out of 5000000
+ 51777 strings out of 468134
+ 1355279 string characters out of 5430740
+ 2121844 words of memory out of 5000000
  79793 multiletter control sequences out of 15000+600000
  632187 words of font info for 58 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -1081,12 +1092,14 @@ ppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users
 /Sebas/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><
 C:/Users/Sebas/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr
 12.pfb><C:/Users/Sebas/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfont
-s/cm/cmr7.pfb><C:/Users/Sebas/AppData/Local/Programs/MiKTeX/fonts/type1/public/
-amsfonts/cm/cmsy10.pfb><C:/Users/Sebas/AppData/Local/Programs/MiKTeX/fonts/type
-1/public/amsfonts/cm/cmsy7.pfb>
-Output written on "Rapport metaldetektorprojekt.pdf" (8 pages, 1503514 bytes).
+s/cm/cmr5.pfb><C:/Users/Sebas/AppData/Local/Programs/MiKTeX/fonts/type1/public/
+amsfonts/cm/cmr7.pfb><C:/Users/Sebas/AppData/Local/Programs/MiKTeX/fonts/type1/
+public/amsfonts/cm/cmsy10.pfb><C:/Users/Sebas/AppData/Local/Programs/MiKTeX/fon
+ts/type1/public/amsfonts/cm/cmsy7.pfb>
+Output written on "Rapport metaldetektorprojekt.pdf" (10 pages, 1559376 bytes).
+
 PDF statistics:
- 239 PDF objects out of 1000 (max. 8388607)
- 36 named destinations out of 1000 (max. 500000)
- 206 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 263 PDF objects out of 1000 (max. 8388607)
+ 40 named destinations out of 1000 (max. 500000)
+ 219 words of extra memory for PDF output out of 10000 (max. 10000000)
 

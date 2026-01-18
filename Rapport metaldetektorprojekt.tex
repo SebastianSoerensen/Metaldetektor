@@ -234,20 +234,32 @@ thick,
 				\item Modstanden $R_7$ repræsenterer den ohmske modstand i TX-spolen.
 				\item Dioderne $D_1$ og $D_2$ beskytter kredsløbet fra den induserede spænding i spolen.
 			\end{itemize}
-		\subsubsection{Filtrering og forstærkning af spolesignal}
+		\subsubsection{Filtrering af spolesignal}
 			\begin{figure}[H]
 				\centering
 				\begin{circuitikz}[american]
 					\draw (0,0) node[ground]{} to [sV,l=$V_{RX coil}$] ++ (0,2) to [L=$11.75\text{mH}$] 	++(2,0) to [R=$41.9\Omega$]++(2,0)
-					coordinate(N1) to [short,-*]++(0,0) to [C=$100\text{nF}$]++(0,-2) to 	[short,-*]++(0,0);
-					\draw (N1) --++(2,0) coordinate (Vout) to [R=$50\text{k}\Omega$]++(0,-2) to 	[short,-*]++(0,0)coordinate(VR) to (0,0);
+					coordinate(N1) to [short,-*]++(0,0) to [C=$80\text{nF}$]++(0,-2) to 	[short,-*]++(0,0);
+					\draw (N1) --++(2,0) coordinate (Vout) to [generic={\shortstack{$50\text{k}\Omega$\\$Z_1$}}]++(0,-2) to 	[short,-*]++(0,0)coordinate(VR) to (0,0);
 					\draw (Vout) to [short,-*]++(0,0) --++(2,0) to node[ocirc]{}++(0,0) 	coordinate(V+);
 					\draw (VR) --++(2,0) to node[ocirc]{}++(0,0) coordinate(V-);
 					\draw (V+) to [open,v=$V_{filtered}$] (V-);
 				\end{circuitikz}
-				\caption{Kredsløb til at filtrere støj væk ($\approx\frac{Fs}{2}=4\text{kHz}$) inden signalet bliver forstærket (som vist i \autoref{fig:OPAMP})}
+				\caption{Kredsløb til at filtrere støj væk ($\approx\frac{Fs}{2}=4\text{kHz}$) inden signalet bliver forstærket (som vist i \autoref{fig:OPAMP}). Modstanden på $50\text{k}\Omega$ repræsenterer indgangsimpedansen i operationsforstærkerkredsløbet.}
 				\label{fig:RXfilter}
 			\end{figure}
+			Som det ses i figuren, er $V_{filtered}=V_{Z_1}$. Filterets overføringsfunktion kan opstilles ved almindelig spændingsdeling, dvs. $$H(\omega)=\frac{R_2\cdot\frac{1}{j\omega C}} {R_1+Z_1+R_2\cdot\frac{1}{j\omega C}}$$ hvorefter fasen kan analyseres ved $$\phi(\omega)=\tan^{-1}\left(\frac{\Im\{H\}}{\Re\{H\}}\right)$$
+			og amplitude responset ved $$H_{dB}=20\log10(H)$$
+			\newline
+			Ifølge Shannon's sampling teorem ved vi at $F_{max}<\frac{F_s}{2}$. Da vi ikke har noget signal som ligger over $\frac{F_s}{2}=4\text{kHz}$ anvender vi dette filter, for at undgå problemer med aliaseringer. Filteret er designet således at fasen bliver påvirket mindst muligt, da det netop er fasen vi bruger til at skelne mellem materialer.
+				\begin{figure}[H]
+					\caption{RX-filterets fase- og magnitude respons, med markering af 4.2kHz}
+					\label{fig:dft-plot1}
+					\includegraphics[width=\textwidth]{"DFT plot1"}
+				\end{figure}
+			Da metaldetektorens følsomhed overfor frekvenser afhænger af bl.a temperatur, har vi valgt at designe filteret efter et udgangspunkt på $4.2\text{kHz}$. Som det ses i plottet får vi dæmpet det værste af eventuelt højfrekvent støj, samtidigt med at vi aflæser fasen nogenlunde præcist med udgangspunkt i $4.2\text{kHz}$. 
+			
+			\subsubsection{Forstærkning af spolesignalet}
 				\begin{figure}[H]
 					\centering
 					\begin{circuitikz}[american]
@@ -259,7 +271,7 @@ thick,
 						\draw (0,-2) to ++(9,0) to node[ocirc]{}++(0,0) coordinate(Vout-);
 						\draw (6,3.5) node[op amp,yscale=-1,label=south:MC6002] (opamp){};
 						\draw (opamp.+) to (N2);
-						\draw (opamp.-) to [short,-*]++(0,-1) coordinate(N3) to 		[R=$14\text{k}\Omega$]++(0,-2) to [C=$1\mu\text{F}$]++(0,-2) to [short,-*]++(0,0);
+						\draw (opamp.-) to [short,-*]++(0,-1) coordinate(N3) to 		[R=$1\text{k}\Omega$]++(0,-2) to [C=$1\mu\text{F}$]++(0,-2) to [short,-*]++(0,0);
 						\draw (N3) to [potentiometer,l_=$0-200\text{k}\Omega$] ++(3,0) to [short,-*]++(0,1.5) 		coordinate(Vo);
 						\draw (Vo) to (opamp.out);
 						\draw (Vo) --++(1.25,0) to node[ocirc]{}++(0,0) coordinate(Vout+);
@@ -282,6 +294,7 @@ thick,
 					\node[startstop,below=1.2cm of dsp] (main) {Main loop};
 					\node[startstop,right=1.2cm of main] (oled) {OLED};
 					\node[startstop,align=center,left=1.2cm of main] (buttons) {Buttons\\INT0/1};
+					\node[startstop,below=1.2cm of main] (buzzer) {Buzzer};
 					%Arrows
 					\draw[arrow] (coil.east) -- (adc.west);
 					\draw[arrow] (adc.east) -- (dft.west);
@@ -290,6 +303,7 @@ thick,
 					\draw[arrow] (dsp.south) -- (main.north);
 					\draw[arrow] (buttons.east) -- (main.west);
 					\draw[arrow] (main.east) -- (oled.west);
+					\draw[arrow] (main.south) -- (buzzer.north);
 				\end{tikzpicture}
 				\caption{Overordnet moduldiagram af systemet}
 				\label{fig:DigitalModulDiagram}
@@ -306,8 +320,47 @@ thick,
 		\subsubsection{Digital signal behandling}
 
 \section{Implementering og test}
-\section{Konklusion}
+
+
 \section{Ansvarsområder (hvem har lavet hvad)}
+\begin{center}
+	\textbf{Fælles}
+\end{center}
+\begin{itemize}
+	\item Vikling af spoler
+	\item Implementering af kredsløb
+\end{itemize}
+
+\begin{center}
+	\textbf{Bilal}
+\end{center}
+\begin{itemize}
+	\item 3D-print
+	\item Power Amplifier
+	\item Spoleberegninger
+	\item Energiberegninger
+\end{itemize}
+\begin{center}
+	\textbf{Sebastian}
+\end{center}
+\begin{itemize}
+	\item C-programmering
+	\item RX-filter
+	\item Grafik til rapport (plots, kredsløbstegninger,indskrivning af rapport)
+	\item 
+\end{itemize}
+\begin{center}
+	\textbf{Oliver}
+\end{center}
+\begin{itemize}
+	\item C-programmering
+	\item 
+\end{itemize}
+
+
+\section{Konklusion}
+
+	
 \section{Appendix}
 	\subsection{Gantt kort}
 	\subsection{Mødereferater}
