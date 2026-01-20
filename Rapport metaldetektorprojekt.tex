@@ -139,7 +139,7 @@ Herunder ses kravspecifikationen metaldetektor projektet har haft til formål at
 	16 & Modtager spolens selvinduktans & Modtager spolen skal have en selvinduktans på mindst 10 mHy. & 1 \\
 	\bottomrule
 \end{tabularx}
-
+\newpage
 
 \section{Analyse}
 	\begin{figure}[H]
@@ -185,6 +185,17 @@ Herunder ses kravspecifikationen metaldetektor projektet har haft til formål at
 	\caption{Overordnet moduldiagram af systemet}
 	\label{fig:ModuleDiagram}
 \end{figure}
+	\subsection{Analog}
+		
+	\subsection{Digital}
+		\subsubsection{Main/FSM}
+		\subsubsection{ADC}
+		\subsubsection{DFT}
+		\subsubsection{DSP}
+		\subsubsection{Button}
+		\subsubsection{Buzzer}
+		\subsubsection{Testmode}
+
 \section{Design}
 	\subsection{Analogt design}
 		\subsubsection{Energiberegninger}
@@ -279,25 +290,26 @@ Herunder ses kravspecifikationen metaldetektor projektet har haft til formål at
 				\centering
 				\begin{circuitikz}[american]
 					\draw (0,0) node[ground]{} to [sV,l=$V_{RX coil}$] ++ (0,2) to [L=$11.75\text{mH}$] 	++(2,0) to [R=$41.9\Omega$]++(2,0)
-					coordinate(N1) to [short,-*]++(0,0) to [C=$80\text{nF}$]++(0,-2) to 	[short,-*]++(0,0);
+					coordinate(N1) to [short,-*]++(0,0) to [C=$1\mu\text{F}$]++(0,-2) to 	[short,-*]++(0,0);
 					\draw (N1) --++(2,0) coordinate (Vout) to [generic={\shortstack{$50\text{k}\Omega$\\$Z_1$}}]++(0,-2) to 	[short,-*]++(0,0)coordinate(VR) to (0,0);
 					\draw (Vout) to [short,-*]++(0,0) --++(2,0) to node[ocirc]{}++(0,0) 	coordinate(V+);
 					\draw (VR) --++(2,0) to node[ocirc]{}++(0,0) coordinate(V-);
 					\draw (V+) to [open,v=$V_{filtered}$] (V-);
 				\end{circuitikz}
-				\caption{Kredsløb til at filtrere støj væk ($\approx\frac{Fs}{2}=4\text{kHz}$) inden signalet bliver forstærket (som vist i \autoref{fig:OPAMP}). Modstanden på $50\text{k}\Omega$ repræsenterer indgangsimpedansen i operationsforstærkerkredsløbet.}
+				\caption{Kredsløb til at filtrere støj væk inden signalet bliver forstærket (som vist i \autoref{fig:OPAMP}). Modstanden på $50\text{k}\Omega$ repræsenterer indgangsimpedansen i operationsforstærkerkredsløbet.}
 				\label{fig:RXfilter}
 			\end{figure}
 			Som det ses i figuren, er $V_{filtered}=V_{Z_1}$. Filterets overføringsfunktion kan opstilles ved almindelig spændingsdeling, dvs. $$H(\omega)=\frac{Z_1\cdot\frac{1}{j\omega C}} {j\omega L+R_1+Z_1\cdot\frac{1}{j\omega C}}$$ hvorefter fasen kan analyseres ved $$\phi(\omega)=\tan^{-1}\left(\frac{\Im\{H\}}{\Re\{H\}}\right)$$
 			og amplitude responset ved $$H_{dB}=20\log10(H)$$
 			\newline
-			Ifølge Shannon's sampling teorem ved vi at $F_{max}<\frac{F_s}{2}$. Da vi ikke har noget signal som ligger over $\frac{F_s}{2}=4\text{kHz}$ anvender vi dette filter, for at undgå problemer med aliaseringer. Filteret er designet således at fasen bliver påvirket mindst muligt, da det netop er fasen vi bruger til at skelne mellem materialer.
+			Ifølge Shannon's sampling teorem ved vi at $F_{max}<\frac{F_s}{2}$ skal være overholdt for at forhindre aliaseringer. Det eneste signal som vi ønsker at få igennem, ligger $\approx2\text{kHz}$, og derfor har vi valgt at alle frekvenser over $2\text{kHz}$ skal attenueres. Designet af RX-filteret er en balancegang imellem at dæmpe amplituden af uønskede frekvenser, mens vi bibeholder en rimeligt præcis faserespons ved $2\text{kHz}$, for at kunne skelne imellem forskellige metaller.
 				\begin{figure}[H]
-					\caption{RX-filterets fase- og magnitude respons, med markering af 2.2kHz}
+					\caption{RX-filterets fase- og magnitude respons, med markering af 2kHz}
 					\label{fig:dft-plot1}
 					\includegraphics[width=\textwidth]{"dft plot1"}
 				\end{figure}
-			Da metaldetektorens følsomhed overfor frekvenser afhænger af bl.a temperatur, har vi valgt at designe filteret efter et udgangspunkt på $4.2\text{kHz}$. Som det ses i plottet får vi dæmpet det værste af eventuelt højfrekvent støj, samtidigt med at vi aflæser fasen nogenlunde præcist med udgangspunkt i $4.2\text{kHz}$. 
+				
+			Da metaldetektorens følsomhed overfor frekvenser afhænger af bl.a temperatur, har vi valgt at designe filteret til at opnå mindst muligt forstyrrelse omkring de $2\text{kHz}$, samtidigt med vi garanterer at der ikke opstår aliaseringer (Samplingteoremet er overholdt). Som det ses i plottet, ændrer fasen sig ikke voldsomt ved signalfrekvensen, og selv hvis frekvensen skrider $\pm100\text{Hz}$ går signalstyrken relativt uberørt igennem. 
 			
 			\subsubsection{Forstærkning af spolesignalet}
 				\begin{figure}[H]
@@ -318,7 +330,7 @@ Herunder ses kravspecifikationen metaldetektor projektet har haft til formål at
 						\draw (Vout+) to [open,v=$V_{out}$](Vout-);
 						%	\draw (Vo) --++(1,0) to [open,v^=$V_{out}$](N5);
 					\end{circuitikz}
-					\caption{Kredsløb til at forstærke den filtrerede spænding fra RX-spolen op, inden det læses ind i MCU ADC'en.}
+					\caption{Kredsløb til at forstærke den filtrerede spænding fra RX-spolen op, inden det læses ind i MCU ADC'en. $V_{filtered}$ er outputtet fra RX-filteret.}
 					\label{fig:OPAMP}
 				\end{figure}
 	\subsection{Digitalt design}
