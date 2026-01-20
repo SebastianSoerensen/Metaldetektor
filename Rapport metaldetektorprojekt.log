@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.8.20)  20 JAN 2026 15:27
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.8.20)  20 JAN 2026 15:32
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1186,7 +1186,7 @@ Overfull \hbox (1.46413pt too wide) in paragraph at lines 141--141
 [6]
 
 [7]
-Overfull \hbox (48.32372pt too wide) detected at line 277
+Overfull \hbox (48.32372pt too wide) detected at line 279
 \OMS/cmsy/m/n/10 j\OML/cmm/m/it/10 B\OMS/cmsy/m/n/10 j \OT1/cmr/m/n/10 = []  \O
 MS/cmsy/m/n/10 ([])  \OT1/cmr/m/n/10 287\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 6\OML
 /cmm/m/it/10 ^^V[] \OT1/cmr/m/n/10 = []  =[]\OMS/cmsy/m/n/10 )  \OML/cmm/m/it/1
@@ -1194,7 +1194,7 @@ MS/cmsy/m/n/10 ([])  \OT1/cmr/m/n/10 287\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 6\OML
  []
 
 
-Overfull \hbox (64.29013pt too wide) in paragraph at lines 322--323
+Overfull \hbox (64.29013pt too wide) in paragraph at lines 324--325
  [][] 
  []
 
@@ -1205,10 +1205,10 @@ Overfull \hbox (64.29013pt too wide) in paragraph at lines 322--323
 
 
 [9]
-<dft plot1.png, id=234, 893.58844pt x 368.87813pt>
+<dft plot1.png, id=235, 893.58844pt x 368.87813pt>
 File: dft plot1.png Graphic file (type png)
 <use dft plot1.png>
-Package pdftex.def Info: dft plot1.png  used on input line 356.
+Package pdftex.def Info: dft plot1.png  used on input line 358.
 (pdftex.def)             Requested size: 345.0pt x 142.42096pt.
 
 
@@ -1217,17 +1217,17 @@ Package pdftex.def Info: dft plot1.png  used on input line 356.
 
 
 [11 <./dft plot1.png>]
-Overfull \hbox (100.46262pt too wide) in paragraph at lines 406--407
+Overfull \hbox (100.46262pt too wide) in paragraph at lines 408--409
 [][] 
  []
 
 
 
 [12]
-<DFT plot.png, id=254, 295.85532pt x 296.60812pt>
+<DFT plot.png, id=255, 295.85532pt x 296.60812pt>
 File: DFT plot.png Graphic file (type png)
 <use DFT plot.png>
-Package pdftex.def Info: DFT plot.png  used on input line 414.
+Package pdftex.def Info: DFT plot.png  used on input line 416.
 (pdftex.def)             Requested size: 172.5pt x 172.94252pt.
 
 
@@ -1240,14 +1240,22 @@ Package pdftex.def Info: DFT plot.png  used on input line 414.
 LaTeX2e <2025-06-01> patch level 1
 L3 programming layer <2025-07-20>
  ***********
-Package rerunfilecheck Info: File `"Rapport metaldetektorprojekt".out' has not 
-changed.
-(rerunfilecheck)             Checksum: 02E8AC4C24CDDB2704E8312AE5A01DCF;4428.
+
+
+Package rerunfilecheck Warning: File `"Rapport metaldetektorprojekt".out' has c
+hanged.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `"Rapport metaldetektorprojekt".out'
+:
+(rerunfilecheck)             Before: 02E8AC4C24CDDB2704E8312AE5A01DCF;4428
+(rerunfilecheck)             After:  1921B416D35E4FEB483229350ADE7C43;4521.
  ) 
 Here is how much of TeX's memory you used:
- 52096 strings out of 468134
- 1361517 string characters out of 5430740
- 2129325 words of memory out of 5000000
+ 52097 strings out of 468134
+ 1361536 string characters out of 5430740
+ 2130326 words of memory out of 5000000
  80079 multiletter control sequences out of 15000+600000
  632187 words of font info for 58 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -1268,10 +1276,10 @@ s/cm/cmr5.pfb><C:/Users/Sebas/AppData/Local/Programs/MiKTeX/fonts/type1/public/
 amsfonts/cm/cmr7.pfb><C:/Users/Sebas/AppData/Local/Programs/MiKTeX/fonts/type1/
 public/amsfonts/cm/cmsy10.pfb><C:/Users/Sebas/AppData/Local/Programs/MiKTeX/fon
 ts/type1/public/amsfonts/cm/cmsy7.pfb>
-Output written on "Rapport metaldetektorprojekt.pdf" (16 pages, 1924604 bytes).
+Output written on "Rapport metaldetektorprojekt.pdf" (16 pages, 1924912 bytes).
 
 PDF statistics:
- 343 PDF objects out of 1000 (max. 8388607)
- 57 named destinations out of 1000 (max. 500000)
+ 344 PDF objects out of 1000 (max. 8388607)
+ 58 named destinations out of 1000 (max. 500000)
  304 words of extra memory for PDF output out of 10000 (max. 10000000)
 

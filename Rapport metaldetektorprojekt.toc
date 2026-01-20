@@ -10,6 +10,7 @@
 \contentsline {subsubsection}{\numberline {2.2.4}DSP funktioner}{5}{subsubsection.2.2.4}%
 \contentsline {subsubsection}{\numberline {2.2.5}Tilstandsmaskine}{6}{subsubsection.2.2.5}%
 \contentsline {subsubsection}{\numberline {2.2.6}Display og buzzer}{6}{subsubsection.2.2.6}%
+\contentsline {subsubsection}{\numberline {2.2.7}Sleep}{7}{subsubsection.2.2.7}%
 \contentsline {section}{\numberline {3}Design}{7}{section.3}%
 \contentsline {subsection}{\numberline {3.1}Analogt design}{7}{subsection.3.1}%
 \contentsline {subsubsection}{\numberline {3.1.1}Energiberegninger}{7}{subsubsection.3.1.1}%
