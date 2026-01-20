@@ -186,22 +186,69 @@ Herunder ses kravspecifikationen metaldetektor projektet har haft til formål at
 	\label{fig:ModuleDiagram}
 \end{figure}
 	\subsection{Analog}
-		
+		\subsubsection{Design af spole}
+			Ved sammenligning af de forskellige spoleudformninger (som er nævnt i "Coil Basics" fra kursets DTU Learn side), ligger vi mærke til følgende forskelle: 
+			\newline DD-spolen har bedre dækning til siderne, hvorimod den konsentriske er mere følsom under selve spolen og kan scanne dybere. Vi ser også at DD-spolen har en mere kompleks struktur, hvilket vil kræve mere arbejde i form af strengere krav til 3D-print. Det er desuden også nævnt i artiklen at det, ved anvendelse af den konsentriske form, er nemmere at udligne feltet fra TX-spolen i Bucking-spolen. \newline Grundet den mere simple opbygning - og bedre scannings dybde, vælger vi at anvende den konsentriske opbyging. 
+		\subsubsection{Signalbehandling}
+			Ved signalfiltreringen ser vi aflæsningen af fasen som noget vi skal være særligt opmærksomme på, da det er denne som skal bruges til at skelne imellem metallerne.\newline
+			Da det er skin-effekten som forårsager faseskiftet, ved vi at den kan beregnes ved
+			$$\delta=\sqrt{\frac{2}{\omega\mu\sigma}}$$
+			Ved detektionsfrekvensen på $f_d=2\text{kHz}$ (krav 12), og anvendelse af materialernes ledningsevner, forventer vi faseskiftene til at være: 
+				\begin{table}[H]
+					\centering
+					\begin{tabular}{|l|c|c|}
+						\hline
+						\textbf{Metal}&\textbf{Ledningsevne [S/m]}&\textbf{Faseskift $^\circ$}\\
+						\hline
+						Kobber & $5.96\cdot10^7$ &$75-85$\\
+						Messing& $1.5\cdot10^7$	&$60-75$\\
+						Aluminium&$3.5\cdot10^7$&$55-70$\\
+						\hline
+					\end{tabular}
+				\end{table}
+			Da de 3 metaller som vi jf. kravspecifikationen skal kunne skelne imellem ligger relativt tæt i faseskift, er vi særligt opmærksomme på ikke at forstyrre fasen iløbet af signalbehandlingen. 
 	\subsection{Digital}
-		\subsubsection{Main/FSM}
-		\subsubsection{ADC}
+		\subsubsection{Timing og sampling}
+			Systemet bruger Timer1 til vores 2 frekvenser, hhv. sampling- /spole frekvens. Selve Timer1 generere de 8 kHz til samplingsfrekvensen og ved at toggle udgangen hver anden interrupt fås spolefrekvensen til 2 kHz ved $$\frac{8\text{kHz}}{2\cdot2}=2\text{kHz}$$
+			Ved at sample med 8 kHz kan de 2 kHz signal samples 4 gange per periode, hvilket tillader en simpel DFT implementering.
 		\subsubsection{DFT}
-		\subsubsection{DSP}
-		\subsubsection{Button}
-		\subsubsection{Buzzer}
-		\subsubsection{Testmode}
-
+			Da Arduinos hukommelse er begrænset, undgås den fulde FFT, i stedet benytter vi en hurtigere og mere passende algoritme. Her beregnes kun bin k = 16, udfra de 2 kHz ved Fs = 8 kHz og N = 64. \newline Dette betyder at vi kan spare CPU tid, fordi kun et frekvensbånd har betydning.
+			Ved $k = 16$ og $N = 64$ kommer $\cos(2\cdot\pi\cdot k\cdot\frac{n}{N})$ og $\sin(2\cdot\pi\cdot k\cdot\frac{n}{N})$ til og skifte mellem værdierne “1, 0, -1, 0”. Ved at udnytte dette mønster undgås den tunge multiplikation, som er vigtigt, idet der modtages enorme mængder samples, som skal behandles. \newline
+			Funktionen DFT\_accum() samler hver sample ind i en real og imaginærdel ved brug af switch-casen på (n \& 3). Når blokken afsluttes gemmes resultatet, og herefter genstartes processen.
+		\subsubsection{Double buffer}
+			For at undgå konflikt data konflikt mellem ISR og main benyttes et double buffer system, bestående af adc\_bud[0] og adc\_buf[1]. Bufferne skiftes automatisk når den ene er fuld, så den tomme kan begynde at samle data og den allerede indsamlede data kan behandles.
+			Et flag giver signal til main, når nye DFT data er klar til behandling.
+		\subsubsection{DSP funktioner}
+			DSP\_fast\_magnitude() beregner $|Z| = \sqrt{(\Re(z)^2 + \Im(z)^2)}$ ved brug af floating point sqrt(), som hentes fra biblioteket math.h. Denne tilgangsmåde blev valgt grundet dens præcision og enkelthed.\newline Vi opbyggede som alternativ en algoritme til heltals approksimation (se ukommenteret funktion i appendix DSP.c ), men vurderede at den ikke ville være den optimale løsning trods større hastighed, dette skyldes mangel på præcision.
+			DSP\_fast\_atan2\_deg() er funktionen til fase beregning. Den returnerer fase i grader fra -180 til 180 ved brug af atan2() ligeledes hentet fra math.h biblioteket. Fasen bruges til at skelne mellem metaltyper, hvilket indgår i opgavekravene. Her opbyggede vi ligeledes en algoritme til hastighed og optimering af hukommelses brug, dog kom vi til samme konklusion at atan2() havde bedre præcision.
+		\subsubsection{Tilstandsmaskine}
+			Softwares dataflow styres i main af en FSM bestående af 3 tilstande, herunder: CALIBRATING, IDLE, RUNNING.
+			Kalibrerings tilstanden indsamler 32 DFT blokke (uden metal), hvor den beregner et gennemsnit af disse som bruges til et nulpunkt.\newline Denne tilstand styres af en interrupt baseret knap, som tillader adgang til CALIBRATING efter behov, da temperaturskift kan påvirke metaldetektoren er det nødvendigt at kunne danne et nyt nulpunkt. \newline
+			IDLE tilstanden bruges som en homescreen. Herinde er sampling deaktiveret, altså bruges der betydelig mindre strøm hvilket ligeledes er nødvendigt hvis man ikke aktivt søger metal. Ved opstart af metaldetektoren tilgås IDLE efter en automatisk kalibrering, herfra kan man enten genkalibrere eller gå til RUNNING ved brug af interrupt styret knapper.\newline
+			RUNNING tilstanden er her metaldetektoren aktivt søger metal, beregner delta ud fra det kalibrerede nulpunkt, anvender 32-sample glidende gennemsnit til at undgå alt for hurtigere skift i amplitude og fase på OLED display.
+		\subsubsection{Display og buzzer}
+			\begin{center}
+				\textbf{Designvalg og begrundelse}
+			\end{center}
+			Da kun en frekvens på 2 kHz er relevant, er DFT algoritmen betydeligt mere effektiv end at foretage en stor FFT. Denne løsning vil reducere CPU’ens belastning samt tillade realtidsbehandling på en 16 MHz ATmega2560.
+			\begin{center}
+				\textbf{Double buffer system}
+			\end{center}
+			Sikrer at der kan samples parallelt med at main behandler den samplede data. Denne tilgang benyttes for at undgå timings problemer.
+			\begin{center}
+				\textbf{Glidende gennemsnit}
+			\end{center}
+			Filtrerer støj fra ved at tage gennemsnittet af 32 blokke før data vises på OLED som sikre stabile aflæsninger. Alternativer findes til denne metode, men denne tilgang virkede hermed beholdes den.
+			\begin{center}
+				\textbf{Kalibrering}
+			\end{center}
+			Ved at måle et sted uden metal (tom luft), kompenseres der for DC-offset og miljømæssige faktorer såsom temperaturskift. Dette er nødvendigt for at delta-målingerne er pålidelige.
 \section{Design}
 	\subsection{Analogt design}
 		\subsubsection{Energiberegninger}
 			Vi undersøgte os frem til at batteriet har en kapacitet på $550$mAh. Da batteriet aflades fra 9V til 6V, har vi lavet udregningen:
 				$$E_{tot}=V\cdot I\cdot3600 \iff E_{tot}=\frac{9V+6V}{2}\cdot0.55\text{A}\cdot3600\text{s}=14850\text{J}$$
-			Ved måling af strømforbruget finder vi at OLED-display og Arduinoen forbuger $\approx70.5\text{mA}$. Da vi skal kunne drive systemet i 100 minutter, kan vi derfor beregne A $$E_{MCU}=5\text{V}\cdot70.5\cdot10^{-3}\text{A}\cdot(100\cdot60)\text{s}=2115\text{J}$$Vi reserverer $10\%$ af batteriet som buffer, for at være sikker på at overholde kravene. Resten af energien kan bruges til TX-spolen.
+			Ved måling af strømforbruget finder vi at OLED-display og Arduinoen forbuger $\approx70.5\text{mA}$. Da vi skal kunne drive systemet i 100 minutter, kan vi derfor beregne $$E_{MCU}=5\text{V}\cdot70.5\cdot10^{-3}\text{A}\cdot(100\cdot60)\text{s}=2115\text{J}$$Vi reserverer $10\%$ af batteriet som buffer, for at være sikker på at overholde kravene. Resten af energien kan bruges til TX-spolen.
 			$$E_{TX}=E_{tot}\cdot(1-0.15)-E_{MCU}=11250J$$
 		\subsubsection{Spoleberegninger}
 			\begin{center}

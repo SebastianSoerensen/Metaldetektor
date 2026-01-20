@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.8.20)  20 JAN 2026 12:16
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.8.20)  20 JAN 2026 15:27
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1027,17 +1027,17 @@ Package hyperref Info: Link coloring OFF on input line 77.
 \@outlinefile=\write4
 \openout4 = `"Rapport metaldetektorprojekt.out"'.
 
-<Seb billede.png, id=126, 218.31563pt x 295.1025pt>
+<Seb billede.png, id=130, 218.31563pt x 295.1025pt>
 File: Seb billede.png Graphic file (type png)
 <use Seb billede.png>
 Package pdftex.def Info: Seb billede.png  used on input line 87.
 (pdftex.def)             Requested size: 77.12132pt x 113.80988pt.
-<Oli billede.jpg, id=129, 1246.6575pt x 2216.28pt>
+<Oli billede.jpg, id=133, 1246.6575pt x 2216.28pt>
 File: Oli billede.jpg Graphic file (type jpg)
 <use Oli billede.jpg>
 Package pdftex.def Info: Oli billede.jpg  used on input line 93.
 (pdftex.def)             Requested size: 62.70436pt x 113.80708pt.
-<Bilal billede.png, id=131, 1084.05pt x 722.7pt>
+<Bilal billede.png, id=135, 1084.05pt x 722.7pt>
 File: Bilal billede.png Graphic file (type png)
 <use Bilal billede.png>
 Package pdftex.def Info: Bilal billede.png  used on input line 99.
@@ -1180,7 +1180,13 @@ Overfull \hbox (1.46413pt too wide) in paragraph at lines 141--141
 [3]
 
 [4]
-Overfull \hbox (48.32372pt too wide) detected at line 230
+
+[5]
+
+[6]
+
+[7]
+Overfull \hbox (48.32372pt too wide) detected at line 277
 \OMS/cmsy/m/n/10 j\OML/cmm/m/it/10 B\OMS/cmsy/m/n/10 j \OT1/cmr/m/n/10 = []  \O
 MS/cmsy/m/n/10 ([])  \OT1/cmr/m/n/10 287\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 6\OML
 /cmm/m/it/10 ^^V[] \OT1/cmr/m/n/10 = []  =[]\OMS/cmsy/m/n/10 )  \OML/cmm/m/it/1
@@ -1188,60 +1194,61 @@ MS/cmsy/m/n/10 ([])  \OT1/cmr/m/n/10 287\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 6\OML
  []
 
 
-
-[5]
-Overfull \hbox (64.29013pt too wide) in paragraph at lines 275--276
+Overfull \hbox (64.29013pt too wide) in paragraph at lines 322--323
  [][] 
  []
 
 
 
-[6]
+[8]
 \absvshift=\dimen341
-<dft plot1.png, id=216, 893.58844pt x 368.87813pt>
+
+
+[9]
+<dft plot1.png, id=234, 893.58844pt x 368.87813pt>
 File: dft plot1.png Graphic file (type png)
 <use dft plot1.png>
-Package pdftex.def Info: dft plot1.png  used on input line 309.
+Package pdftex.def Info: dft plot1.png  used on input line 356.
 (pdftex.def)             Requested size: 345.0pt x 142.42096pt.
 
 
-[7]
+[10]
 \absvshift=\dimen342
 
 
-[8 <./dft plot1.png>]
-Overfull \hbox (100.46262pt too wide) in paragraph at lines 359--360
+[11 <./dft plot1.png>]
+Overfull \hbox (100.46262pt too wide) in paragraph at lines 406--407
 [][] 
  []
 
 
 
-[9]
-<DFT plot.png, id=236, 295.85532pt x 296.60812pt>
+[12]
+<DFT plot.png, id=254, 295.85532pt x 296.60812pt>
 File: DFT plot.png Graphic file (type png)
 <use DFT plot.png>
-Package pdftex.def Info: DFT plot.png  used on input line 367.
+Package pdftex.def Info: DFT plot.png  used on input line 414.
 (pdftex.def)             Requested size: 172.5pt x 172.94252pt.
 
 
-[10]
+[13]
 
-[11 <./DFT plot.png>]
+[14 <./DFT plot.png>]
 
-[12] (Rapport metaldetektorprojekt.aux)
+[15] (Rapport metaldetektorprojekt.aux)
  ***********
 LaTeX2e <2025-06-01> patch level 1
 L3 programming layer <2025-07-20>
  ***********
 Package rerunfilecheck Info: File `"Rapport metaldetektorprojekt".out' has not 
 changed.
-(rerunfilecheck)             Checksum: 03E6C1E951D38708F767D7D885524A80;3961.
+(rerunfilecheck)             Checksum: 02E8AC4C24CDDB2704E8312AE5A01DCF;4428.
  ) 
 Here is how much of TeX's memory you used:
- 52085 strings out of 468134
- 1361317 string characters out of 5430740
- 2121549 words of memory out of 5000000
- 80072 multiletter control sequences out of 15000+600000
+ 52096 strings out of 468134
+ 1361517 string characters out of 5430740
+ 2129325 words of memory out of 5000000
+ 80079 multiletter control sequences out of 15000+600000
  632187 words of font info for 58 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  99i,12n,105p,745b,1129s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -1261,10 +1268,10 @@ s/cm/cmr5.pfb><C:/Users/Sebas/AppData/Local/Programs/MiKTeX/fonts/type1/public/
 amsfonts/cm/cmr7.pfb><C:/Users/Sebas/AppData/Local/Programs/MiKTeX/fonts/type1/
 public/amsfonts/cm/cmsy10.pfb><C:/Users/Sebas/AppData/Local/Programs/MiKTeX/fon
 ts/type1/public/amsfonts/cm/cmsy7.pfb>
-Output written on "Rapport metaldetektorprojekt.pdf" (13 pages, 1911285 bytes).
+Output written on "Rapport metaldetektorprojekt.pdf" (16 pages, 1924604 bytes).
 
 PDF statistics:
- 325 PDF objects out of 1000 (max. 8388607)
- 53 named destinations out of 1000 (max. 500000)
- 296 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 343 PDF objects out of 1000 (max. 8388607)
+ 57 named destinations out of 1000 (max. 500000)
+ 304 words of extra memory for PDF output out of 10000 (max. 10000000)
 
