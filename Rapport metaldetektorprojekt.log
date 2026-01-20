@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.8.20)  18 JAN 2026 15:45
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.8.20)  20 JAN 2026 10:37
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -893,6 +893,43 @@ Package: chngcntr 2018/04/09 v1.1a change counter resetting
 Package chngcntr Info: \counterwithout already defined.
 (chngcntr)             Quitting chngcntr on input line 21.
 )
+(C:\Users\Sebas\AppData\Local\Programs\MiKTeX\tex/latex/tools\tabularx.sty
+Package: tabularx 2023/12/11 v2.12a `tabularx' package (DPC)
+\TX@col@width=\dimen333
+\TX@old@table=\dimen334
+\TX@old@col=\dimen335
+\TX@target=\dimen336
+\TX@delta=\dimen337
+\TX@cols=\count354
+\TX@ftn=\toks50
+)
+(C:\Users\Sebas\AppData\Local\Programs\MiKTeX\tex/latex/tools\longtable.sty
+Package: longtable 2024-12-18 v4.23 Multi-page Table package (DPC)
+\LTleft=\skip63
+\LTright=\skip64
+\LTpre=\skip65
+\LTpost=\skip66
+\LTchunksize=\count355
+\LTcapwidth=\dimen338
+\LT@head=\box76
+\LT@firsthead=\box77
+\LT@foot=\box78
+\LT@lastfoot=\box79
+\LT@gbox=\box80
+\LT@cols=\count356
+\LT@rows=\count357
+\c@LT@tables=\count358
+\c@LT@chunks=\count359
+\LT@p@ftn=\toks51
+)
+(C:\Users\Sebas\AppData\Local\Programs\MiKTeX\tex/latex/ltablex\ltablex.sty
+Package: ltablex 2014/08/13 v1.1 Modified tabularx
+)
+(C:\Users\Sebas\AppData\Local\Programs\MiKTeX\tex/latex/base\inputenc.sty
+Package: inputenc 2024/02/08 v1.3d Input encoding file
+\inpenc@prehook=\toks52
+\inpenc@posthook=\toks53
+)
 (C:\Users\Sebas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tik
 z/libraries\tikzlibrarypositioning.code.tex
 File: tikzlibrarypositioning.code.tex 2023-01-15 v3.1.10 (3.1.10)
@@ -908,49 +945,57 @@ File: pgflibraryshapes.geometric.code.tex 2023-01-15 v3.1.10 (3.1.10)
 (C:\Users\Sebas\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-pdf
 tex.def
 File: l3backend-pdftex.def 2025-06-09 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count354
+\l__color_backend_stack_int=\count360
 ) (Rapport metaldetektorprojekt.aux)
 \openout1 = `"Rapport metaldetektorprojekt.aux"'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 70.
-LaTeX Font Info:    ... okay on input line 70.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 70.
-LaTeX Font Info:    ... okay on input line 70.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 70.
-LaTeX Font Info:    ... okay on input line 70.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 70.
-LaTeX Font Info:    ... okay on input line 70.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 70.
-LaTeX Font Info:    ... okay on input line 70.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 70.
-LaTeX Font Info:    ... okay on input line 70.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 70.
-LaTeX Font Info:    ... okay on input line 70.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 70.
-LaTeX Font Info:    ... okay on input line 70.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 70.
-LaTeX Font Info:    ... okay on input line 70.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 77.
+LaTeX Font Info:    ... okay on input line 77.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 77.
+LaTeX Font Info:    ... okay on input line 77.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 77.
+LaTeX Font Info:    ... okay on input line 77.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 77.
+LaTeX Font Info:    ... okay on input line 77.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 77.
+LaTeX Font Info:    ... okay on input line 77.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 77.
+LaTeX Font Info:    ... okay on input line 77.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 77.
+LaTeX Font Info:    ... okay on input line 77.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 77.
+LaTeX Font Info:    ... okay on input line 77.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 77.
+LaTeX Font Info:    ... okay on input line 77.
 
 (C:\Users\Sebas\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mk
 ii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count355
-\scratchdimen=\dimen333
-\scratchbox=\box76
-\nofMPsegments=\count356
-\nofMParguments=\count357
-\everyMPshowfont=\toks50
-\MPscratchCnt=\count358
-\MPscratchDim=\dimen334
-\MPnumerator=\count359
-\makeMPintoPDFobject=\count360
-\everyMPtoPDFconversion=\toks51
+\scratchcounter=\count361
+\scratchdimen=\dimen339
+\scratchbox=\box81
+\nofMPsegments=\count362
+\nofMParguments=\count363
+\everyMPshowfont=\toks54
+\MPscratchCnt=\count364
+\MPscratchDim=\dimen340
+\MPnumerator=\count365
+\makeMPintoPDFobject=\count366
+\everyMPtoPDFconversion=\toks55
 )
 (C:\Users\Sebas\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-b
 ase.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
+
+(C:\Users\Sebas\AppData\Local\Programs\MiKTeX\tex/latex/grfext\grfext.sty
+Package: grfext 2019/12/03 v1.3 Manage graphics extensions (HO)
+)
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 85.
+Package grfext Info: Graphics extension search list:
+(grfext)             [.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPE
+G,.JBIG2,.JB2,.eps]
+(grfext)             \AppendGraphicsExtensions on input line 504.
 
 (C:\Users\Sebas\AppData\Local\Programs\MiKTeX\tex/latex/00miktex\epstopdf-sys.c
 fg
@@ -960,7 +1005,7 @@ File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 Package pgfplots Warning: running in backwards compatibility mode (unsuitable t
 ick labels; missing features). Consider writing \pgfplotsset{compat=1.18} into 
 your preamble.
- on input line 70.
+ on input line 77.
 
 
 (C:\Users\Sebas\AppData\Local\Programs\MiKTeX\tex/latex/pdflscape\pdflscape.sty
@@ -976,7 +1021,7 @@ Package: lscape 2020/05/28 v3.02 Landscape Pages (DPC)
 )
 Package pdflscape Info: Auto-detected driver: pdftex on input line 81.
 ))
-Package hyperref Info: Link coloring OFF on input line 70.
+Package hyperref Info: Link coloring OFF on input line 77.
 
 (Rapport metaldetektorprojekt.out) (Rapport metaldetektorprojekt.out)
 \@outlinefile=\write4
@@ -985,17 +1030,17 @@ Package hyperref Info: Link coloring OFF on input line 70.
 <Seb billede.png, id=90, 218.31563pt x 295.1025pt>
 File: Seb billede.png Graphic file (type png)
 <use Seb billede.png>
-Package pdftex.def Info: Seb billede.png  used on input line 80.
+Package pdftex.def Info: Seb billede.png  used on input line 87.
 (pdftex.def)             Requested size: 77.12132pt x 113.80988pt.
 <Oli billede.jpg, id=93, 1246.6575pt x 2216.28pt>
 File: Oli billede.jpg Graphic file (type jpg)
 <use Oli billede.jpg>
-Package pdftex.def Info: Oli billede.jpg  used on input line 86.
+Package pdftex.def Info: Oli billede.jpg  used on input line 93.
 (pdftex.def)             Requested size: 62.70436pt x 113.80708pt.
 <Bilal billede.png, id=95, 1084.05pt x 722.7pt>
 File: Bilal billede.png Graphic file (type png)
 <use Bilal billede.png>
-Package pdftex.def Info: Bilal billede.png  used on input line 92.
+Package pdftex.def Info: Bilal billede.png  used on input line 99.
 (pdftex.def)             Requested size: 103.48843pt x 67.08115pt.
 
 
@@ -1014,11 +1059,128 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.102 	\newpage
+l.109 	\newpage
                 [1]
+Overfull \hbox (5.65857pt too wide) in paragraph at lines 141--141
+[]|\OT1/cmr/m/n/10 Nr:| 
+ []
+
+
+Overfull \hbox (23.19038pt too wide) in paragraph at lines 141--141
+[]|\OT1/cmr/m/n/10 Prioritet| 
+ []
+
+
+Underfull \hbox (badness 4108) in paragraph at lines 141--141
+[]|\OT1/cmr/m/n/10 Metaldetektoren skal kunne k^^\re
+ []
+
+
+Overfull \hbox (1.46413pt too wide) in paragraph at lines 141--141
+[]|\OT1/cmr/m/n/10 6a| 
+ []
+
+
+Overfull \hbox (2.01968pt too wide) in paragraph at lines 141--141
+[]|\OT1/cmr/m/n/10 6b| 
+ []
+
+
+Underfull \hbox (badness 1789) in paragraph at lines 141--141
+[]|\OT1/cmr/m/n/10 Kredsl^^\bene til at drive spol-erne
+ []
+
+
+Underfull \hbox (badness 1072) in paragraph at lines 141--141
+\OT1/cmr/m/n/10 og forst^^Zrke det mod-tagne sig-nal
+ []
+
+
+Overfull \hbox (1.46413pt too wide) in paragraph at lines 141--141
+[]|\OT1/cmr/m/n/10 8a| 
+ []
+
+
+Overfull \hbox (2.01968pt too wide) in paragraph at lines 141--141
+[]|\OT1/cmr/m/n/10 8b| 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 141--141
+[]|\OT1/cmr/m/n/10 Display udl^^Zs-ningssta-
+ []
+
+
+Overfull \hbox (0.90855pt too wide) in paragraph at lines 141--141
+[]|\OT1/cmr/m/n/10 8c| 
+ []
+
+
+Overfull \hbox (1.46413pt too wide) in paragraph at lines 141--141
+[]|\OT1/cmr/m/n/10 9a| 
+ []
+
+
+Overfull \hbox (2.01968pt too wide) in paragraph at lines 141--141
+[]|\OT1/cmr/m/n/10 9b| 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 141--141
+[]|\OT1/cmr/m/n/10 Bruger in-ter-cace
+ []
+
+
+Underfull \hbox (badness 1215) in paragraph at lines 141--141
+[]|\OT1/cmr/m/n/10 Der skal v^^Zre en nul-still-ingsknap
+ []
+
+
+Overfull \hbox (1.46413pt too wide) in paragraph at lines 141--141
+[]|\OT1/cmr/m/n/10 10| 
+ []
+
+
+Overfull \hbox (1.46413pt too wide) in paragraph at lines 141--141
+[]|\OT1/cmr/m/n/10 11| 
+ []
+
+
+Overfull \hbox (1.46413pt too wide) in paragraph at lines 141--141
+[]|\OT1/cmr/m/n/10 12| 
+ []
+
+
+Overfull \hbox (1.46413pt too wide) in paragraph at lines 141--141
+[]|\OT1/cmr/m/n/10 13| 
+ []
+
+
+Overfull \hbox (1.46413pt too wide) in paragraph at lines 141--141
+[]|\OT1/cmr/m/n/10 14| 
+ []
+
+
+Underfull \hbox (badness 4608) in paragraph at lines 141--141
+[]|\OT1/cmr/m/n/10 3D-printet spole-form /l^^Zsersk^^Waret
+ []
+
+
+Overfull \hbox (1.46413pt too wide) in paragraph at lines 141--141
+[]|\OT1/cmr/m/n/10 15| 
+ []
+
+
+Overfull \hbox (1.46413pt too wide) in paragraph at lines 141--141
+[]|\OT1/cmr/m/n/10 16| 
+ []
 
 [2]
-Overfull \hbox (48.32372pt too wide) detected at line 179
+
+[3]
+
+[4]
+Overfull \hbox (48.32372pt too wide) detected at line 219
 \OMS/cmsy/m/n/10 j\OML/cmm/m/it/10 B\OMS/cmsy/m/n/10 j \OT1/cmr/m/n/10 = []  \O
 MS/cmsy/m/n/10 ([])  \OT1/cmr/m/n/10 287\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 6\OML
 /cmm/m/it/10 ^^V[] \OT1/cmr/m/n/10 = []  =[]\OMS/cmsy/m/n/10 )  \OML/cmm/m/it/1
@@ -1026,46 +1188,46 @@ MS/cmsy/m/n/10 ([])  \OT1/cmr/m/n/10 287\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 6\OML
  []
 
 
-Overfull \hbox (64.29013pt too wide) in paragraph at lines 224--225
+Overfull \hbox (64.29013pt too wide) in paragraph at lines 264--265
  [][] 
  []
 
 
 
-[3]
-\absvshift=\dimen335
+[5]
+\absvshift=\dimen341
 
 
-[4]
-<DFT plot1.png, id=162, 893.58844pt x 368.87813pt>
-File: DFT plot1.png Graphic file (type png)
-<use DFT plot1.png>
-Package pdftex.def Info: DFT plot1.png  used on input line 258.
+[6]
+<dft plot1.png, id=172, 893.58844pt x 368.87813pt>
+File: dft plot1.png Graphic file (type png)
+<use dft plot1.png>
+Package pdftex.def Info: dft plot1.png  used on input line 298.
 (pdftex.def)             Requested size: 345.0pt x 142.42096pt.
 
 
-[5]
-\absvshift=\dimen336
+[7]
+\absvshift=\dimen342
 
-Overfull \hbox (100.46262pt too wide) in paragraph at lines 307--308
+Overfull \hbox (100.46262pt too wide) in paragraph at lines 347--348
 [][] 
  []
 
 
 
-[6 <./DFT plot1.png>]
-<DFT plot.png, id=178, 295.85532pt x 296.60812pt>
+[8 <./dft plot1.png>]
+<DFT plot.png, id=187, 295.85532pt x 296.60812pt>
 File: DFT plot.png Graphic file (type png)
 <use DFT plot.png>
-Package pdftex.def Info: DFT plot.png  used on input line 315.
+Package pdftex.def Info: DFT plot.png  used on input line 355.
 (pdftex.def)             Requested size: 172.5pt x 172.94252pt.
 
 
-[7]
+[9]
 
-[8 <./DFT plot.png>]
+[10 <./DFT plot.png>]
 
-[9] (Rapport metaldetektorprojekt.aux)
+[11] (Rapport metaldetektorprojekt.aux)
  ***********
 LaTeX2e <2025-06-01> patch level 1
 L3 programming layer <2025-07-20>
@@ -1075,10 +1237,10 @@ changed.
 (rerunfilecheck)             Checksum: 1245411C4C82A4B34B79720EFE2A420E;3119.
  ) 
 Here is how much of TeX's memory you used:
- 51805 strings out of 468134
- 1356070 string characters out of 5430740
- 2122363 words of memory out of 5000000
- 79821 multiletter control sequences out of 15000+600000
+ 52066 strings out of 468134
+ 1360970 string characters out of 5430740
+ 2129997 words of memory out of 5000000
+ 80063 multiletter control sequences out of 15000+600000
  632187 words of font info for 58 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  99i,12n,105p,745b,1129s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -1098,10 +1260,10 @@ s/cm/cmr5.pfb><C:/Users/Sebas/AppData/Local/Programs/MiKTeX/fonts/type1/public/
 amsfonts/cm/cmr7.pfb><C:/Users/Sebas/AppData/Local/Programs/MiKTeX/fonts/type1/
 public/amsfonts/cm/cmsy10.pfb><C:/Users/Sebas/AppData/Local/Programs/MiKTeX/fon
 ts/type1/public/amsfonts/cm/cmsy7.pfb>
-Output written on "Rapport metaldetektorprojekt.pdf" (10 pages, 1901044 bytes).
+Output written on "Rapport metaldetektorprojekt.pdf" (12 pages, 1904369 bytes).
 
 PDF statistics:
- 264 PDF objects out of 1000 (max. 8388607)
- 40 named destinations out of 1000 (max. 500000)
+ 274 PDF objects out of 1000 (max. 8388607)
+ 43 named destinations out of 1000 (max. 500000)
  224 words of extra memory for PDF output out of 10000 (max. 10000000)
 

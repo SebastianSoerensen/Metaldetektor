@@ -1,0 +1,26 @@
+\begin{tabular}{p{1.2cm} p{5cm} p{8cm}}
+\toprule
+Nummer: & Navn: & Beskrivelse: & Prioritet \\
+\midrule
+1 & Amplitude/Fase detektion & Det skal være muligt at kunne detektere amplitude og fase i det reflekterede signal & 1 \\
+2 & Metal type & Skal kunne skelne jern fra kobber, messing og aluminium & 1 \\
+3 & Distance krav & Skal kunne detektere en jerngenstand (radius på ca. 15mm. Og en længde på 50mm.) i en dybde på 50mm. I fri luft & 1 \\
+4 & Strømforsyning & Hele metaldetektoren skal kunne køre på et 9 volts batteri (batteristørrelse E/6LR61) - kun et batteri.  & 1 \\
+5 & Funktionstid & Metaldetektoren skal kunne køre minimum 100 minutter på batteriet og den ubelastede rest-spænding skal være større end 6 volt efter de 100 minutter & 1 \\
+6a & Processor design & Kredsløbet skal være baseret på en Arduino & 1 \\
+6b & Hardware design & Kredsløbene til at drive spolerne og forstærke det modtagne signal skal bygges med diskrete komponenter såsom: transistorer, operationsforstærkere, m.m. & 1 \\
+7 & Muligt software design & Brug Arduino'ens ADC og kontroller denne med timer interrupts & 2 \\
+8a & Bruger interface display & Skal kunne udskrive amplitude og fase i et display & 1 \\
+8b & Display udlæsningsstabilitet & Værdierne i displayet skal være læsbar for et flertal af brugere (spørg om hjælp) & 1 \\
+8c & Forbedret display udlæsningsstabilitet & Der anvendes et FIR eller IIR filter til at lavpas-filtrere (midle) udlæsningen. & 2 \\
+9a & Bruger interface primære knapper & Der skal være en start/stop knap & 1 \\
+9b & Bruger intercace sekundære knapper & Der skal være en nulstillingsknap (fratrækker værdierne når detektoren ikke er i nærheden af metal) & 1 \\
+10 & Detektions princip & Very Low Frequency (VLF) & 1 \\
+11 & Samplingsfrekvens & 8 kHz +/- 100Hz & 1 \\
+12 & Detektionsfrekvens & 2 kHz +/- 100Hz & 1 \\
+13 & Metaldetektorudformning & 3D-printet/trækonstruktion/plast & 2 \\
+14 & Spolernes bæreenhed & 3D-printet spoleform /læserskåret plastik & 2 \\
+15 & Spoleudformning & Spolerne anvender en centreret udformning med sende-spolen yderst og feedback/modtager spolen inderst. & 2 \\
+16 & Modtager spolens selvinduktans & Modtager spolen skal have en selvinduktans på mindst 10 mHy. & 1 \\
+\bottomrule
+\end{tabular}

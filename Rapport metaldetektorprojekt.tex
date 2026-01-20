@@ -15,6 +15,13 @@
 \usepackage{graphicx}
 \usepackage{hyperref}
 \usepackage{chngcntr}
+\usepackage{tabularx}
+\usepackage{longtable}
+\usepackage{ltablex}
+\keepXColumns
+\renewcommand{\arraystretch}{1.2}
+\usepackage[utf8]{inputenc}
+\renewcommand{\arraystretch}{1.2}
 \usetikzlibrary{positioning,arrows.meta,shapes.geometric}
 \renewcommand{\tableautorefname}{Tabel}
 \renewcommand{\sectionautorefname}{Afsnit}
@@ -101,57 +108,90 @@ thick,
 	\tableofcontents
 	\newpage
 \section{Introduktion}
-	\begin{figure}[H]
-		\begin{tikzpicture}[
-			block/.style={
-				draw,
-				rectangle,
-				minimum width=2.6cm,
-				minimum height=1.2cm,
-				align=center
-			},
-			io/.style={
-				draw,
-				ellipse,
-				minimum width=2.4cm,
-				minimum height=1.2cm,
-				align=center
-			},
-			arrow/.style={
-				->,
-				thick,
-				>=Latex
-			}
-			]
-			
-			% Nodes
-			\node[block] (arduino) {Arduino};
-			\node[block, left=1.2cm of arduino] (buzzer) {Buzzer};
-			\node[block,below=1.2cm of buzzer] (display) {Display};
-			\node[block, right=1.2cm of arduino] (pa) {Power Amplifier};
-			\node[block, below=1.2cm of arduino] (amp) {Amplifier};
-			\node[io,below=1.2cm of pa] (coils) {Spoler};
-			
-			% Arrows
-			\draw[arrow] (arduino) -- (pa);
-			\draw[arrow] (pa) -- (coils);
-			\draw[arrow] (coils) -- (amp.east);
-			\draw[arrow] (amp.north) -- (arduino.south);
-			\draw[arrow] (arduino.south west) -- (display.north east);
-			\draw[arrow] (arduino.west) -- (buzzer.east);
-			
-		\end{tikzpicture}
-		\caption{Overordnet moduldiagram af systemet}
-		\label{fig:ModuleDiagram}
-	\end{figure}
+Dette projekt omhandler udviklingen af en metaldetektor, herunder skal vi selv designe og implementere hhv. software og hardware. Software delen skrives i embedded C, på en Arduino AtMega2560, hvor data vi sampler fra spolerne skal behandles og outputtes til brugeren. 
+
+Hardware-delen af projektet omhandler primært design og implementeringen af sensoren til detektion af metaller, samt diverse kredsløb, der har til formål at drive spolen, filtrere samt forstærke signalet. Systemet skal outputte en beregnet amplitude og fase til OLED-display, men vi har valgt også at implementere en buzzer til audio-feedback. 
+
+Herunder ses kravspecifikationen metaldetektor projektet har haft til formål at opnå.
+\begin{tabularx}{\textwidth}{p{0.3cm} p{4cm} X p{0.5cm}}
+	\endhead
+	Nr: & Navn: & Beskrivelse: & Prioritet \\
+	\midrule
+	1 & Amplitude/Fase detektion & Det skal være muligt at kunne detektere amplitude og fase i det reflekterede signal & 1 \\
+	2 & Metal type & Skal kunne skelne jern fra kobber, messing og aluminium & 1 \\
+	3 & Distance krav & Skal kunne detektere en jerngenstand (radius på ca. 15mm. Og en længde på 50mm.) i en dybde på 50mm. I fri luft & 1 \\
+	4 & Strømforsyning & Hele metaldetektoren skal kunne køre på et 9 volts batteri (batteristørrelse E/6LR61) - kun et batteri.  & 1 \\
+	5 & Funktionstid & Metaldetektoren skal kunne køre minimum 100 minutter på batteriet og den ubelastede rest-spænding skal være større end 6 volt efter de 100 minutter & 1 \\
+	6a & Processor design & Kredsløbet skal være baseret på en Arduino & 1 \\
+	6b & Hardware design & Kredsløbene til at drive spolerne og forstærke det modtagne signal skal bygges med diskrete komponenter såsom: transistorer, operationsforstærkere, m.m. & 1 \\
+	7 & Muligt software design & Brug Arduino'ens ADC og kontroller denne med timer interrupts & 2 \\
+	8a & Bruger interface display & Skal kunne udskrive amplitude og fase i et display & 1 \\
+	8b & Display udlæsningsstabilitet & Værdierne i displayet skal være læsbar for et flertal af brugere (spørg om hjælp) & 1 \\
+	8c & Forbedret display udlæsningsstabilitet & Der anvendes et FIR eller IIR filter til at lavpas-filtrere (midle) udlæsningen. & 2 \\
+	9a & Bruger interface primære knapper & Der skal være en start/stop knap & 1 \\
+	9b & Bruger intercace sekundære knapper & Der skal være en nulstillingsknap (fratrækker værdierne når detektoren ikke er i nærheden af metal) & 1 \\
+	10 & Detektions princip & Very Low Frequency (VLF) & 1 \\
+	11 & Samplingsfrekvens & 8 kHz +/- 100Hz & 1 \\
+	12 & Detektionsfrekvens & 2 kHz +/- 100Hz & 1 \\
+	13 & Metaldetektorudformning & 3D-printet/trækonstruktion/plast & 2 \\
+	14 & Spolernes bæreenhed & 3D-printet spoleform /læserskåret plastik & 2 \\
+	15 & Spoleudformning & Spolerne anvender en centreret udformning med sende-spolen yderst og feedback/modtager spolen inderst. & 2 \\
+	16 & Modtager spolens selvinduktans & Modtager spolen skal have en selvinduktans på mindst 10 mHy. & 1 \\
+	\bottomrule
+\end{tabularx}
+
+
 \section{Analyse}
+	\begin{figure}[H]
+	\begin{tikzpicture}[
+		block/.style={
+			draw,
+			rectangle,
+			minimum width=2.6cm,
+			minimum height=1.2cm,
+			align=center
+		},
+		io/.style={
+			draw,
+			ellipse,
+			minimum width=2.4cm,
+			minimum height=1.2cm,
+			align=center
+		},
+		arrow/.style={
+			->,
+			thick,
+			>=Latex
+		}
+		]
+		
+		% Nodes
+		\node[block] (arduino) {Arduino};
+		\node[block, left=1.2cm of arduino] (buzzer) {Buzzer};
+		\node[block,below=1.2cm of buzzer] (display) {Display};
+		\node[block, right=1.2cm of arduino] (pa) {Power Amplifier};
+		\node[block, below=1.2cm of arduino] (amp) {Amplifier};
+		\node[io,below=1.2cm of pa] (coils) {Spoler};
+		
+		% Arrows
+		\draw[arrow] (arduino) -- (pa);
+		\draw[arrow] (pa) -- (coils);
+		\draw[arrow] (coils) -- (amp.east);
+		\draw[arrow] (amp.north) -- (arduino.south);
+		\draw[arrow] (arduino.south west) -- (display.north east);
+		\draw[arrow] (arduino.west) -- (buzzer.east);
+		
+	\end{tikzpicture}
+	\caption{Overordnet moduldiagram af systemet}
+	\label{fig:ModuleDiagram}
+\end{figure}
 \section{Design}
 	\subsection{Analogt design}
 		\subsubsection{Energiberegninger}
 			Vi undersøgte os frem til at batteriet har en kapacitet på $550$mAh. Da batteriet aflades fra 9V til 6V, har vi lavet udregningen:
 				$$E_{tot}=V\cdot I\cdot3600 \iff E_{tot}=\frac{9V+6V}{2}\cdot0.55\text{A}\cdot3600\text{s}=14850\text{J}$$
-			Ved måling af strømforbruget finder vi at OLED-display og Arduinoen forbuger $\approx76.2\text{mA}$. Dette giver os $$E_{MCU}=5\text{V}\cdot76.2\cdot10^{-3}\text{A}\cdot3600\text{s}=1371.6\text{J}$$Vi reserverer $15\%$ af batteriet som buffer, for at være sikker på at overholde kravene. Resten af energien kan bruges til TX-spolen.
-			$$E_{TX}=E_{tot}\cdot(1-0.15)-E_{MCU}=11250.9J$$
+			Ved måling af strømforbruget finder vi at OLED-display og Arduinoen forbuger $\approx70.5\text{mA}$. Da vi skal kunne drive systemet i 100 minutter, kan vi derfor beregne A $$E_{MCU}=5\text{V}\cdot70.5\cdot10^{-3}\text{A}\cdot(100\cdot60)\text{s}=2115\text{J}$$Vi reserverer $10\%$ af batteriet som buffer, for at være sikker på at overholde kravene. Resten af energien kan bruges til TX-spolen.
+			$$E_{TX}=E_{tot}\cdot(1-0.15)-E_{MCU}=11250J$$
 		\subsubsection{Spoleberegninger}
 			\begin{center}
 				\textbf{TX-spole}
@@ -159,7 +199,7 @@ thick,
 			Ved resonans kan spændingen gennem spolen approksimeres ved grundtonen i fourierrækken  $$a_n\approx2\left(\frac{A}{n\pi}\right)\sin\left(\frac{n\pi}{2}\right)=2\left(\frac{9\text{V}}{\pi}\right)\sin\left(\frac{\pi}{2}\right)=5.73\text{V}$$
 			Hvorved RMS-spændingen kan bestemmes $$V_{RMS}=\frac{a_n}{\sqrt{2}}=4.05\text{V}$$
 			Derved kan vi nu beregne strømmen vi kan sende igennem spolen
-			$$I_{TX}=\frac{E_{TX}}{t\cdot V_{RMS}}=\frac{11250.9\text{J}}{3600\text{s}\cdot4.05\text{V}}=0.4628\text{A}$$
+			$$I_{TX}=\frac{E_{TX}}{t\cdot V_{RMS}}=\frac{11250\text{J}}{(60\cdot100)\text{s}\cdot4.05\text{V}}=0.4628\text{A}$$
 			Radiussen på TX-spolen vælges til $r_{TX}=10cm$, med $D_{TX}=\text{Ø}0.4\text{mm}$. Derved kan antallet af viklinger beregnes ved
 			$$R_{TX}=\frac{V_{RMS}}{I_{TX}}=8.754\Omega$$
 			$$N_{TX}=\frac{R_{TX}\cdot\left(\frac{D_{TX}}{2}\right)^2} {2\cdot r_{TX}\cdot\rho_{cu}}=\frac{8.754\Omega\cdot\left(\frac{0.4\text{mm}}{2}\right)^2}{2\cdot10\text{cm}\cdot1.77\cdot10^{-8}\Omega\cdot m}=98.9$$ hvilket afrundes til $N_{TX}=99$.\newline
@@ -248,14 +288,14 @@ thick,
 				\caption{Kredsløb til at filtrere støj væk ($\approx\frac{Fs}{2}=4\text{kHz}$) inden signalet bliver forstærket (som vist i \autoref{fig:OPAMP}). Modstanden på $50\text{k}\Omega$ repræsenterer indgangsimpedansen i operationsforstærkerkredsløbet.}
 				\label{fig:RXfilter}
 			\end{figure}
-			Som det ses i figuren, er $V_{filtered}=V_{Z_1}$. Filterets overføringsfunktion kan opstilles ved almindelig spændingsdeling, dvs. $$H(\omega)=\frac{R_2\cdot\frac{1}{j\omega C}} {R_1+Z_1+R_2\cdot\frac{1}{j\omega C}}$$ hvorefter fasen kan analyseres ved $$\phi(\omega)=\tan^{-1}\left(\frac{\Im\{H\}}{\Re\{H\}}\right)$$
+			Som det ses i figuren, er $V_{filtered}=V_{Z_1}$. Filterets overføringsfunktion kan opstilles ved almindelig spændingsdeling, dvs. $$H(\omega)=\frac{Z_1\cdot\frac{1}{j\omega C}} {j\omega L+R_1+Z_1\cdot\frac{1}{j\omega C}}$$ hvorefter fasen kan analyseres ved $$\phi(\omega)=\tan^{-1}\left(\frac{\Im\{H\}}{\Re\{H\}}\right)$$
 			og amplitude responset ved $$H_{dB}=20\log10(H)$$
 			\newline
 			Ifølge Shannon's sampling teorem ved vi at $F_{max}<\frac{F_s}{2}$. Da vi ikke har noget signal som ligger over $\frac{F_s}{2}=4\text{kHz}$ anvender vi dette filter, for at undgå problemer med aliaseringer. Filteret er designet således at fasen bliver påvirket mindst muligt, da det netop er fasen vi bruger til at skelne mellem materialer.
 				\begin{figure}[H]
-					\caption{RX-filterets fase- og magnitude respons, med markering af 4.2kHz}
+					\caption{RX-filterets fase- og magnitude respons, med markering af 2.2kHz}
 					\label{fig:dft-plot1}
-					\includegraphics[width=\textwidth]{"DFT plot1"}
+					\includegraphics[width=\textwidth]{"dft plot1"}
 				\end{figure}
 			Da metaldetektorens følsomhed overfor frekvenser afhænger af bl.a temperatur, har vi valgt at designe filteret efter et udgangspunkt på $4.2\text{kHz}$. Som det ses i plottet får vi dæmpet det værste af eventuelt højfrekvent støj, samtidigt med at vi aflæser fasen nogenlunde præcist med udgangspunkt i $4.2\text{kHz}$. 
 			
@@ -328,7 +368,6 @@ thick,
 \end{center}
 \begin{itemize}
 	\item Vikling af spoler
-	\item Implementering af kredsløb
 \end{itemize}
 
 \begin{center}
@@ -345,6 +384,7 @@ thick,
 \end{center}
 \begin{itemize}
 	\item C-programmering
+	\item Test og simulation af C-program
 	\item RX-filter
 	\item Grafik til rapport (plots, kredsløbstegninger,indskrivning af rapport)
 	\item 
@@ -354,7 +394,8 @@ thick,
 \end{center}
 \begin{itemize}
 	\item C-programmering
-	\item 
+	\item Test og simulation af C-program
+	\item Implementering af kredsløb
 \end{itemize}
 
 
