@@ -16,6 +16,7 @@
 \usepackage{hyperref}
 \usepackage{chngcntr}
 \usepackage{tabularx}
+\usepackage{pdflscape}
 \usepackage{longtable}
 \usepackage{ltablex}
 \keepXColumns
@@ -490,21 +491,22 @@ Herunder ses kravspecifikationen metaldetektor projektet har haft til formål at
 \section{Appendix}
 	\subsection{Gantt kort}
 		\begin{figure}[H]
-			\includegraphics[width=\textwidth]{Gannt kort.png}
+			\caption{Her ses arbejdsfordelingen. Mørkeblå = Fælles,\\ Grøn=Sebastian \& Oliver, Turkis = Bilal}
+			\includegraphics[width=\textwidth]{Gannt kort.png}%
 		\end{figure}
 		\newpage
 	\subsection{Mødereferater}
-		\subsubsection*{Møde dag 1}
+		\subsubsection*{Møde dag 2}
 		\begin{itemize}
 			\item Bilal starter på energiberegninger, samt opstart på beregninger vedrørende spolerne.
 			\item Sebastian og Oliver foretager målinger på Arduino, for bedre at kunne estimere strømforbruget til energiberegningerne. Derefter starter de op på C-programmering. 
 		\end{itemize}
-		\subsubsection*{Møde dag 2}
+		\subsubsection*{Møde dag 3}
 		\begin{itemize}
 			\item Sebastian og Oliver fortsætter med C-programmering, herunder moduler til DFT, DSP og tilstandsmaskine, samt generel struktur på programmet.
 			\item Bilal fortsætter med at arbejde på spolen, og får startet på at lave en prototype til Power amplifieren. 
 		\end{itemize}
-		\subsubsection*{Møde dag 4}
+		\subsubsection*{Møde dag 5}
 		\begin{itemize}
 			\item Bilal fortsætter med simulation af Power Amplifier, samt 3D tegning af spolen.
 			\item Sebastian og Oliver fortsætter med C-programmering, herunder moduler til PWM, OLED-display, ADC. Efterfølgende påbegyndes modul til buzzer (til lydindikation af fase/amplitude), samt opsætning af sleep-funktion i Arduino for strømbesparelse. Desuden laves der et python-script til simulering af data som ligges i flashhukommelse på Atmega2560'eren, og det kontrolleres om DFT-algoritmen samt display og DSP virker som ønsket, ved sammenligning mellem Atmega2560 output og resultatet fra Python-scriptet. 

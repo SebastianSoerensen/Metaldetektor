@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.8.20)  21 JAN 2026 11:22
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.8.20)  21 JAN 2026 11:36
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -903,6 +903,19 @@ Package: tabularx 2023/12/11 v2.12a `tabularx' package (DPC)
 \TX@cols=\count354
 \TX@ftn=\toks50
 )
+(C:\Users\Sebas\AppData\Local\Programs\MiKTeX\tex/latex/pdflscape\pdflscape.sty
+Package: pdflscape 2022-10-27 v0.13 Display of landscape pages in PDF
+
+(C:\Users\Sebas\AppData\Local\Programs\MiKTeX\tex/latex/pdflscape\pdflscape-nom
+etadata.sty
+Package: pdflscape-nometadata 2022-10-28 v0.13 Display of landscape pages in PD
+F (HO)
+
+(C:\Users\Sebas\AppData\Local\Programs\MiKTeX\tex/latex/graphics\lscape.sty
+Package: lscape 2020/05/28 v3.02 Landscape Pages (DPC)
+)
+Package pdflscape Info: Auto-detected driver: pdftex on input line 81.
+))
 (C:\Users\Sebas\AppData\Local\Programs\MiKTeX\tex/latex/tools\longtable.sty
 Package: longtable 2024-12-18 v4.23 Multi-page Table package (DPC)
 \LTleft=\skip63
@@ -949,24 +962,24 @@ File: l3backend-pdftex.def 2025-06-09 L3 backend support: PDF output (pdfTeX)
 ) (Rapport metaldetektorprojekt.aux)
 \openout1 = `"Rapport metaldetektorprojekt.aux"'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 77.
-LaTeX Font Info:    ... okay on input line 77.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 77.
-LaTeX Font Info:    ... okay on input line 77.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 77.
-LaTeX Font Info:    ... okay on input line 77.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 77.
-LaTeX Font Info:    ... okay on input line 77.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 77.
-LaTeX Font Info:    ... okay on input line 77.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 77.
-LaTeX Font Info:    ... okay on input line 77.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 77.
-LaTeX Font Info:    ... okay on input line 77.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 77.
-LaTeX Font Info:    ... okay on input line 77.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 77.
-LaTeX Font Info:    ... okay on input line 77.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 78.
+LaTeX Font Info:    ... okay on input line 78.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 78.
+LaTeX Font Info:    ... okay on input line 78.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 78.
+LaTeX Font Info:    ... okay on input line 78.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 78.
+LaTeX Font Info:    ... okay on input line 78.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 78.
+LaTeX Font Info:    ... okay on input line 78.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 78.
+LaTeX Font Info:    ... okay on input line 78.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 78.
+LaTeX Font Info:    ... okay on input line 78.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 78.
+LaTeX Font Info:    ... okay on input line 78.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 78.
+LaTeX Font Info:    ... okay on input line 78.
 
 (C:\Users\Sebas\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mk
 ii
@@ -1005,24 +1018,9 @@ File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 Package pgfplots Warning: running in backwards compatibility mode (unsuitable t
 ick labels; missing features). Consider writing \pgfplotsset{compat=1.18} into 
 your preamble.
- on input line 77.
+ on input line 78.
 
-
-(C:\Users\Sebas\AppData\Local\Programs\MiKTeX\tex/latex/pdflscape\pdflscape.sty
-Package: pdflscape 2022-10-27 v0.13 Display of landscape pages in PDF
-
-(C:\Users\Sebas\AppData\Local\Programs\MiKTeX\tex/latex/pdflscape\pdflscape-nom
-etadata.sty
-Package: pdflscape-nometadata 2022-10-28 v0.13 Display of landscape pages in PD
-F (HO)
-
-(C:\Users\Sebas\AppData\Local\Programs\MiKTeX\tex/latex/graphics\lscape.sty
-Package: lscape 2020/05/28 v3.02 Landscape Pages (DPC)
-)
-Package pdflscape Info: Auto-detected driver: pdftex on input line 81.
-))
-Package hyperref Info: Link coloring OFF on input line 77.
-
+Package hyperref Info: Link coloring OFF on input line 78.
 (Rapport metaldetektorprojekt.out) (Rapport metaldetektorprojekt.out)
 \@outlinefile=\write4
 \openout4 = `"Rapport metaldetektorprojekt.out"'.
@@ -1030,17 +1028,17 @@ Package hyperref Info: Link coloring OFF on input line 77.
 <Seb billede.png, id=134, 218.31563pt x 295.1025pt>
 File: Seb billede.png Graphic file (type png)
 <use Seb billede.png>
-Package pdftex.def Info: Seb billede.png  used on input line 87.
+Package pdftex.def Info: Seb billede.png  used on input line 88.
 (pdftex.def)             Requested size: 77.12132pt x 113.80988pt.
 <Oli billede.jpg, id=137, 1246.6575pt x 2216.28pt>
 File: Oli billede.jpg Graphic file (type jpg)
 <use Oli billede.jpg>
-Package pdftex.def Info: Oli billede.jpg  used on input line 93.
+Package pdftex.def Info: Oli billede.jpg  used on input line 94.
 (pdftex.def)             Requested size: 62.70436pt x 113.80708pt.
 <Bilal billede.png, id=139, 1084.05pt x 722.7pt>
 File: Bilal billede.png Graphic file (type png)
 <use Bilal billede.png>
-Package pdftex.def Info: Bilal billede.png  used on input line 99.
+Package pdftex.def Info: Bilal billede.png  used on input line 100.
 (pdftex.def)             Requested size: 103.48843pt x 67.08115pt.
 
 
@@ -1059,119 +1057,119 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.109 	\newpage
+l.110 	\newpage
                 [1]
-Overfull \hbox (5.65857pt too wide) in paragraph at lines 141--141
+Overfull \hbox (5.65857pt too wide) in paragraph at lines 142--142
 []|\OT1/cmr/m/n/10 Nr:| 
  []
 
 
-Overfull \hbox (23.19038pt too wide) in paragraph at lines 141--141
+Overfull \hbox (23.19038pt too wide) in paragraph at lines 142--142
 []|\OT1/cmr/m/n/10 Prioritet| 
  []
 
 
-Underfull \hbox (badness 4108) in paragraph at lines 141--141
+Underfull \hbox (badness 4108) in paragraph at lines 142--142
 []|\OT1/cmr/m/n/10 Metaldetektoren skal kunne k^^\re
  []
 
 
-Overfull \hbox (1.46413pt too wide) in paragraph at lines 141--141
+Overfull \hbox (1.46413pt too wide) in paragraph at lines 142--142
 []|\OT1/cmr/m/n/10 6a| 
  []
 
 
-Overfull \hbox (2.01968pt too wide) in paragraph at lines 141--141
+Overfull \hbox (2.01968pt too wide) in paragraph at lines 142--142
 []|\OT1/cmr/m/n/10 6b| 
  []
 
 
-Underfull \hbox (badness 1789) in paragraph at lines 141--141
+Underfull \hbox (badness 1789) in paragraph at lines 142--142
 []|\OT1/cmr/m/n/10 Kredsl^^\bene til at drive spol-erne
  []
 
 
-Underfull \hbox (badness 1072) in paragraph at lines 141--141
+Underfull \hbox (badness 1072) in paragraph at lines 142--142
 \OT1/cmr/m/n/10 og forst^^Zrke det mod-tagne sig-nal
  []
 
 
-Overfull \hbox (1.46413pt too wide) in paragraph at lines 141--141
+Overfull \hbox (1.46413pt too wide) in paragraph at lines 142--142
 []|\OT1/cmr/m/n/10 8a| 
  []
 
 
-Overfull \hbox (2.01968pt too wide) in paragraph at lines 141--141
+Overfull \hbox (2.01968pt too wide) in paragraph at lines 142--142
 []|\OT1/cmr/m/n/10 8b| 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 141--141
+Underfull \hbox (badness 10000) in paragraph at lines 142--142
 []|\OT1/cmr/m/n/10 Display udl^^Zs-ningssta-
  []
 
 
-Overfull \hbox (0.90855pt too wide) in paragraph at lines 141--141
+Overfull \hbox (0.90855pt too wide) in paragraph at lines 142--142
 []|\OT1/cmr/m/n/10 8c| 
  []
 
 
-Overfull \hbox (1.46413pt too wide) in paragraph at lines 141--141
+Overfull \hbox (1.46413pt too wide) in paragraph at lines 142--142
 []|\OT1/cmr/m/n/10 9a| 
  []
 
 
-Overfull \hbox (2.01968pt too wide) in paragraph at lines 141--141
+Overfull \hbox (2.01968pt too wide) in paragraph at lines 142--142
 []|\OT1/cmr/m/n/10 9b| 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 141--141
+Underfull \hbox (badness 10000) in paragraph at lines 142--142
 []|\OT1/cmr/m/n/10 Bruger in-ter-cace
  []
 
 
-Underfull \hbox (badness 1215) in paragraph at lines 141--141
+Underfull \hbox (badness 1215) in paragraph at lines 142--142
 []|\OT1/cmr/m/n/10 Der skal v^^Zre en nul-still-ingsknap
  []
 
 
-Overfull \hbox (1.46413pt too wide) in paragraph at lines 141--141
+Overfull \hbox (1.46413pt too wide) in paragraph at lines 142--142
 []|\OT1/cmr/m/n/10 10| 
  []
 
 
-Overfull \hbox (1.46413pt too wide) in paragraph at lines 141--141
+Overfull \hbox (1.46413pt too wide) in paragraph at lines 142--142
 []|\OT1/cmr/m/n/10 11| 
  []
 
 
-Overfull \hbox (1.46413pt too wide) in paragraph at lines 141--141
+Overfull \hbox (1.46413pt too wide) in paragraph at lines 142--142
 []|\OT1/cmr/m/n/10 12| 
  []
 
 
-Overfull \hbox (1.46413pt too wide) in paragraph at lines 141--141
+Overfull \hbox (1.46413pt too wide) in paragraph at lines 142--142
 []|\OT1/cmr/m/n/10 13| 
  []
 
 
-Overfull \hbox (1.46413pt too wide) in paragraph at lines 141--141
+Overfull \hbox (1.46413pt too wide) in paragraph at lines 142--142
 []|\OT1/cmr/m/n/10 14| 
  []
 
 
-Underfull \hbox (badness 4608) in paragraph at lines 141--141
+Underfull \hbox (badness 4608) in paragraph at lines 142--142
 []|\OT1/cmr/m/n/10 3D-printet spole-form /l^^Zsersk^^Waret
  []
 
 
-Overfull \hbox (1.46413pt too wide) in paragraph at lines 141--141
+Overfull \hbox (1.46413pt too wide) in paragraph at lines 142--142
 []|\OT1/cmr/m/n/10 15| 
  []
 
 
-Overfull \hbox (1.46413pt too wide) in paragraph at lines 141--141
+Overfull \hbox (1.46413pt too wide) in paragraph at lines 142--142
 []|\OT1/cmr/m/n/10 16| 
  []
 
@@ -1186,7 +1184,7 @@ Overfull \hbox (1.46413pt too wide) in paragraph at lines 141--141
 [6]
 
 [7]
-Overfull \hbox (48.32372pt too wide) detected at line 277
+Overfull \hbox (48.32372pt too wide) detected at line 278
 \OMS/cmsy/m/n/10 j\OML/cmm/m/it/10 B\OMS/cmsy/m/n/10 j \OT1/cmr/m/n/10 = []  \O
 MS/cmsy/m/n/10 ([])  \OT1/cmr/m/n/10 287\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 6\OML
 /cmm/m/it/10 ^^V[] \OT1/cmr/m/n/10 = []  =[]\OMS/cmsy/m/n/10 )  \OML/cmm/m/it/1
@@ -1194,7 +1192,7 @@ MS/cmsy/m/n/10 ([])  \OT1/cmr/m/n/10 287\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 6\OML
  []
 
 
-Overfull \hbox (64.29013pt too wide) in paragraph at lines 322--323
+Overfull \hbox (64.29013pt too wide) in paragraph at lines 323--324
  [][] 
  []
 
@@ -1208,7 +1206,7 @@ Overfull \hbox (64.29013pt too wide) in paragraph at lines 322--323
 <dft plot1.png, id=240, 893.58844pt x 368.87813pt>
 File: dft plot1.png Graphic file (type png)
 <use dft plot1.png>
-Package pdftex.def Info: dft plot1.png  used on input line 356.
+Package pdftex.def Info: dft plot1.png  used on input line 357.
 (pdftex.def)             Requested size: 345.0pt x 142.42096pt.
 
 
@@ -1217,7 +1215,7 @@ Package pdftex.def Info: dft plot1.png  used on input line 356.
 
 
 [11 <./dft plot1.png>]
-Overfull \hbox (100.46262pt too wide) in paragraph at lines 407--408
+Overfull \hbox (100.46262pt too wide) in paragraph at lines 408--409
 [][] 
  []
 
@@ -1227,12 +1225,12 @@ Overfull \hbox (100.46262pt too wide) in paragraph at lines 407--408
 <DFT plot.png, id=260, 295.85532pt x 296.60812pt>
 File: DFT plot.png Graphic file (type png)
 <use DFT plot.png>
-Package pdftex.def Info: DFT plot.png  used on input line 415.
+Package pdftex.def Info: DFT plot.png  used on input line 416.
 (pdftex.def)             Requested size: 172.5pt x 172.94252pt.
 
 
 [13]
-Overfull \hbox (125.38106pt too wide) in paragraph at lines 438--439
+Overfull \hbox (125.38106pt too wide) in paragraph at lines 439--440
 [][] 
  []
 
@@ -1244,18 +1242,18 @@ Overfull \hbox (125.38106pt too wide) in paragraph at lines 438--439
 <Gannt kort.png, id=278, 1694.58093pt x 362.85562pt>
 File: Gannt kort.png Graphic file (type png)
 <use Gannt kort.png>
-Package pdftex.def Info: Gannt kort.png  used on input line 493.
+Package pdftex.def Info: Gannt kort.png  used on input line 495.
 (pdftex.def)             Requested size: 345.0pt x 73.87096pt.
 
 
 [16 <./Gannt kort.png>]
-Overfull \hbox (6.16733pt too wide) in paragraph at lines 515--516
+Overfull \hbox (6.16733pt too wide) in paragraph at lines 517--518
 \OT1/cmr/m/n/10 Idag har vi f^^Zlles fore-taget m^^Walinger p^^Wa spolen, samt 
 viklet buck-spolen tilstr^^Zkke-
  []
 
 
-Overfull \hbox (32.0829pt too wide) in paragraph at lines 518--519
+Overfull \hbox (32.0829pt too wide) in paragraph at lines 520--521
 []\OT1/cmr/m/n/10 Sebastian og Oliver laver et modul i C ko-den til sleep-funkt
 ion for str^^\mbesparelse.
  []
@@ -1274,9 +1272,9 @@ changed.
 (rerunfilecheck)             Checksum: 5E5208B0D720FC0994B43C2C0157B83E;4348.
  ) 
 Here is how much of TeX's memory you used:
- 52185 strings out of 468134
- 1363106 string characters out of 5430740
- 2130753 words of memory out of 5000000
+ 52186 strings out of 468134
+ 1363114 string characters out of 5430740
+ 2130833 words of memory out of 5000000
  80154 multiletter control sequences out of 15000+600000
  632831 words of font info for 60 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -1298,10 +1296,10 @@ amsfonts/cm/cmr7.pfb><C:/Users/Sebas/AppData/Local/Programs/MiKTeX/fonts/type1/
 public/amsfonts/cm/cmsy10.pfb><C:/Users/Sebas/AppData/Local/Programs/MiKTeX/fon
 ts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Users/Sebas/AppData/Local/Programs/Mi
 KTeX/fonts/type1/public/amsfonts/cm/cmti9.pfb>
-Output written on "Rapport metaldetektorprojekt.pdf" (19 pages, 1979892 bytes).
+Output written on "Rapport metaldetektorprojekt.pdf" (19 pages, 1980127 bytes).
 
 PDF statistics:
- 378 PDF objects out of 1000 (max. 8388607)
- 69 named destinations out of 1000 (max. 500000)
+ 379 PDF objects out of 1000 (max. 8388607)
+ 70 named destinations out of 1000 (max. 500000)
  317 words of extra memory for PDF output out of 10000 (max. 10000000)
 
