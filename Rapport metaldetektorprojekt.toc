@@ -7,12 +7,12 @@
 \contentsline {subsubsection}{\numberline {2.2.1}Timing og sampling}{5}{subsubsection.2.2.1}%
 \contentsline {subsubsection}{\numberline {2.2.2}DFT}{5}{subsubsection.2.2.2}%
 \contentsline {subsubsection}{\numberline {2.2.3}Double buffer}{5}{subsubsection.2.2.3}%
-\contentsline {subsubsection}{\numberline {2.2.4}DSP funktioner}{5}{subsubsection.2.2.4}%
+\contentsline {subsubsection}{\numberline {2.2.4}DSP funktioner}{6}{subsubsection.2.2.4}%
 \contentsline {subsubsection}{\numberline {2.2.5}Display og buzzer}{6}{subsubsection.2.2.5}%
 \contentsline {subsubsection}{\numberline {2.2.6}Sleep}{6}{subsubsection.2.2.6}%
-\contentsline {section}{\numberline {3}Design}{6}{section.3}%
-\contentsline {subsection}{\numberline {3.1}Analogt design}{6}{subsection.3.1}%
-\contentsline {subsubsection}{\numberline {3.1.1}Energiberegninger}{6}{subsubsection.3.1.1}%
+\contentsline {section}{\numberline {3}Design}{7}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Analogt design}{7}{subsection.3.1}%
+\contentsline {subsubsection}{\numberline {3.1.1}Energiberegninger}{7}{subsubsection.3.1.1}%
 \contentsline {subsubsection}{\numberline {3.1.2}Spoleberegninger}{7}{subsubsection.3.1.2}%
 \contentsline {subsubsection}{\numberline {3.1.3}Power Amplifier}{9}{subsubsection.3.1.3}%
 \contentsline {subsubsection}{\numberline {3.1.4}Filtrering af spolesignal}{10}{subsubsection.3.1.4}%
@@ -24,8 +24,9 @@
 \contentsline {subsubsection}{\numberline {3.2.4}Tilstandsmaskine}{14}{subsubsection.3.2.4}%
 \contentsline {subsubsection}{\numberline {3.2.5}Digital signal behandling}{15}{subsubsection.3.2.5}%
 \contentsline {section}{\numberline {4}Implementering og test}{15}{section.4}%
-\contentsline {section}{\numberline {5}Ansvarsområder (hvem har lavet hvad)}{15}{section.5}%
-\contentsline {section}{\numberline {6}Konklusion}{15}{section.6}%
-\contentsline {section}{\numberline {7}Appendix}{15}{section.7}%
-\contentsline {subsection}{\numberline {7.1}Gantt kort}{15}{subsection.7.1}%
-\contentsline {subsection}{\numberline {7.2}Mødereferater}{15}{subsection.7.2}%
+\contentsline {section}{\numberline {5}Konklusion}{15}{section.5}%
+\contentsline {section}{\numberline {6}Ansvarsområder}{15}{section.6}%
+\contentsline {section}{\numberline {7}Appendix}{16}{section.7}%
+\contentsline {subsection}{\numberline {7.1}Gantt kort}{16}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}Mødereferater}{17}{subsection.7.2}%
+\contentsline {subsection}{\numberline {7.3}Kodebilag}{18}{subsection.7.3}%

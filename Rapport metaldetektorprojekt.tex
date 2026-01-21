@@ -191,11 +191,13 @@ Herunder ses kravspecifikationen metaldetektor projektet har haft til formål at
 			\newline DD-spolen har bedre dækning til siderne, hvorimod den konsentriske er mere følsom under selve spolen og kan scanne dybere. Vi ser også at DD-spolen har en mere kompleks struktur, hvilket vil kræve mere arbejde i form af strengere krav til 3D-print. Det er desuden også nævnt i artiklen at det, ved anvendelse af den konsentriske form, er nemmere at udligne feltet fra TX-spolen i Bucking-spolen. \newline Grundet den mere simple opbygning - og bedre scannings dybde, vælger vi at anvende den konsentriske opbyging. 
 		\subsubsection{Signalbehandling}
 			Ved signalfiltreringen ser vi aflæsningen af fasen som noget vi skal være særligt opmærksomme på, da det er denne som skal bruges til at skelne imellem metallerne.\newline
-			Da det er skin-effekten som forårsager faseskiftet, ved vi at den kan beregnes ved
+			Skin-effekten medfører både amplitudedæmpning og faseskift i det indtrængende felt. For en god leder er dæmpningskonstanten $\alpha$ og fasekonstanten $\beta$ givet ved $\alpha=\beta=\frac{1}{\delta}$, således at faseskiftet $\phi$ over en indtrængningsdybde $z$ kan beregnes ved $\phi=\frac{z}{\delta}$, hvor
 			$$\delta=\sqrt{\frac{2}{\omega\mu\sigma}}$$
-			Ved detektionsfrekvensen på $f_d=2\text{kHz}$ (krav 12), og anvendelse af materialernes ledningsevner, forventer vi faseskiftene til at være: 
+			
+			Ved detektionsfrekvensen på $f_d=2\text{kHz}$ (krav 12), og anvendelse af materialernes ledningsevner, forventer vi de relative størrelsesforhold mellem materialernes faseskift til at være
 				\begin{table}[H]
 					\centering
+					\caption{Forventet faseskift i materialerne, ved antagelse af $\mu=1$}
 					\begin{tabular}{|l|c|c|}
 						\hline
 						\textbf{Metal}&\textbf{Ledningsevne [S/m]}&\textbf{Faseskift [$^\circ$]}\\
@@ -206,6 +208,7 @@ Herunder ses kravspecifikationen metaldetektor projektet har haft til formål at
 						\hline
 					\end{tabular}
 				\end{table}
+			Dette er dog kun en approksimation, da faseskiftet er afhængigt af flere faktorer såsom temperatur, materialets geometri, samt afstanden mellem sensoren og materialet.\newline
 			Da de 3 metaller som vi jf. kravspecifikationen skal kunne skelne imellem ligger relativt tæt i faseskift, er vi særligt opmærksomme på ikke at forstyrre fasen i signalbehandlingen. 
 	\subsection{Digital}
 		\subsubsection{Timing og sampling}
@@ -377,7 +380,7 @@ Herunder ses kravspecifikationen metaldetektor projektet har haft til formål at
 					\caption{Kredsløb til at forstærke den filtrerede spænding fra RX-spolen op, inden det læses ind i MCU ADC'en. $V_{filtered}$ er outputtet fra RX-filteret.}
 					\label{fig:OPAMP}
 				\end{figure}
-			Da spændingen fra RX-spolen ikke er højt nok til at vi kan aflæse det på MCU’en, bruger vi dette operationsforstærker kredsløb, til at trække spændingen op til $\approx 5\text{V}$ maks, for på den måde at anvende flest mulige bits i ADC’en og opnå bedst mulig opløsning. Vi anvender et potentiometer som feedback-modstand, for på den måde at kunne forstærke et mindre signal op ved behov, så følsomheden på detektoren kan indstilles. 
+			Da spændingen fra RX-spolen ikke er højt nok til at vi kan aflæse det på MCU’en, bruger vi dette operationsforstærker kredsløb, til at trække spændingen op til $\approx 5\text{V}$, for på den måde at anvende flest mulige bits i ADC’en og opnå bedst mulig opløsning. Vi anvender et potentiometer som feedback-modstand, for på den måde at kunne forstærke et mindre signal op ved behov, så følsomheden på detektoren kan indstilles. 
 	\subsection{Digitalt design}
 		\subsubsection{Moduldiagram og introduktion}
 			\begin{figure}[H]
@@ -414,6 +417,28 @@ Herunder ses kravspecifikationen metaldetektor projektet har haft til formål at
 			\label{fig:dft-plot}
 		\end{figure}
 		\subsubsection{Tilstandsmaskine}
+			\begin{figure}[H]
+				\begin{tikzpicture}
+					\node[startstop,align=center] (idle) {IDLE};
+					\node[decision,below=1.2 of idle,xshift=2.1cm] (calibratebutton) {Calibrate button};
+					\node[startstop,below=1.2 of calibratebutton] (calibrating) {CALIBRATING};
+					\node[decision,right=1.2 of calibrating] (iscalibrated) {Done calibrating};
+					\draw[arrow] (idle.south east) -| (calibratebutton.north);
+					\draw[arrow] (calibratebutton.south) -- (calibrating.north);
+					\draw[arrow] (calibrating.east) -- (iscalibrated.west);
+					\draw[arrow] (iscalibrated.north) |- (idle.east);
+					\node[startstop,left=1.2cm of calibrating] (run) {RUN};
+					\node[decision,left=0.8cm of calibratebutton] (runbutton) {Run button};
+					\node[decision,left=1.2cm of run] (runbutton2) {Run button};
+					\draw[arrow] (idle.south west) -| (runbutton.north);
+					\draw[arrow] (runbutton.south) -- (run.north);
+					\draw[arrow] (run.west) -- (runbutton2.east);
+					\draw[arrow] (runbutton2.north) |- (idle.west); 
+					\node[below=0.1cm of calibrating,align=left,font=\small\itshape] (defaultnote) {Default state};
+				\end{tikzpicture}
+				\caption{Flowchart af tilstandsmaskinen}
+				\label{fig:FSMflowchart}
+			\end{figure}
 			Softwares dataflow styres i main af en FSM bestående af 3 tilstande, herunder: CALIBRATING, IDLE, RUNNING.
 			Kalibrerings tilstanden indsamler 32 DFT blokke (uden metal), hvor den beregner et gennemsnit af disse som bruges til et nulpunkt.\newline Denne tilstand styres af en interrupt baseret knap, som tillader adgang til CALIBRATING efter behov, da temperaturskift kan påvirke metaldetektoren er det nødvendigt at kunne danne et nyt nulpunkt. \newline
 			IDLE tilstanden bruges som en homescreen. Herinde er sampling deaktiveret, altså bruges der betydelig mindre strøm hvilket ligeledes er nødvendigt hvis man ikke aktivt søger metal. Ved opstart af metaldetektoren tilgås IDLE efter en automatisk kalibrering, herfra kan man enten genkalibrere eller gå til RUNNING ved brug af interrupt styret knapper.\newline
@@ -423,7 +448,9 @@ Herunder ses kravspecifikationen metaldetektor projektet har haft til formål at
 \section{Implementering og test}
 
 
-\section{Ansvarsområder (hvem har lavet hvad)}
+\section{Konklusion}
+
+\section{Ansvarsområder}
 \begin{center}
 	\textbf{Fælles}
 \end{center}
@@ -435,7 +462,7 @@ Herunder ses kravspecifikationen metaldetektor projektet har haft til formål at
 	\textbf{Bilal}
 \end{center}
 \begin{itemize}
-	\item 3D-print
+	\item 3D-print af spole
 	\item Power Amplifier
 	\item Spoleberegninger
 	\item Energiberegninger
@@ -448,7 +475,6 @@ Herunder ses kravspecifikationen metaldetektor projektet har haft til formål at
 	\item Test og simulation af C-program
 	\item RX-filter
 	\item Grafik til rapport (plots, kredsløbstegninger,indskrivning af rapport)
-	\item 
 \end{itemize}
 \begin{center}
 	\textbf{Oliver}
@@ -460,10 +486,37 @@ Herunder ses kravspecifikationen metaldetektor projektet har haft til formål at
 \end{itemize}
 
 
-\section{Konklusion}
-
 	
 \section{Appendix}
 	\subsection{Gantt kort}
+		\begin{figure}[H]
+			\includegraphics[width=\textwidth]{Gannt kort.png}
+		\end{figure}
+		\newpage
 	\subsection{Mødereferater}
+		\subsubsection*{Møde dag 1}
+		\begin{itemize}
+			\item Bilal starter på energiberegninger, samt opstart på beregninger vedrørende spolerne.
+			\item Sebastian og Oliver foretager målinger på Arduino, for bedre at kunne estimere strømforbruget til energiberegningerne. Derefter starter de op på C-programmering. 
+		\end{itemize}
+		\subsubsection*{Møde dag 2}
+		\begin{itemize}
+			\item Sebastian og Oliver fortsætter med C-programmering, herunder moduler til DFT, DSP og tilstandsmaskine, samt generel struktur på programmet.
+			\item Bilal fortsætter med at arbejde på spolen, og får startet på at lave en prototype til Power amplifieren. 
+		\end{itemize}
+		\subsubsection*{Møde dag 4}
+		\begin{itemize}
+			\item Bilal fortsætter med simulation af Power Amplifier, samt 3D tegning af spolen.
+			\item Sebastian og Oliver fortsætter med C-programmering, herunder moduler til PWM, OLED-display, ADC. Efterfølgende påbegyndes modul til buzzer (til lydindikation af fase/amplitude), samt opsætning af sleep-funktion i Arduino for strømbesparelse. Desuden laves der et python-script til simulering af data som ligges i flashhukommelse på Atmega2560'eren, og det kontrolleres om DFT-algoritmen samt display og DSP virker som ønsket, ved sammenligning mellem Atmega2560 output og resultatet fra Python-scriptet. 
+		\end{itemize}
+		\subsubsection*{Møde dag 6}
+		Planen for idag er at vi skal have testet C koden for sig, samt testet Power Amplifier for sig. Hvis begge ting virker enkeltvis, sættes de sammen og testes. Efterfølgende skal vi vikle spolerne, samt have opdateret C-koden til at kunne skelne imellem metaller. 
+		\subsubsection*{Møde dag 7}
+		Idag har vi fælles foretaget målinger på spolen, samt viklet buck-spolen tilstrækkeligt ud, så vi får udlignet det uønskede felt. Samt fælles kontrol af Power Amplifier. Alt er testet OK, således at der imorgen kan påbegyndes filtrering og forstærkning af spolens output, så vi snarest muligt kan sætte de analoge og digitale dele sammen, og teste det samlede system. 
+		\subsubsection*{Møde dag 8}
+		\begin{itemize}
+			\item Sebastian og Oliver laver et modul i C koden til sleep-funktion for strømbesparelse. Herefter forbereder de operationsforstærker kredsløbet til imorgen. 
+			\item Bilal tegner 3D printet til stangen til metaldetektoren. 
+		\end{itemize}		
+	\subsection{Kodebilag}
 \end{document}

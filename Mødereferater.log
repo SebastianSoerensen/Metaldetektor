@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.8.20)  14 JAN 2026 13:14
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.8.20)  21 JAN 2026 11:21
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -829,52 +829,44 @@ Package: lscape 2020/05/28 v3.02 Landscape Pages (DPC)
 )
 Package pdflscape Info: Auto-detected driver: pdftex on input line 81.
 ))
-
-LaTeX Warning: No \author given.
-
-
-
-[1
-
-{C:/Users/Sebas/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}]
-Overfull \hbox (6.16733pt too wide) in paragraph at lines 39--40
+Overfull \hbox (6.16733pt too wide) in paragraph at lines 37--38
 \OT1/cmr/m/n/10 Idag har vi f^^Zlles fore-taget m^^Walinger p^^Wa spolen, samt 
 viklet buck-spolen tilstr^^Zkke-
  []
 
 
-Overfull \hbox (32.0829pt too wide) in paragraph at lines 42--43
+Overfull \hbox (32.0829pt too wide) in paragraph at lines 40--41
 []\OT1/cmr/m/n/10 Sebastian og Oliver laver et modul i C ko-den til sleep-funkt
 ion for str^^\mbesparelse.
  []
 
 
 
-[2]
+[1
 
-[3] (Mødereferater.aux)
+{C:/Users/Sebas/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}]
+
+[2] (Mødereferater.aux)
  ***********
 LaTeX2e <2025-06-01> patch level 1
 L3 programming layer <2025-07-20>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 42211 strings out of 468134
- 1170352 string characters out of 5430740
+ 42184 strings out of 468134
+ 1170003 string characters out of 5430740
  1898347 words of memory out of 5000000
- 70374 multiletter control sequences out of 15000+600000
- 631474 words of font info for 56 fonts, out of 8000000 for 9000
+ 70357 multiletter control sequences out of 15000+600000
+ 627765 words of font info for 43 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 99i,6n,105p,729b,609s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 99i,5n,105p,729b,609s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\Sebas\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm
 1000.pk><C:/Users/Sebas/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfon
 ts/cm/cmbx12.pfb><C:/Users/Sebas/AppData/Local/Programs/MiKTeX/fonts/type1/publ
-ic/amsfonts/cm/cmr10.pfb><C:/Users/Sebas/AppData/Local/Programs/MiKTeX/fonts/ty
-pe1/public/amsfonts/cm/cmr12.pfb><C:/Users/Sebas/AppData/Local/Programs/MiKTeX/
-fonts/type1/public/amsfonts/cm/cmr17.pfb>
-Output written on Mødereferater.pdf (3 pages, 60365 bytes).
+ic/amsfonts/cm/cmr10.pfb>
+Output written on Mødereferater.pdf (2 pages, 37472 bytes).
 PDF statistics:
- 40 PDF objects out of 1000 (max. 8388607)
+ 27 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 
