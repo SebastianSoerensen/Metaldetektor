@@ -1,0 +1,10 @@
+\begin{tabular}{p{1.2cm} p{5cm} p{8cm}}
+\toprule
+Register & Værdi & Funktion \\
+\midrule
+TCCR1A & 0x00 & Normal port operation \\
+TCCR1B & (1 $<$$<$ WGM12) | (1 $<$$<$ CS11) & CTC mode, prescaler 8 \\
+OCR1A & 249 & 8 kHz compare match \\
+TIMSK1 & (1 $<$$<$ OCIE1A) & Interrupt enable (ISR) \\
+\bottomrule
+\end{tabular}

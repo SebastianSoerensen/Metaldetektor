@@ -1,0 +1,11 @@
+\begin{tabular}{p{1.2cm} p{5cm} p{8cm}}
+\toprule
+Komponent & Valgt løsning & Primær fordel \\
+\midrule
+DFT & algortime for "1,0,-1,0" & Undgår multiplikationer \\
+Buffering & Double buffer & Ingen datatab \\
+Amp/Fase & Amp() floating point, atan2()  & Præcision \\
+Filter & 32 tap glidnde gennemsnit & Støjreduktion \\
+Debounce & Software, 50 ms delay & Ingen ekstra hardware \\
+\bottomrule
+\end{tabular}

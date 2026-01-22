@@ -198,7 +198,7 @@ Herunder ses kravspecifikationen metaldetektor projektet har haft til formål at
 			Ved detektionsfrekvensen på $f_d=2\text{kHz}$ (krav 12), og anvendelse af materialernes ledningsevner, forventer vi de relative størrelsesforhold mellem materialernes faseskift til at være
 				\begin{table}[H]
 					\centering
-					\caption{Forventet faseskift i materialerne, ved antagelse af $\mu=1$}
+					\caption{Forventet relativt faseskift i materialerne, ved antagelse af $\mu=1$}
 					\begin{tabular}{|l|c|c|}
 						\hline
 						\textbf{Metal}&\textbf{Ledningsevne [S/m]}&\textbf{Faseskift [$^\circ$]}\\
@@ -409,14 +409,100 @@ Herunder ses kravspecifikationen metaldetektor projektet har haft til formål at
 				\caption{Overordnet moduldiagram af systemet}
 				\label{fig:DigitalModulDiagram}
 			\end{figure}
-		\subsubsection{Brugerinteraktion}
-		\subsubsection{DFT algoritme og sampling}
-		\begin{figure}[H]
-			\centering
-			\includegraphics[width=0.5\linewidth]{"DFT plot"}
-			\caption{Grafisk illustration over princippet bag DFT-algoritmen. Ved at vælge $F_d=\frac{F_s}{4}$, undgår vi at lave komplicerede komplekse beregninger.}
-			\label{fig:dft-plot}
-		\end{figure}
+		\subsubsection{Timer1}
+			\begin{enumerate}
+				\item Funktion: Generer en samplingsfrekvens på 8 kHz (Fs), og en spolefrekvens på 2 kHz.
+				
+				\item Designvalg
+				Timer1 opstilles i CTC-mode med en prescaler på $8$. Sammenligningsværdien beregnes ved:
+				%OCR1A = (F_CPU / (prescaler * Fs)) - 1 = 16 MHz / (8 * 8 kHz)) - 1 = 249.
+				$OCR1A = \frac{F_{CPU}}{prescaler\cdot F_s}-1= \frac{16\text{MHz}}{8\cdot8\text{kHz}}-1=249$
+				Spolefrekvensen sættes ved at toggle PB5 hver 2. interrupt:$\frac{F_s}{2\cdot2}=2\text{kHz}$% Fs / 2 / 2 = 2 kHz.
+				
+				\item	Begrundelse
+				Krav: Metaldetektor med 2 kHz drivfrekvens og passende samplerate til fasebestemmelse.
+				
+				Alternativ: Separat timer til spole og ADC. Denne idé blev droppet, idet en enkel timer med en divider er tilstrækkeligt, det sikrer også synkronisering af ADC og spole, derudover undgås en potentiel konflikt mellem de 2 ISR også.
+			\end{enumerate}
+			\begin{table}[H]
+					\centering
+					\input{TABEL1}
+			\end{table}
+		\subsubsection{ADC}
+			\begin{enumerate}
+				\item Funktion: Det analoge signal konverteres til digitale samples ved 8 kHz.
+				
+				\item Designvalg
+				ADC sættes med AVcc som reference, og en prescaler på $64$. Denne opstilling giver en ADC clock på $250$ kHz: $F_{clock}=\frac{F_{CPU}}{prescaler}=\frac{16\text{MHz}}{64}=250\text{kHz}$
+				En ADC konvertering tager $13\cdot f_c = 52 \mu s$, dette ligger indenfor $125 \mu s$ perioden mellem samples, hvor konverteringstiden er givet ved $\delta(t) = \frac{13}{250 \text{kHz}} = 52 \mu s$
+				
+				\item	Begrundelse
+				Krav: Passende ADC opløsning og hastighed til at kunne sample et $2 $kHz signal præcist (fra spolen).
+				
+				Alternativ: Prescaler på $128$, hvilket vil give $125$ kHz. Denne konfiguration giver et mindre støjet signal, men en konverteringshastighed på $104 \mu s$ som vurderes at være for tæt på sampletiden, dermed benyttes prescaleren på $64$.
+			\end{enumerate}
+				\begin{table}[H]
+					\centering
+					\input{TABEL2}
+				\end{table}
+				
+		\subsubsection{DFT}
+			\begin{figure}[H]
+				\centering
+				\includegraphics[width=0.5\linewidth]{"DFT plot"}
+				\caption{Grafisk illustration over princippet bag DFT-algoritmen. Ved at vælge $F_d=\frac{F_s}{4}$, undgår vi at lave komplicerede komplekse beregninger.}
+				\label{fig:dft-plot}
+			\end{figure}
+			\begin{enumerate}
+				\item Funktion: Beregner amplitude og fase ved $2$ kHz fra de indsamlede samples.
+				
+				\item Designvalg
+				En DFT algoritme opstilles ud fra k, således:
+				$k = \frac{f \cdot N}  {Fs} = \frac{2000 * 64} {8000} = 16$.
+				Dette udnyttes idet k følger $\cos(2\pi\frac{k\cdot n}{N})$ og $\sin(2\pi\frac{k\cdot n}{N})$ gennem “1,0,-1,0”. Hermed kan multiplikationer hvilket spare CPU’en en del.
+				\begin{table}[H]
+					\centering
+					\input{TABEL3}
+				\end{table}
+				
+				\item Begrundelse
+				Krav: Realtids bestemmelse af fase ved 2 kHz på MCU.
+				
+				Alternativ: En fuld FFT på 64 punkter, men det ville kræve mange komplekse multiplikationer per blok, hvilket ikke ønskes, idet den nærmest konstant skal være i gang, det vil betyde en alt for stor reduktion i CPU-tid.
+				
+				\item Ingeniørmæssigt bidrag: Genkendelse af den specifikke frekvensrelation $\frac{Fs}{f} = 4$ til at fjerne trigonomiske beregninger er absolut nødvendig optimering, der muliggør realtidsbehandling.
+			\end{enumerate}
+		
+		\subsubsection{Double buffer}
+			\begin{enumerate}
+				\item Funktion: Sørger for kontinuerlig dataflow mellem ISR og main.
+				
+				\item Designvalg
+				buffere adc\_buf[0] og adc\_buf[1] skiftes automatisk mellem aktivt at sample ved blok afslutning. Flags dft\_ready[b] og adc\_ready[b] signalerer til main der, med FSM, styre programmets dataflow.
+				
+				Begrundelse
+				Krav: Kontinuerlig sampling uden at miste data.
+				
+				\item Alternativ: En enkelt buffer med et stop-and-go princip vil kunne give huller i samplingen som potentielt kan misse korte metal detektioner. Alternativt er en ringbuffer en løsning, dog mere kompleks og muligvis ville data kunne overskrives hvilket igen leder til missede metaldetektorer.
+			\end{enumerate}
+		\subsubsection{DSP}
+			\begin{enumerate}
+				\item Amplitude
+				Implementation: abs(z)=sqrt(re*re+im*im) med floating point sqrt() fra math.h.
+				
+				Alternativ: En heltals approksimations algoritme: abs(Z) = max + 0.375 * min. Dette blev fravalgt, idet præcision prioriteres frem for hastighed og sqrt() kaldes kun 1 gang hver 8ms (per 64 samples), altså er hastighedsreduktionen ikke kritisk.
+				
+				\item Fase
+				Implementation: fase = atan2(im,re) * 180/pi, returner grader i intervallet [-180, 180].
+				
+				Alternativ: Atan2 approksimations algoritme, men fravalgt da math.h bibliotekets atan2() er hurtig nok og atan2() yder bedst præcision.
+				
+				\item Glidende gennemsnit
+				Implementation: 32-sample circulær buffer for amplituden og fasen. Gennemsnittet beregnes ved summation over hele bufferen.
+				
+				Tidsrespons: 32 blokke * 8ms/blok = 256 ms for fuld beregning af gennemsnit. Antallet samples blev valgt efter flere test, hvori 32 havde bedst støjfiltrering i forhold til responstid.
+				
+			\end{enumerate}
 		\subsubsection{Tilstandsmaskine}
 			\begin{figure}[H]
 				\begin{tikzpicture}
@@ -440,12 +526,43 @@ Herunder ses kravspecifikationen metaldetektor projektet har haft til formål at
 				\caption{Flowchart af tilstandsmaskinen}
 				\label{fig:FSMflowchart}
 			\end{figure}
+			\begin{table}[H]
+				\centering
+				\include{TABEL4}
+			\end{table}
 			Softwares dataflow styres i main af en FSM bestående af 3 tilstande, herunder: CALIBRATING, IDLE, RUNNING.
 			Kalibrerings tilstanden indsamler 32 DFT blokke (uden metal), hvor den beregner et gennemsnit af disse som bruges til et nulpunkt.\newline Denne tilstand styres af en interrupt baseret knap, som tillader adgang til CALIBRATING efter behov, da temperaturskift kan påvirke metaldetektoren er det nødvendigt at kunne danne et nyt nulpunkt. \newline
 			IDLE tilstanden bruges som en homescreen. Herinde er sampling deaktiveret, altså bruges der betydelig mindre strøm hvilket ligeledes er nødvendigt hvis man ikke aktivt søger metal. Ved opstart af metaldetektoren tilgås IDLE efter en automatisk kalibrering, herfra kan man enten genkalibrere eller gå til RUNNING ved brug af interrupt styret knapper.\newline
 			RUNNING tilstanden er her metaldetektoren aktivt søger metal, beregner delta ud fra det kalibrerede nulpunkt, anvender 32-sample glidende gennemsnit til at undgå alt for hurtigere skift i amplitude og fase på OLED display.
-		\subsubsection{Digital signal behandling}
-
+		\subsubsection{Buzzer}
+			\begin{enumerate}
+			\item Funktion: Generer akustisk feedback hvor frekvens indikerer metaltype og lydstyrke indikerer signalstyrke.
+			
+			\item Designvalg
+			Timer2 opstilles i fast PWM-mode med OCR2A som TOP og OCR2B som duty cycle. PH6 på Arduino ATMega2560 sættes på OC2B som output pin. Frekvens beregnes ved:
+			
+			f\_out = F\_CPU / (prescaler * (1 + OCR2A) = 16 MHz / (64 * (1 + OCR2A)
+			
+			\end{enumerate}
+			\begin{table}[H]
+				\centering
+				\include{TABEL5}
+			\end{table}
+		\subsubsection{Knap input}
+			\begin{enumerate}
+				\item Funktion: Styre brugerinput på knapperne “run” og “pwr”.
+				Designvalg
+				Knapperne er forbundet til PE4 og PE5 med interne pull-ups. Falling edge trigger starter ISR, som venter 50 ms derefter godkender, om knappen stadig er trykket.
+				
+				\item Begrundelse
+				Alternativ: Hardware debounce med et RC-filter, ville spare CPU-tid men ligeledes kræve ekstra komponenter, altså er software debounce et valg for simplicitet og fleksibilitet, dette tillades idet software løsningen virker uden problemer.
+				
+				\item Opsummering af designvalg
+			\end{enumerate}
+				\begin{table}[H]
+					\centering
+					\include{TABEL6}
+				\end{table}
 \section{Implementering og test}
 
 

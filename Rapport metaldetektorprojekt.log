@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.8.20)  21 JAN 2026 11:36
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.8.20)  22 JAN 2026 08:04
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -959,7 +959,8 @@ File: pgflibraryshapes.geometric.code.tex 2023-01-15 v3.1.10 (3.1.10)
 tex.def
 File: l3backend-pdftex.def 2025-06-09 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count360
-) (Rapport metaldetektorprojekt.aux)
+) (Rapport metaldetektorprojekt.aux (TABEL4.aux) (TABEL5.aux)
+(TABEL6.aux))
 \openout1 = `"Rapport metaldetektorprojekt.aux"'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 78.
@@ -1025,17 +1026,17 @@ Package hyperref Info: Link coloring OFF on input line 78.
 \@outlinefile=\write4
 \openout4 = `"Rapport metaldetektorprojekt.out"'.
 
-<Seb billede.png, id=134, 218.31563pt x 295.1025pt>
+<Seb billede.png, id=150, 218.31563pt x 295.1025pt>
 File: Seb billede.png Graphic file (type png)
 <use Seb billede.png>
 Package pdftex.def Info: Seb billede.png  used on input line 88.
 (pdftex.def)             Requested size: 77.12132pt x 113.80988pt.
-<Oli billede.jpg, id=137, 1246.6575pt x 2216.28pt>
+<Oli billede.jpg, id=153, 1246.6575pt x 2216.28pt>
 File: Oli billede.jpg Graphic file (type jpg)
 <use Oli billede.jpg>
 Package pdftex.def Info: Oli billede.jpg  used on input line 94.
 (pdftex.def)             Requested size: 62.70436pt x 113.80708pt.
-<Bilal billede.png, id=139, 1084.05pt x 722.7pt>
+<Bilal billede.png, id=155, 1084.05pt x 722.7pt>
 File: Bilal billede.png Graphic file (type png)
 <use Bilal billede.png>
 Package pdftex.def Info: Bilal billede.png  used on input line 100.
@@ -1203,7 +1204,7 @@ Overfull \hbox (64.29013pt too wide) in paragraph at lines 323--324
 
 
 [9]
-<dft plot1.png, id=240, 893.58844pt x 368.87813pt>
+<dft plot1.png, id=260, 893.58844pt x 368.87813pt>
 File: dft plot1.png Graphic file (type png)
 <use dft plot1.png>
 Package pdftex.def Info: dft plot1.png  used on input line 357.
@@ -1221,61 +1222,221 @@ Overfull \hbox (100.46262pt too wide) in paragraph at lines 408--409
 
 
 
-[12]
-<DFT plot.png, id=260, 295.85532pt x 296.60812pt>
-File: DFT plot.png Graphic file (type png)
-<use DFT plot.png>
-Package pdftex.def Info: DFT plot.png  used on input line 416.
-(pdftex.def)             Requested size: 172.5pt x 172.94252pt.
+[12] (TABEL1.tex
+Overfull \hbox (1.6346pt too wide) in paragraph at lines 3--3
+[]|\OT1/cmr/m/n/10 Register| 
+ []
 
 
-[13]
-Overfull \hbox (125.38106pt too wide) in paragraph at lines 439--440
-[][] 
+Overfull \hbox (7.38461pt too wide) in paragraph at lines 5--5
+[]|\OT1/cmr/m/n/10 TCCR1A| 
+ []
+
+
+Overfull \hbox (6.96796pt too wide) in paragraph at lines 6--6
+[]|\OT1/cmr/m/n/10 TCCR1B| 
+ []
+
+
+Overfull \hbox (0.71796pt too wide) in paragraph at lines 7--7
+[]|\OT1/cmr/m/n/10 OCR1A| 
+ []
+
+
+Overfull \hbox (4.1902pt too wide) in paragraph at lines 8--8
+[]|\OT1/cmr/m/n/10 TIMSK1| 
+ []
+
+)
+Overfull \hbox (95.02904pt too wide) in paragraph at lines 1--430
+ [][] 
  []
 
 
 
-[14 <./DFT plot.png>]
+[13] (TABEL2.tex
+Overfull \hbox (1.6346pt too wide) in paragraph at lines 3--3
+[]|\OT1/cmr/m/n/10 Register| 
+ []
 
-[15]
-<Gannt kort.png, id=278, 1694.58093pt x 362.85562pt>
+
+Overfull \hbox (5.16241pt too wide) in paragraph at lines 5--5
+[]|\OT1/cmr/m/n/10 ADMUX| 
+ []
+
+
+Overfull \hbox (8.63463pt too wide) in paragraph at lines 6--6
+[]|\OT1/cmr/m/n/10 ADCSRA| 
+ []
+
+)
+Overfull \hbox (95.02904pt too wide) in paragraph at lines 1--447
+ [][] 
+ []
+
+<DFT plot.png, id=288, 295.85532pt x 296.60812pt>
+File: DFT plot.png Graphic file (type png)
+<use DFT plot.png>
+Package pdftex.def Info: DFT plot.png  used on input line 452.
+(pdftex.def)             Requested size: 172.5pt x 172.94252pt.
+
+
+[14] (TABEL3.tex
+Underfull \hbox (badness 4859) in paragraph at lines 3--3
+[]|\OT1/cmr/m/n/10 n mod
+ []
+
+)
+Overfull \hbox (95.02904pt too wide) in paragraph at lines 1--466
+ [][] 
+ []
+
+
+
+[15 <./DFT plot.png>]
+Overfull \hbox (0.75075pt too wide) in paragraph at lines 490--492
+[]\OT1/cmr/m/n/10 Amplitude Im-ple-men-ta-tion: abs(z)=sqrt(re*re+im*im) med fl
+oat-ing point
+ []
+
+
+Overfull \hbox (125.38106pt too wide) in paragraph at lines 525--526
+[][] 
+ []
+
+\openout2 = `TABEL4.aux'.
+
+(TABEL4.tex
+Overfull \hbox (37.73189pt too wide) in paragraph at lines 5--5
+[]|\OT1/cmr/m/n/10 CALIBRATING| 
+ []
+
+
+Overfull \hbox (14.39851pt too wide) in paragraph at lines 7--7
+[]|\OT1/cmr/m/n/10 RUNNING| 
+ []
+
+
+Overfull \hbox (43.70413pt too wide) in paragraph at lines 8--8
+[]|\OT1/cmr/m/n/10 IDLE/RUNNING| 
+ []
+
+)
+Overfull \hbox (249.29282pt too wide) in paragraph at lines 1--531
+ [][] 
+ []
+
+
+
+[16]
+
+[17
+
+
+
+]
+\openout2 = `TABEL5.aux'.
+
+ (TABEL5.tex
+Overfull \hbox (1.6346pt too wide) in paragraph at lines 3--3
+[]|\OT1/cmr/m/n/10 Register| 
+ []
+
+
+Overfull \hbox (7.38461pt too wide) in paragraph at lines 5--5
+[]|\OT1/cmr/m/n/10 TCCR2A| 
+ []
+
+
+Underfull \hbox (badness 2961) in paragraph at lines 5--5
+[]|\OT1/cmr/m/n/10 (1 $\OML/cmm/m/it/10 <$$<$ \OT1/cmr/m/n/10 WGM21) | (1 $\OML
+/cmm/m/it/10 <$$<$
+ []
+
+
+Overfull \hbox (6.96796pt too wide) in paragraph at lines 6--6
+[]|\OT1/cmr/m/n/10 TCCR2B| 
+ []
+
+)
+Overfull \hbox (95.02904pt too wide) in paragraph at lines 1--549
+ [][] 
+ []
+
+\openout2 = `TABEL6.aux'.
+
+(TABEL6.tex
+Overfull \hbox (16.96803pt too wide) in paragraph at lines 3--3
+[]|\OT1/cmr/m/n/10 Komponent| 
+ []
+
+
+Overfull \hbox (6.02356pt too wide) in paragraph at lines 6--6
+[]|\OT1/cmr/m/n/10 Buffering| 
+ []
+
+
+Overfull \hbox (11.3291pt too wide) in paragraph at lines 7--7
+[]|\OT1/cmr/m/n/10 Amp/Fase| 
+ []
+
+
+Overfull \hbox (8.77353pt too wide) in paragraph at lines 9--9
+[]|\OT1/cmr/m/n/10 Debounce| 
+ []
+
+)
+Overfull \hbox (95.02904pt too wide) in paragraph at lines 1--564
+ [][] 
+ []
+
+
+
+[18
+
+
+
+
+
+
+]
+<Gannt kort.png, id=332, 1694.58093pt x 362.85562pt>
 File: Gannt kort.png Graphic file (type png)
 <use Gannt kort.png>
-Package pdftex.def Info: Gannt kort.png  used on input line 495.
+Package pdftex.def Info: Gannt kort.png  used on input line 612.
 (pdftex.def)             Requested size: 345.0pt x 73.87096pt.
 
 
-[16 <./Gannt kort.png>]
-Overfull \hbox (6.16733pt too wide) in paragraph at lines 517--518
+[19 <./Gannt kort.png>]
+Overfull \hbox (6.16733pt too wide) in paragraph at lines 634--635
 \OT1/cmr/m/n/10 Idag har vi f^^Zlles fore-taget m^^Walinger p^^Wa spolen, samt 
 viklet buck-spolen tilstr^^Zkke-
  []
 
 
-Overfull \hbox (32.0829pt too wide) in paragraph at lines 520--521
+Overfull \hbox (32.0829pt too wide) in paragraph at lines 637--638
 []\OT1/cmr/m/n/10 Sebastian og Oliver laver et modul i C ko-den til sleep-funkt
 ion for str^^\mbesparelse.
  []
 
 
 
-[17]
+[20]
 
-[18] (Rapport metaldetektorprojekt.aux)
+[21] (Rapport metaldetektorprojekt.aux (TABEL4.aux) (TABEL5.aux) (TABEL6.aux))
  ***********
 LaTeX2e <2025-06-01> patch level 1
 L3 programming layer <2025-07-20>
  ***********
 Package rerunfilecheck Info: File `"Rapport metaldetektorprojekt".out' has not 
 changed.
-(rerunfilecheck)             Checksum: 5E5208B0D720FC0994B43C2C0157B83E;4348.
+(rerunfilecheck)             Checksum: D3F3A65CE64693041725BA2D4325AB8E;4496.
  ) 
 Here is how much of TeX's memory you used:
- 52186 strings out of 468134
- 1363114 string characters out of 5430740
- 2130833 words of memory out of 5000000
- 80154 multiletter control sequences out of 15000+600000
+ 52322 strings out of 468134
+ 1366003 string characters out of 5430740
+ 2131024 words of memory out of 5000000
+ 80232 multiletter control sequences out of 15000+600000
  632831 words of font info for 60 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  99i,12n,105p,745b,1129s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -1296,10 +1457,10 @@ amsfonts/cm/cmr7.pfb><C:/Users/Sebas/AppData/Local/Programs/MiKTeX/fonts/type1/
 public/amsfonts/cm/cmsy10.pfb><C:/Users/Sebas/AppData/Local/Programs/MiKTeX/fon
 ts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Users/Sebas/AppData/Local/Programs/Mi
 KTeX/fonts/type1/public/amsfonts/cm/cmti9.pfb>
-Output written on "Rapport metaldetektorprojekt.pdf" (19 pages, 1980127 bytes).
+Output written on "Rapport metaldetektorprojekt.pdf" (22 pages, 1997808 bytes).
 
 PDF statistics:
- 379 PDF objects out of 1000 (max. 8388607)
- 70 named destinations out of 1000 (max. 500000)
- 317 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 438 PDF objects out of 1000 (max. 8388607)
+ 98 named destinations out of 1000 (max. 500000)
+ 349 words of extra memory for PDF output out of 10000 (max. 10000000)
 

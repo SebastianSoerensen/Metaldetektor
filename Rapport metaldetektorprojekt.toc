@@ -19,14 +19,18 @@
 \contentsline {subsubsection}{\numberline {3.1.5}Forstærkning af spolesignalet}{12}{subsubsection.3.1.5}%
 \contentsline {subsection}{\numberline {3.2}Digitalt design}{13}{subsection.3.2}%
 \contentsline {subsubsection}{\numberline {3.2.1}Moduldiagram og introduktion}{13}{subsubsection.3.2.1}%
-\contentsline {subsubsection}{\numberline {3.2.2}Brugerinteraktion}{14}{subsubsection.3.2.2}%
-\contentsline {subsubsection}{\numberline {3.2.3}DFT algoritme og sampling}{14}{subsubsection.3.2.3}%
-\contentsline {subsubsection}{\numberline {3.2.4}Tilstandsmaskine}{14}{subsubsection.3.2.4}%
-\contentsline {subsubsection}{\numberline {3.2.5}Digital signal behandling}{15}{subsubsection.3.2.5}%
-\contentsline {section}{\numberline {4}Implementering og test}{15}{section.4}%
-\contentsline {section}{\numberline {5}Konklusion}{15}{section.5}%
-\contentsline {section}{\numberline {6}Ansvarsområder}{15}{section.6}%
-\contentsline {section}{\numberline {7}Appendix}{16}{section.7}%
-\contentsline {subsection}{\numberline {7.1}Gantt kort}{16}{subsection.7.1}%
-\contentsline {subsection}{\numberline {7.2}Mødereferater}{17}{subsection.7.2}%
-\contentsline {subsection}{\numberline {7.3}Kodebilag}{18}{subsection.7.3}%
+\contentsline {subsubsection}{\numberline {3.2.2}Timer1}{13}{subsubsection.3.2.2}%
+\contentsline {subsubsection}{\numberline {3.2.3}ADC}{14}{subsubsection.3.2.3}%
+\contentsline {subsubsection}{\numberline {3.2.4}DFT}{15}{subsubsection.3.2.4}%
+\contentsline {subsubsection}{\numberline {3.2.5}Double buffer}{16}{subsubsection.3.2.5}%
+\contentsline {subsubsection}{\numberline {3.2.6}DSP}{16}{subsubsection.3.2.6}%
+\contentsline {subsubsection}{\numberline {3.2.7}Tilstandsmaskine}{17}{subsubsection.3.2.7}%
+\contentsline {subsubsection}{\numberline {3.2.8}Buzzer}{18}{subsubsection.3.2.8}%
+\contentsline {subsubsection}{\numberline {3.2.9}Knap input}{18}{subsubsection.3.2.9}%
+\contentsline {section}{\numberline {4}Implementering og test}{19}{section.4}%
+\contentsline {section}{\numberline {5}Konklusion}{19}{section.5}%
+\contentsline {section}{\numberline {6}Ansvarsområder}{19}{section.6}%
+\contentsline {section}{\numberline {7}Appendix}{19}{section.7}%
+\contentsline {subsection}{\numberline {7.1}Gantt kort}{19}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}Mødereferater}{20}{subsection.7.2}%
+\contentsline {subsection}{\numberline {7.3}Kodebilag}{21}{subsection.7.3}%
